@@ -1,0 +1,16 @@
+﻿<Window x:Class="AplicacionEficiencia.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AplicacionEficiencia"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FF717070">
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="504,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="262" Height="211"/>
+        <StackPanel Margin="0,0,542,0">
+            <Button x:Name="button" Content="ModificarPerfil" Click="button_Click"/>
+        </StackPanel>
+        <Frame x:Name="frame" Content="Frame" Margin="263,0,0,0"/>
+    </Grid>
+</Window>
