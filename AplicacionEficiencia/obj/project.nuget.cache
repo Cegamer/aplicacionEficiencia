@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "U546siYKsr4Rslx+pldn+04NwIW7WHIRVIHH6zY0HSt6p1HaatzpCUFusEoK+xTjAune5MJ804gFF8pJ5trcYA==",
+  "dgSpecHash": "sDE620kzPB7ixTnEyb/XPwS3xYKyL4WestLadfZoV0A2FIh3bR+2nI7D2DmyKFNpSgw4GiwB3y7oWaIUd4ShHg==",
   "success": true,
   "projectFilePath": "E:\\Proyectos Programacion\\aplicacionEficiencia\\AplicacionEficiencia\\AplicacionEficiencia.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Cegamer\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\Cegamer\\.nuget\\packages\\system.drawing.common\\8.0.1\\system.drawing.common.8.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

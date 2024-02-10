@@ -10,12 +10,18 @@
     <Compile Update="Vistas\ModificarPerfil.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Vistas\Perfiles.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Vistas\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Vistas\ModificarPerfil.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Perfiles.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -8,9 +8,31 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ModificarPerfil">
 
-    <Grid Background="#FF6B6B6B">
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="447"/>
-        <StackPanel x:Name="panelAplicaciones" Margin="494,0,0,0"/>
+    <Grid Background="#FF6B6B6B" Margin="0,0,-144,0">
+        <StackPanel Orientation="Horizontal">
+
+            <Grid Width="694">
+                <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="292"/>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="122" Height="25"/>
+                <Label x:Name="label_Copy" Content="Label" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="292"/>
+                <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="337" Height="60"/>
+                <StackPanel Margin="0,177,0,0" Orientation="Horizontal">
+
+                    <StackPanel>
+                        <Label Content="Aplicaciones A Ejecutar"></Label>
+                        <Grid Height="246" Width="324"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Aplicaciones Bloqueadas"></Label>
+                        <Grid Height="249" Width="324"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <ScrollViewer Height="450" Width="250" HorizontalAlignment="Right">
+                <StackPanel x:Name="panelAplicaciones" Background="Red"/>
+            </ScrollViewer>
+        </StackPanel>
 
     </Grid>
 </Page>

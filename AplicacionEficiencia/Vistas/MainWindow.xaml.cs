@@ -22,17 +22,22 @@ namespace AplicacionEficiencia
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ModificarPerfil modificarPerfil = new ModificarPerfil();
+        public ModificarPerfil modificarPerfil;
         public MainWindow()
         {
             InitializeComponent();
+
+            /*Esto hay que arreglarlo, pero aun no, por ahora funciona */
             LectorProgramas lectorProcesos = new LectorProgramas();
             lectorProcesos.MainWindow = this;
-            lectorProcesos.obtenerProgramasInstalados(); 
+            lectorProcesos.obtenerProgramasInstalados();
+            modificarPerfil = new ModificarPerfil();
+            Perfiles perfilesVista = new Perfiles();
+            PerfilesController perfiles = new PerfilesController(lectorProcesos,perfilesVista);
             ListaAplicacionesModificarPerfil LAMP = new ListaAplicacionesModificarPerfil(modificarPerfil,lectorProcesos);
+            frame.Content = perfilesVista;
+            /* --------------------------------------------------------- */
         }
-
-  
 
         private void button_Click(object sender, RoutedEventArgs e)
         {

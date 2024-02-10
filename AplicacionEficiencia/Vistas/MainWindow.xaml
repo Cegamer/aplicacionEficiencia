@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FF717070">
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="504,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="262" Height="211"/>
-        <StackPanel Margin="0,0,542,0">
-            <Button x:Name="button" Content="ModificarPerfil" Click="button_Click"/>
+        <StackPanel Margin="0,0,542,0" HorizontalAlignment="Left">
+            <Button x:Name="button" Content="ModificarPerfil" Click="button_Click" Width="188" Height="20"/>
         </StackPanel>
-        <Frame x:Name="frame" Content="Frame" Margin="263,0,0,0"/>
+        <StackPanel HorizontalAlignment="Left" Margin="188,0,0,0" Background="Red">
+            <Frame x:Name="frame" Content="" Background="Red"/>
+        </StackPanel>
     </Grid>
 </Window>
