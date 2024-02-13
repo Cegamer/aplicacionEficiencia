@@ -5,34 +5,55 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AplicacionEficiencia.Vistas"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="555" d:DesignWidth="1130"
       Title="ModificarPerfil">
 
-    <Grid Background="#FF6B6B6B" Margin="0,0,-144,0">
-        <StackPanel Orientation="Horizontal">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
 
-            <Grid Width="694">
-                <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="292"/>
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="122" Height="25"/>
-                <Label x:Name="label_Copy" Content="Label" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="292"/>
-                <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="337" Height="60"/>
-                <StackPanel Margin="0,177,0,0" Orientation="Horizontal">
-
-                    <StackPanel>
-                        <Label Content="Aplicaciones A Ejecutar"></Label>
-                        <Grid Height="246" Width="324"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <Label Content="Aplicaciones Bloqueadas"></Label>
-                        <Grid Height="249" Width="324"/>
-                    </StackPanel>
+        <!--#region InformacionPerfil -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="292"/>
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="122" Height="25"/>
+            <Label x:Name="label_Copy" Content="Label" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="292"/>
+            <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="337" Height="60"/>
+            <StackPanel Margin="0,177,0,0" Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Aplicaciones A Ejecutar"></Label>
+                    <Grid Height="246" Width="324"/>
                 </StackPanel>
-            </Grid>
+                <StackPanel>
+                    <Label Content="Aplicaciones Bloqueadas"></Label>
+                    <Grid Height="249" Width="324"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
 
-            <ScrollViewer Height="450" Width="250" HorizontalAlignment="Right">
+
+        <!--#region ListaAplicaciones -->
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Height="auto" Width="auto" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0">
                 <StackPanel x:Name="panelAplicaciones" Background="Red"/>
             </ScrollViewer>
-        </StackPanel>
-
+            <Button x:Name="btn_agregarapp" Content="Agregar App" Height="25" Grid.Row="2" Grid.Column="0"/>
+        </Grid>
+        <!--#endregion-->
     </Grid>
 </Page>

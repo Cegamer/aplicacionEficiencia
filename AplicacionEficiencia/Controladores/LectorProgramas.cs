@@ -17,36 +17,53 @@ namespace AplicacionEficiencia.Controladores
         public MainWindow MainWindow { get; set; }
 
         public List<Programa> programas;
-        public List<Process> procesosActivosPC() {
+        public List<Process> procesosActivosPC()
+        {
             List<Process> procesos = new List<Process>();
 
             return procesos;
         }
 
-        public void obtenerProgramasInstalados()
+        private List<Programa> GetAppsByUnistalKey(string key)
         {
-            List<Programa> installedApps = new List<Programa>();
-            string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
-            using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
+            List<Programa> listAll = new List<Programa>();
+
+            using (RegistryKey? rKey = Registry.LocalMachine.OpenSubKey(key))
             {
+                if (rKey is null) return listAll;
                 int i = 0;
-                foreach (string skName in rk.GetSubKeyNames())
+
+                foreach (string skName in rKey.GetSubKeyNames())
                 {
-                    using (RegistryKey sk = rk.OpenSubKey(skName))
+                    using (RegistryKey? sk = rKey.OpenSubKey(skName))
                     {
-                        string displayName = sk.GetValue("DisplayName") as string;
-                        string installLocation = sk.GetValue("InstallLocation") as string;
+                        if (sk is null) continue;
+                        string? displayName = sk.GetValue("DisplayName") as string;
+                        string? installLocation = sk.GetValue("InstallLocation") as string;
+
                         if (!string.IsNullOrEmpty(displayName))
                         {
-                            string executablePath = GetExecutablePath(installLocation);
-                            if(executablePath != "" && !executablePath.Contains("uninstall") && !executablePath.Contains("install"))
-                                installedApps.Add(new Programa(i,displayName, executablePath));
+                            string executablePath = GetExecutablePath(installLocation!);
+
+                            if (executablePath != "" && !executablePath.Contains("uninstall") && !executablePath.Contains("install"))
+                                listAll.Add(new Programa(i++, displayName, executablePath));
                         }
                     }
                 }
             }
+            return listAll;
+        }
+
+        public void obtenerProgramasInstalados()
+        {
+            List<Programa> installedApps = new List<Programa>();
+
+            //Leer los progrmas de 64bit y 32bit 
+            installedApps.AddRange(GetAppsByUnistalKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"));
+            installedApps.AddRange(GetAppsByUnistalKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"));
             this.programas = installedApps;
         }
+
         static string GetExecutablePath(string installLocation)
         {
             if (string.IsNullOrEmpty(installLocation) || !Directory.Exists(installLocation))
@@ -54,7 +71,6 @@ namespace AplicacionEficiencia.Controladores
 
             return Directory.GetFiles(installLocation, "*.exe", SearchOption.TopDirectoryOnly).FirstOrDefault() ?? "";
         }
-
 
         public List<Programa> GetProgramas()
         {
