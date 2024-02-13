@@ -1,5 +1,6 @@
 ﻿using AplicacionEficiencia.Modelos;
 using AplicacionEficiencia.Vistas;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,6 +25,7 @@ namespace AplicacionEficiencia.Controladores
         {
             this.modificarPerfil = modificarPerfil;
             this.lectorProgramas = lectorProgramas;
+            modificarPerfil.btn_agregarapp.Click += Btn_agregarapp_Click;
             mostrarListaAplicaciones();
         }
 
@@ -83,5 +85,25 @@ namespace AplicacionEficiencia.Controladores
             modificarPerfil.panelAplicaciones.Children.Add(stackPanelPrincipal);
             modificarPerfil.textBox.Text = textoMostrar;
         }
+
+        private void Btn_agregarapp_Click(object sender, RoutedEventArgs e)
+        {
+            var fileChoser = new OpenFileDialog();
+            fileChoser.DefaultExt = ".exe";
+            fileChoser.Filter = "Executable Files (*.exe)|*.exe";
+            fileChoser.InitialDirectory = "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs";
+
+            if (fileChoser.ShowDialog() ?? false)
+            {
+                string path = fileChoser.FileName;
+                string name = System.IO.Path.GetFileName(path);
+                var app = new Programa(999, name, path); //Ingresar ID autogenerado por la base de datos
+
+                lectorProgramas.programas.Add(app);
+                modificarPerfil.panelAplicaciones.Children.Clear();
+                mostrarListaAplicaciones();
+            }
+        }
+
     }
 }

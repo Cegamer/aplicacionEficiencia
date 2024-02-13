@@ -6,12 +6,23 @@
         xmlns:local="clr-namespace:AplicacionEficiencia"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FF717070">
-        <StackPanel Margin="0,0,542,0" HorizontalAlignment="Left">
-            <Button x:Name="button" Content="ModificarPerfil" Click="button_Click" Width="188" Height="20"/>
+
+    <Grid Background="#272727">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Background="#202020">
+            <Button x:Name="button" Content="ModificarPerfil" Click="button_Click" Width="auto" Height="20"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Margin="188,0,0,0" Background="Red">
-            <Frame x:Name="frame" Content="" Background="Red"/>
-        </StackPanel>
+
+        <Frame 
+            x:Name="frame" 
+            Grid.Column="1" Grid.Row="0"
+            Content=""/>
     </Grid>
 </Window>
