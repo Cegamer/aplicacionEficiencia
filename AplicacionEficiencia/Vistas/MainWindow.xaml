@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Background="#202020">
-            <Button x:Name="button" Content="ModificarPerfil" Click="button_Click" Width="auto" Height="20"/>
+            <Button x:Name="button" Content="Perfiles" Click="button_Click" Width="auto" Height="20"/>
         </StackPanel>
 
         <Frame 

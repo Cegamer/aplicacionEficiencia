@@ -50,3 +50,5 @@ E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\bin\Debug\ne
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.CopyComplete
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\Perfiles.g.cs
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\Perfiles.baml
+E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Interop.Shell32.dll
+E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.ResolveComReference.cache

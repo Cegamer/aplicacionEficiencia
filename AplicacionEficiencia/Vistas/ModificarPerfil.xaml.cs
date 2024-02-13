@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AplicacionEficiencia.Controladores;
+using AplicacionEficiencia.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,13 @@ namespace AplicacionEficiencia.Vistas
     /// </summary>
     public partial class ModificarPerfil : Page
     {
-        public ModificarPerfil()
+        public ModificarPerfil(Perfil perfil)
         {
             InitializeComponent();
+
+            textBoxNombrePerfil.Text = perfil.nombre;
+            ListaAplicacionesModificarPerfil LAMP = new ListaAplicacionesModificarPerfil(this);
+
         }
     }
 }

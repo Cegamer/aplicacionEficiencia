@@ -19,12 +19,10 @@ namespace AplicacionEficiencia.Controladores
     internal class ListaAplicacionesModificarPerfil
     {
         public ModificarPerfil modificarPerfil;
-        public LectorProgramas lectorProgramas;
 
-        public ListaAplicacionesModificarPerfil(ModificarPerfil modificarPerfil, LectorProgramas lectorProgramas)
+        public ListaAplicacionesModificarPerfil(ModificarPerfil modificarPerfil)
         {
             this.modificarPerfil = modificarPerfil;
-            this.lectorProgramas = lectorProgramas;
             modificarPerfil.btn_agregarapp.Click += Btn_agregarapp_Click;
             mostrarListaAplicaciones();
         }
@@ -35,8 +33,7 @@ namespace AplicacionEficiencia.Controladores
             stackPanelPrincipal.Margin = new Thickness(10, 10, 144, 276);
             string textoMostrar = "";
 
-            //Programa programa = new Programa("aa", "aaa", "aaaa");
-            foreach (Programa programa in lectorProgramas.programas)
+            foreach (Programa programa in LectorProgramas.programas)
             {
                 textoMostrar += programa.rutaIcono+ "\n";
                 StackPanel stackPanel1 = new StackPanel();
@@ -83,7 +80,6 @@ namespace AplicacionEficiencia.Controladores
             }
 
             modificarPerfil.panelAplicaciones.Children.Add(stackPanelPrincipal);
-            modificarPerfil.textBox.Text = textoMostrar;
         }
 
         private void Btn_agregarapp_Click(object sender, RoutedEventArgs e)
@@ -99,7 +95,7 @@ namespace AplicacionEficiencia.Controladores
                 string name = System.IO.Path.GetFileName(path);
                 var app = new Programa(999, name, path); //Ingresar ID autogenerado por la base de datos
 
-                lectorProgramas.programas.Add(app);
+                LectorProgramas.programas.Add(app);
                 modificarPerfil.panelAplicaciones.Children.Clear();
                 mostrarListaAplicaciones();
             }

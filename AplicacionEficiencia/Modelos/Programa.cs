@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace AplicacionEficiencia.Modelos
 {
-    internal class Programa
+    public class Programa
     {
         public int id;
         public string nombre;
@@ -26,15 +26,19 @@ namespace AplicacionEficiencia.Modelos
         }
 
         public BitmapSource getIcon() {
-            Icon icon = Icon.ExtractAssociatedIcon(ruta);
-            Bitmap bitmap = icon.ToBitmap();
+            try
+            {
+                Icon icon = Icon.ExtractAssociatedIcon(ruta);
+                Bitmap bitmap = icon.ToBitmap();
 
-            BitmapSource bitmapSource = Imaging.CreateBitmapSourceFromHIcon(
-                bitmap.GetHicon(),
-                Int32Rect.Empty,
-                BitmapSizeOptions.FromEmptyOptions());
+                BitmapSource bitmapSource = Imaging.CreateBitmapSourceFromHIcon(
+                    bitmap.GetHicon(),
+                    Int32Rect.Empty,
+                    BitmapSizeOptions.FromEmptyOptions());
 
-            return bitmapSource;
+                return bitmapSource;
+            }
+            catch { return null; }
         }
     }
 }

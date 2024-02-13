@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace AplicacionEficiencia.Modelos
 {
-    internal class Perfil
+    public class Perfil
     {
         public int id { get; set; }
         public string nombre { get; set; }

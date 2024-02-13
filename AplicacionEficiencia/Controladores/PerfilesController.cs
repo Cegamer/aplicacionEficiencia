@@ -14,25 +14,25 @@ namespace AplicacionEficiencia.Controladores
 {
     internal class PerfilesController
     {
-        public LectorProgramas lector;
         public Perfiles perfiles;
         public Perfil prueba = new Perfil(0,"aaaa","aaaaaaa");
         List<Perfil> perfilesLista = new List<Perfil>();
 
-        public PerfilesController(LectorProgramas lector,Perfiles perfiles) { 
+        public PerfilesController(Perfiles perfiles) { 
             
-            this.lector = lector;
             this.perfiles = perfiles;
             perfilesLista.Add(prueba);
-            prueba.agregarProgramaEjecutar(lector.GetProgramas()[0]);
-            prueba.agregarProgramaEjecutar(lector.GetProgramas()[2]);
-            prueba.agregarProgramaEjecutar(lector.GetProgramas()[3]);
+            prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
+            prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
+            prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
+            prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[3]);
             mostrarPerfiles();
         }
 
         public void mostrarPerfiles() {
             StackPanel stackPanelPrincipal = new StackPanel();
-            stackPanelPrincipal.Margin = new Thickness(10, 10, 542, 200);
+            stackPanelPrincipal.Margin = new Thickness(10, 10, 10, 10);
+            stackPanelPrincipal.Width = 240;
             foreach(Perfil perfil in perfilesLista) { 
 
                 Label label = new Label();
@@ -70,10 +70,24 @@ namespace AplicacionEficiencia.Controladores
                     grid.RowDefinitions.Add(new RowDefinition());
                 }
 
-                // Botón
+                // Botón Editar
+                Button buttonEditar = new Button();
+                buttonEditar.Name = "botonEditar" + perfil.id;
+                buttonEditar.Content = "Editar";
+                buttonEditar.Width = 240;
+
+                buttonEditar.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
+                {
+                    LectorProgramas.MainWindow.frame.Content = new ModificarPerfil(perfil);
+                }));
+
+                stackPanelPrincipal.Children.Add(buttonEditar);
+
+                // Botón Iniciar
                 Button button = new Button();
                 button.Name = "button" + perfil.id;
                 button.Content = "Iniciar";
+                button.Width = 240;
 
                 button.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
                 {
