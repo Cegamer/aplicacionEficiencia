@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AplicacionEficiencia.Vistas"
+      xmlns:models="clr-namespace:AplicacionEficiencia.Modelos"
       mc:Ignorable="d" 
       d:DesignHeight="555" d:DesignWidth="1130"
       Title="ModificarPerfil">
@@ -12,8 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -21,39 +21,138 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-
+        
         <!--#region InformacionPerfil -->
         <Grid Grid.Row="1" Grid.Column="1">
-            <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="292"/>
-            <TextBox x:Name="textBoxNombrePerfil" HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="122" Height="25"/>
-            <Label x:Name="label_Copy" Content="Label" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="292"/>
-            <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="337" Height="60"/>
-            <StackPanel Margin="0,177,0,0" Orientation="Horizontal">
-                <StackPanel>
-                    <Label Content="Aplicaciones A Ejecutar"></Label>
-                    <Grid Height="246" Width="324"/>
-                </StackPanel>
-                <StackPanel>
-                    <Label Content="Aplicaciones Bloqueadas"></Label>
-                    <Grid Height="249" Width="324"/>
-                </StackPanel>
-            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="label" Content="Label" 
+                   FontSize="20" Foreground="White"
+                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="textBoxNombrePerfil" 
+                     Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                     TextWrapping="Wrap" 
+                     Text="TextBox" 
+                     Width="auto" Height="25"/>
+
+            <Label x:Name="label_Copy" Content="Label" 
+                   FontSize="20" Foreground="White"
+                   Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="textBoxDescripcion" 
+                     Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"
+                     TextWrapping="Wrap" 
+                     Text="TextBox" 
+                     Width="auto" Height="100"/>
+
+            <Grid Grid.Column="0" Grid.Row="6" Margin="4, 0, 4, 0" Background="#1c1c1e">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="Aplicaciones A Ejecutar" FontSize="20" Foreground="White"/>
+
+                <ListBox
+                    x:Name="list_app_ejecutar"
+                    Grid.Row="2" Grid.Column="1"
+                    Background="Transparent" BorderBrush="{x:Null}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:Programa}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding SourceIcon}" Width="25" Height="25"></Image>
+                                <StackPanel Grid.Row="0" Grid.Column="2">
+                                    <TextBlock Text="{Binding nombre}" Foreground="White" FontSize="14" FontWeight="SemiBold" TextWrapping="NoWrap"/>
+                                    <TextBlock Text="{Binding ruta}" Foreground="#8d8d93" FontSize="10"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="6" Margin="4, 0, 4, 0" Background="#1c1c1e">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="Aplicaciones Bloqueadas" FontSize="20" Foreground="White"/>
+                
+                <ListView
+                    x:Name="list_applicaciones_bloqueadas"
+                    Grid.Row="2" Grid.Column="1"
+                    Background="Transparent" BorderBrush="{x:Null}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:Programa}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding SourceIcon}" Width="25" Height="25"></Image>
+                                <StackPanel Grid.Row="0" Grid.Column="2">
+                                    <TextBlock Text="{Binding nombre}" Foreground="White" FontSize="14" FontWeight="SemiBold" TextWrapping="NoWrap"/>
+                                    <TextBlock Text="{Binding ruta}" Foreground="#8d8d93" FontSize="10"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListView>
+            </Grid>
         </Grid>
         <!--#endregion-->
-
-
         <!--#region ListaAplicaciones -->
-        <Grid Grid.Row="1" Grid.Column="3">
+        <Grid Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="5"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <ScrollViewer Height="auto" Width="auto" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0">
-                <StackPanel x:Name="panelAplicaciones" Background="Red"/>
+            <ScrollViewer Height="auto" Width="auto" Grid.Row="0" Grid.Column="0">
+                <StackPanel x:Name="panelAplicaciones"/>
             </ScrollViewer>
-            <Button x:Name="btn_agregarapp" Content="Agregar App" Height="25" Grid.Row="2" Grid.Column="0"/>
+            <Button x:Name="btn_agregarapp" Content="Agregar App" 
+                    Height="36" Margin="10, 0"
+                    Grid.Row="2" Grid.Column="0"/>
         </Grid>
         <!--#endregion-->
+        
     </Grid>
 </Page>

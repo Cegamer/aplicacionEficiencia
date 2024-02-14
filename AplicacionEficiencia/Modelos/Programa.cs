@@ -12,11 +12,12 @@ namespace AplicacionEficiencia.Modelos
 {
     public class Programa
     {
-        public int id;
-        public string nombre;
-        public string ruta;
-        public string rutaIcono;
-        public string nombreProceso;
+        public int id { get; }
+        public string nombre { get; set; }
+        public string ruta { get; set; }
+        public string rutaIcono { get; set; }
+        public string nombreProceso { get; set; }
+        public BitmapSource SourceIcon { get => getIcon(); }
 
         public Programa(int id,string nombre, string ruta)
         {

@@ -30,7 +30,7 @@ namespace AplicacionEficiencia.Controladores
         public void mostrarListaAplicaciones() {
 
             StackPanel stackPanelPrincipal = new StackPanel();
-            stackPanelPrincipal.Margin = new Thickness(10, 10, 144, 276);
+            stackPanelPrincipal.Margin = new Thickness(10, 10, 10, 10);
             string textoMostrar = "";
 
             foreach (Programa programa in LectorProgramas.programas)
@@ -58,6 +58,38 @@ namespace AplicacionEficiencia.Controladores
                 stackPanel2.Height = 63;
 
 
+
+                Button btn_open = new Button();
+                btn_open.Content = "Abrir";
+                btn_open.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
+                {
+                    string executablePath = programa.ruta;
+
+                    try { Process.Start(executablePath); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al ejecutar el programa: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }));
+                stackPanel2.Children.Add(btn_open);
+
+                Button btn_autoinicio = new Button();
+                btn_autoinicio.Content = $"Inicio Automatico";
+                btn_autoinicio.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
+                {
+                    modificarPerfil.list_app_ejecutar.Items.Add(programa);
+                }));
+                stackPanel2.Children.Add(btn_autoinicio);
+
+                Button btn_bloquear = new Button();
+                btn_bloquear.Content = "Bloquear Uso";
+                btn_bloquear.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
+                {
+                    modificarPerfil.list_applicaciones_bloqueadas.Items.Add(programa);
+                }));
+                stackPanel2.Children.Add(btn_bloquear);
+
+                /*
                 for (int j = 0; j < 3; j++)
                 {
                     Button button = new Button();
@@ -75,6 +107,7 @@ namespace AplicacionEficiencia.Controladores
                         }
                     }));
                 }
+                */
 
                 stackPanelPrincipal.Children.Add(stackPanel2);
             }
