@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AplicacionEficiencia.Vistas"
-      xmlns:models="clr-namespace:AplicacionEficiencia.Modelos"
       mc:Ignorable="d" 
       d:DesignHeight="555" d:DesignWidth="1130"
       Title="ModificarPerfil">
@@ -35,109 +34,83 @@
                 <RowDefinition Height="15"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Label x:Name="label" Content="Label" 
-                   FontSize="20" Foreground="White"
+            <Label x:Name="label_profile_name" Content="Nombre del Perfil" 
+                   FontSize="20" Foreground="White" FontWeight="SemiBold"
                    Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
             <TextBox x:Name="textBoxNombrePerfil" 
                      Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
                      TextWrapping="Wrap" 
-                     Text="TextBox" 
-                     Width="auto" Height="25"/>
+                     TextAlignment="Left"
+                     Width="auto" Height="30"
+                     FontSize="16"
+                     Style="{StaticResource TextboxNegra}"/>
 
-            <Label x:Name="label_Copy" Content="Label" 
-                   FontSize="20" Foreground="White"
+            <Label x:Name="label_profile_description" Content="Descripción Perfil" 
+                   FontSize="20" Foreground="White" FontWeight="SemiBold"
                    Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+            
             <TextBox x:Name="textBoxDescripcion" 
                      Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"
-                     TextWrapping="Wrap" 
-                     Text="TextBox" 
-                     Width="auto" Height="100"/>
+                     Width="auto" Height="30"
+                     FontSize="16"
+                     TextWrapping="WrapWithOverflow"
+                     Style="{StaticResource TextboxNegra}"/>
 
-            <Grid Grid.Column="0" Grid.Row="6" Margin="4, 0, 4, 0" Background="#1c1c1e">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="5"/>
-                </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Grid.Row="6" Margin="0, 0, 8, 0" Background="#1c1c1e" CornerRadius="8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="5"/>
-                </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Aplicaciones a Ejecutar" FontSize="20" Foreground="White" FontWeight="SemiBold"/>
+                    <ListBox
+                        x:Name="list_app_ejecutar"
+                        Grid.Row="2" Grid.Column="1"
+                        Background="Transparent" BorderBrush="{x:Null}"
+                        ItemTemplate="{StaticResource ListaApps}">
+                    </ListBox>
+                </Grid>
+            </Border>
 
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="Aplicaciones A Ejecutar" FontSize="20" Foreground="White"/>
+            <Border Grid.Column="1" Grid.Row="6" Margin="8, 0, 0, 0" Background="#1c1c1e" CornerRadius="8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
 
-                <ListBox
-                    x:Name="list_app_ejecutar"
-                    Grid.Row="2" Grid.Column="1"
-                    Background="Transparent" BorderBrush="{x:Null}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type models:Programa}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding SourceIcon}" Width="25" Height="25"></Image>
-                                <StackPanel Grid.Row="0" Grid.Column="2">
-                                    <TextBlock Text="{Binding nombre}" Foreground="White" FontSize="14" FontWeight="SemiBold" TextWrapping="NoWrap"/>
-                                    <TextBlock Text="{Binding ruta}" Foreground="#8d8d93" FontSize="10"/>
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
-
-            <Grid Grid.Column="1" Grid.Row="6" Margin="4, 0, 4, 0" Background="#1c1c1e">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="5"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="5"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="Aplicaciones Bloqueadas" FontSize="20" Foreground="White"/>
-                
-                <ListView
-                    x:Name="list_applicaciones_bloqueadas"
-                    Grid.Row="2" Grid.Column="1"
-                    Background="Transparent" BorderBrush="{x:Null}"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type models:Programa}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding SourceIcon}" Width="25" Height="25"></Image>
-                                <StackPanel Grid.Row="0" Grid.Column="2">
-                                    <TextBlock Text="{Binding nombre}" Foreground="White" FontSize="14" FontWeight="SemiBold" TextWrapping="NoWrap"/>
-                                    <TextBlock Text="{Binding ruta}" Foreground="#8d8d93" FontSize="10"/>
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListView>
-            </Grid>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Aplicaciones Bloqueadas" FontSize="20" Foreground="White" FontWeight="SemiBold"/>
+                    <ListView
+                        x:Name="list_applicaciones_bloqueadas"
+                        Grid.Row="2" Grid.Column="1"
+                        Background="Transparent" BorderBrush="{x:Null}"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ItemTemplate="{StaticResource ListaApps}">
+                    </ListView>
+                </Grid>
+            </Border>
         </Grid>
         <!--#endregion-->
+        
         <!--#region ListaAplicaciones -->
         <Grid Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
@@ -150,7 +123,12 @@
             </ScrollViewer>
             <Button x:Name="btn_agregarapp" Content="Agregar App" 
                     Height="36" Margin="10, 0"
-                    Grid.Row="2" Grid.Column="0"/>
+                    Grid.Row="2" Grid.Column="0"
+                    Background="Black"
+                    Foreground="White"
+                    FontSize="16" 
+                    BorderBrush="#1c1c1e"
+                    />
         </Grid>
         <!--#endregion-->
         

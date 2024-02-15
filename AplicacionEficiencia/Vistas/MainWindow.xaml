@@ -17,17 +17,32 @@
             <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <Button x:Name="button" 
-                    Content="Perfiles" Click="button_Click" Width="auto" Height="36" Margin="0, 0, 0, 5"/>
-        </StackPanel>
+        <TextBlock Text="Productividad"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="White"
+                    FontSize="22"
+                   FontWeight="Bold"
+        />
 
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <RadioButton Content="Perfiles" 
+                         Height="50"
+                         Foreground="White"
+                         FontSize="14"
+                         Click="button_Click"
+                         Style="{StaticResource TemaBotonMenu}"
+            />
+        </StackPanel>
+        
         <Frame 
             x:Name="frame" 
-            Grid.Column="1" Grid.Row="0"
-            Content=""/>
+            Grid.Column="1" Grid.Row="1"
+            Content=""
+        />
     </Grid>
 </Window>

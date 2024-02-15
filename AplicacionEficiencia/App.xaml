@@ -2,8 +2,37 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AplicacionEficiencia"
+             xmlns:models="clr-namespace:AplicacionEficiencia.Modelos"
              StartupUri="Vistas/MainWindow.xaml">
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Temas/TextBoxStyle.xaml"/>
+                <ResourceDictionary Source="Temas/TemaBotonMenu.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate x:Key="ListaApps" DataType="{x:Type models:Programa}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Row="0" Grid.Column="2" Source="{Binding SourceIcon}" Width="25" Height="25"></Image>
+
+                    <StackPanel Grid.Row="0" Grid.Column="4">
+                        <TextBlock Text="{Binding nombre}" Foreground="White" FontSize="14" TextWrapping="NoWrap"/>
+                        <TextBlock 
+                            Text="{Binding ruta}" TextWrapping="WrapWithOverflow"
+                            Foreground="#8d8d93" FontSize="10" 
+                            Tag="{Binding id}"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
