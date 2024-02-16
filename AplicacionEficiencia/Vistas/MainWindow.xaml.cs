@@ -32,13 +32,13 @@ namespace AplicacionEficiencia
             LectorProgramas.MainWindow = this;
             LectorProgramas.obtenerProgramasInstalados();
             PerfilesController perfiles = new PerfilesController(perfilesVista);
-            frame.Content = perfilesVista;
+            //frame.Content = perfilesVista;
             /* --------------------------------------------------------- */
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            frame.Content = perfilesVista;
+            //frame.Content = perfilesVista;
         }
     }
 }
