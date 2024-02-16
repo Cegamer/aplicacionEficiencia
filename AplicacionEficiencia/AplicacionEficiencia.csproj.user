@@ -15,11 +15,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Page Update="Temas\TemaBotonMenu.xaml">
-=======
-    <Page Update="Temas\TextBoxStyle.xaml">
->>>>>>> a43e080f7e82d625970adcc18f5410ac81f4280c
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Vistas\MainWindow.xaml">

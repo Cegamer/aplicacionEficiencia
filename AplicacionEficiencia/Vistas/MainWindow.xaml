@@ -57,46 +57,8 @@
     <Window.Resources>
 
     </Window.Resources>
-<<<<<<< HEAD
 
 
 
 
-=======
-    
-    <Grid Background="#000000">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="80*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Text="Productividad"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Foreground="White"
-                    FontSize="22"
-                   FontWeight="Bold"
-        />
-
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <RadioButton Content="Perfiles" 
-                         Height="50"
-                         Foreground="White"
-                         FontSize="14"
-                         Click="button_Click"
-                         Style="{StaticResource TemaBotonMenu}"
-            />
-        </StackPanel>
-        
-        <Frame 
-            x:Name="frame" 
-            Grid.Column="1" Grid.Row="1"
-            Content=""
-        />
-    </Grid>
->>>>>>> a43e080f7e82d625970adcc18f5410ac81f4280c
 </Window>
