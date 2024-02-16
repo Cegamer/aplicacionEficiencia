@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:AplicacionEficiencia"
              StartupUri="Vistas/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Tema/TemaBotonMenu.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
+
