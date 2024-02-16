@@ -32,7 +32,7 @@ namespace AplicacionEficiencia
             LectorProgramas.MainWindow = this;
             LectorProgramas.obtenerProgramasInstalados();
             PerfilesController perfiles = new PerfilesController(perfilesVista);
-            //frame.Content = perfilesVista;
+            frame.Content = perfilesVista;
             /* --------------------------------------------------------- */
         }
 

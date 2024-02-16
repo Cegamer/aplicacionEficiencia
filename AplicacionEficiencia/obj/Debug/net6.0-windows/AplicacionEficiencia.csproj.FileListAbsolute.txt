@@ -52,3 +52,6 @@ E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\ne
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\Perfiles.baml
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Interop.Shell32.dll
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.ResolveComReference.cache
+E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Temas\TemaBotonMenu.baml
+E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\App.baml

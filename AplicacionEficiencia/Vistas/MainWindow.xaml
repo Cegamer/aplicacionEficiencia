@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:AplicacionEficiencia"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450" Width="800"
+        Height="600" Width="1000"
         WindowStyle="None"
-        ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
         >
@@ -45,6 +44,7 @@
 							 />
 
             </StackPanel>
+            <Frame x:Name="frame" Grid.Column="1" Grid.Row="1" Margin="0,0,23,23"/>
 
         </Grid>
 
