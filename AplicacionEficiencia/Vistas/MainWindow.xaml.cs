@@ -38,7 +38,7 @@ namespace AplicacionEficiencia
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            //frame.Content = perfilesVista;
+            frame.Content = perfilesVista;
         }
     }
 }
