@@ -52,6 +52,42 @@ E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\ne
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\Perfiles.baml
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Interop.Shell32.dll
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.ResolveComReference.cache
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\AplicacionEficiencia.exe
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\AplicacionEficiencia.deps.json
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\AplicacionEficiencia.runtimeconfig.json
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\AplicacionEficiencia.dll
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\AplicacionEficiencia.pdb
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\System.Drawing.Common.dll
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.AssemblyReference.cache
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Interop.Shell32.dll
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.ResolveComReference.cache
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Temas\TemaBotonMenu.baml
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Temas\TextBoxStyle.baml
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\MainWindow.g.cs
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\ModificarPerfil.g.cs
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\Perfiles.g.cs
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia_MarkupCompile.cache
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia_MarkupCompile.lref
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\App.baml
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\MainWindow.baml
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\ModificarPerfil.baml
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\Perfiles.baml
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.g.resources
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.AssemblyInfoInputs.cache
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.AssemblyInfo.cs
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.CoreCompileInputs.cache
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.CopyComplete
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.dll
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\refint\AplicacionEficiencia.dll
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.pdb
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.genruntimeconfig.cache
+C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\obj\Debug\net6.0-windows\ref\AplicacionEficiencia.dll
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Temas\TemaBotonMenu.baml
+E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Temas\TextBoxStyle.baml
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\App.baml
