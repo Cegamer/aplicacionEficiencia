@@ -63,7 +63,7 @@ namespace AplicacionEficiencia.Controladores
                 {
                     string executablePath = programa.ruta;
 
-                    try { Process.Start(executablePath); }
+                    try { programa.iniciarPrograma(); }
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error al ejecutar el programa: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

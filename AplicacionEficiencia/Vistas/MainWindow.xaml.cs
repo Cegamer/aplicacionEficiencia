@@ -23,11 +23,12 @@ namespace AplicacionEficiencia
     public partial class MainWindow : Window
     {
         Perfiles perfilesVista = new Perfiles();
+        public static MainWindow mainWindow;
         public MainWindow()
         {
 
             InitializeComponent();
-
+            mainWindow = this;
             /*Esto hay que arreglarlo, pero aun no, por ahora funciona */
             LectorProgramas.MainWindow = this;
             LectorProgramas.obtenerProgramasInstalados();

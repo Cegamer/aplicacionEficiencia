@@ -92,6 +92,7 @@ namespace AplicacionEficiencia.Controladores
                 button.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
                 {
                     perfil.iniciar();
+                    MainWindow.mainWindow.frame.Content = new SesionActual(new Sesion(perfil));
                 }));
 
                 stackPanelPrincipal.Children.Add(button);

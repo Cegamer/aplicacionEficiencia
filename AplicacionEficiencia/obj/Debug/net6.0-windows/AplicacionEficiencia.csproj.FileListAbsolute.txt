@@ -91,3 +91,5 @@ E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\ne
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Temas\TextBoxStyle.baml
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\App.baml
+E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\SesionActual.g.cs
+E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\SesionActual.baml

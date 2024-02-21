@@ -30,7 +30,7 @@ namespace AplicacionEficiencia.Modelos
         public void bloquearPrograma(Programa programa) { programasBloqueados.Add(programa); }
         public void iniciar() {
             foreach(Programa programa in programasAEjecutar) { 
-                try { Process.Start(programa.ruta); }
+                try { programa.iniciarPrograma(); }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error al ejecutar el programa: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

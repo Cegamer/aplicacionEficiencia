@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Interop;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
 
 namespace AplicacionEficiencia.Modelos
 {
@@ -19,13 +20,19 @@ namespace AplicacionEficiencia.Modelos
         public string nombreProceso { get; set; }
         public BitmapSource SourceIcon { get => getIcon(); }
 
+
         public Programa(int id,string nombre, string ruta)
         {
             this.id = id;
             this.nombre = nombre;
             this.ruta = ruta;
         }
-
+        public Process iniciarPrograma() {
+            var proceso =  Process.Start(ruta);
+            nombreProceso = proceso.ProcessName;
+            Debug.WriteLine(nombreProceso);
+            return proceso;
+        }
         public BitmapSource getIcon() {
             try
             {
