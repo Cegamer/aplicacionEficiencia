@@ -46,7 +46,7 @@ namespace AplicacionEficiencia.Controladores
                 //
                 grid.Margin = new Thickness(5, 0, 10, 5);
                 border.Background = brush;
-                border.Margin =  new Thickness(0, 5, 0, 0);
+                border.Margin =  new Thickness(0, (counter == 0) ? 0 : 5, 0, 0);
                 border.CornerRadius = new CornerRadius(4); 
                 border.BorderThickness = new Thickness(1); 
                 border.BorderBrush = new SolidColorBrush(Color.FromRgb(28, 28, 30)); 

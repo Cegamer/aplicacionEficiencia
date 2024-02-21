@@ -40,11 +40,20 @@
                          Click="button_Click"
                          Style="{StaticResource TemaBotonMenu}"/>
             
-            <RadioButton Content="Perfiles" 
+            <RadioButton Content="Estadisticas" 
                          Height="50"
                          Foreground="White"
                          FontSize="17"
-                         Click="button_Click"
+                         Style="{StaticResource TemaBotonMenu}"/>
+            <RadioButton Content="Ajustes" 
+                         Height="50"
+                         Foreground="White"
+                         FontSize="17"
+                         Style="{StaticResource TemaBotonMenu}"/>
+            <RadioButton Content="Informacion" 
+                         Height="50"
+                         Foreground="White"
+                         FontSize="17"
                          Style="{StaticResource TemaBotonMenu}"/>
         </StackPanel>
         <!--#endregion-->
