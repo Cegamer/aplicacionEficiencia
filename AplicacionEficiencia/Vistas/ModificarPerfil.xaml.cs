@@ -15,7 +15,7 @@ namespace AplicacionEficiencia.Vistas
         {
             InitializeComponent();
             nombre_perfil.Text = perfil.nombre;
-            ListaAplicacionesModificarPerfil LAMP = new ListaAplicacionesModificarPerfil(this);
+            ListaAplicacionesModificarPerfil LAMP = new ListaAplicacionesModificarPerfil(this, perfil);
         }
     }
 }

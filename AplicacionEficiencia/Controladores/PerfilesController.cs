@@ -21,9 +21,11 @@ namespace AplicacionEficiencia.Controladores
             prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
             prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
             prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[3]);
+            prueba.bloquearPrograma(LectorProgramas.GetProgramas()[4]);
             mostrarPerfiles();
         }
 
+        //Corrgir
         public void mostrarPerfiles()
         {
             StackPanel stackPanelPrincipal = new StackPanel();

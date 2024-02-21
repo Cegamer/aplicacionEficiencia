@@ -16,13 +16,13 @@ namespace AplicacionEficiencia.Controladores
         public List<Programa> ProgramasBloqueados { get; private set; }
         public List<Programa> ProgramasAutostart { get; private set; }
 
-        public ListaAplicacionesModificarPerfil(ModificarPerfil modificarPerfil)
+        public ListaAplicacionesModificarPerfil(ModificarPerfil modificarPerfil, Perfil perfil)
         {
             this.modificarPerfil = modificarPerfil;
             this.modificarPerfil.btn_agregarapp.Click += Btn_agregarapp_Click;
-            this.ProgramasBloqueados = new List<Programa>();
-            this.ProgramasAutostart = new List<Programa>();
-
+            this.ProgramasBloqueados = perfil.programasBloqueados;
+            this.ProgramasAutostart = perfil.programasAEjecutar;
+            ActualizarListas();
             mostrarListaAplicaciones();
         }
 
@@ -198,6 +198,21 @@ namespace AplicacionEficiencia.Controladores
                 */
             }
             modificarPerfil.panelAplicaciones.Children.Add(stackPanelPrincipal);
+        }
+
+        private void ActualizarListas()
+        {
+            foreach (var p in ProgramasAutostart)
+            {
+                var pItem = new ProgramaItem(p, modificarPerfil, this);
+                modificarPerfil.list_app_ejecutar.Items.Add(pItem);
+            }
+
+            foreach (var p in ProgramasBloqueados)
+            {
+                var pItem = new ProgramaItem(p, modificarPerfil, this);
+                modificarPerfil.list_applicaciones_bloqueadas.Items.Add(pItem);
+            }
         }
 
         private void Btn_agregarapp_Click(object sender, RoutedEventArgs e)
