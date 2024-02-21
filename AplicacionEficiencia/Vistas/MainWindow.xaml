@@ -5,44 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicacionEficiencia"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="625" Width="1180">
 
     <Window.Resources>
-        
+
     </Window.Resources>
-    
-    <Grid Background="#000000">
+
+    <Grid Background="#1c1c1e">
+        <!--#region GridDefinitions -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*" MinWidth="300px"/>
             <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <!--#endregion-->
 
-        <TextBlock Text="Productividad"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Foreground="White"
-                    FontSize="22"
+        <!--#region Navigation -->
+        <TextBlock Text="App Eficiencia"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="34"
                    FontWeight="Bold"
-        />
-
+                   Margin="16, 0, 0, 0"/>
+        
         <StackPanel Grid.Row="1" Grid.Column="0">
             <RadioButton Content="Perfiles" 
                          Height="50"
                          Foreground="White"
-                         FontSize="14"
+                         FontSize="17"
                          Click="button_Click"
-                         Style="{StaticResource TemaBotonMenu}"
-            />
+                         Style="{StaticResource TemaBotonMenu}"/>
+            
+            <RadioButton Content="Perfiles" 
+                         Height="50"
+                         Foreground="White"
+                         FontSize="17"
+                         Click="button_Click"
+                         Style="{StaticResource TemaBotonMenu}"/>
         </StackPanel>
+        <!--#endregion-->
         
-        <Frame 
-            x:Name="frame" 
-            Grid.Column="1" Grid.Row="1"
-            Content=""
-        />
+        <Border 
+            Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+            Background="Black"
+            BorderBrush="#47474a" BorderThickness="1,0,0,0">
+            <Frame 
+                x:Name="frame" 
+                Content=""/>
+        </Border>
     </Grid>
 </Window>

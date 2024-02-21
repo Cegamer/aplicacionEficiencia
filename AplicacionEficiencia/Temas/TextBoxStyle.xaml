@@ -10,14 +10,12 @@
                             Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
                         <Grid>
-                            <Rectangle StrokeThickness="1"/>
-                            <TextBox Margin="1"
-                                     Text="{TemplateBinding Text}"
+                            <TextBox Text="{TemplateBinding Text}"
                                      BorderThickness="0"
                                      Background="Transparent"
                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                      Padding="5"
-                                     Foreground="#8d8d93"
+                                     Foreground="{TemplateBinding Foreground}"
                                      x:Name="Perfiles"/>
                         </Grid>
                     </Border>
