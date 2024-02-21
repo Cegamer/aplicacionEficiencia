@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:AplicacionEficiencia"
         mc:Ignorable="d"
         Title="MainWindow" Height="625" Width="1180">
+
     <Window.Resources>
 
     </Window.Resources>
+
     <Grid Background="#1c1c1e">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*" MinWidth="300px"/>
@@ -18,7 +20,9 @@
             <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <!--#endregion-->
 
+        <!--#region Navigation -->
         <TextBlock Text="App Eficiencia"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
@@ -50,6 +54,7 @@
                          FontSize="17"
                          Style="{StaticResource TemaBotonMenu}"/>
         </StackPanel>
+        <!--#endregion-->
 
         <Border 
             Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"

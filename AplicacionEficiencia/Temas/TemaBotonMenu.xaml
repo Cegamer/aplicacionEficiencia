@@ -5,18 +5,22 @@
         TargetType="{x:Type RadioButton}"
         x:Key="TemaBotonMenu">
 
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="RadioButton">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                        <TextBlock Text="{TemplateBinding Property=Content}" VerticalAlignment="Center" Margin="20, 0, 0, 0"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
 
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{TemplateBinding Property=Content}" VerticalAlignment="Center" Margin="20, 0, 0, 0"/>
+                        </Grid>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style.Setters>
 
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">

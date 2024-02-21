@@ -28,6 +28,7 @@ namespace AplicacionEficiencia.Controladores
 
         public void mostrarListaAplicaciones()
         {
+            //Contenedor de la lista
             StackPanel stackPanelPrincipal = new StackPanel();
             int counter = 0;
 
@@ -50,6 +51,7 @@ namespace AplicacionEficiencia.Controladores
                 border.BorderBrush = new SolidColorBrush(Color.FromRgb(28, 28, 30));
                 border.Child = grid;
 
+                //
                 ColumnDefinition image_container = new ColumnDefinition();
                 ColumnDefinition space_5p = new ColumnDefinition();
                 ColumnDefinition button_container = new ColumnDefinition();
@@ -138,6 +140,62 @@ namespace AplicacionEficiencia.Controladores
 
                 stackPanelPrincipal.Children.Add(border);
                 counter++;
+
+                /*
+                StackPanel stackPanel1 = new StackPanel();
+                stackPanel1.Background = new SolidColorBrush(Color.FromRgb(20,20,20));
+                stackPanel1.Height = 100;
+
+                Image image = new Image();
+                image.Name = "image" + programa.id;
+                image.Height = 75;
+                image.Width = 75;
+                image.Source = programa.getIcon();
+                stackPanel1.Children.Add(image);
+
+                Label label = new Label();
+                label.Name = "label" + programa.id;
+                label.Content = programa.nombre;
+                stackPanel1.Children.Add(label);
+                stackPanelPrincipal.Children.Add(stackPanel1);
+
+                StackPanel stackPanel2 = new StackPanel();
+                stackPanel2.Height = 63;
+
+                Button btn_open = new Button();
+                btn_open.Content = "Abrir";
+                btn_open.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
+                {
+                    string executablePath = programa.ruta;
+
+                    try { Process.Start(executablePath); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al ejecutar el programa: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }));
+                stackPanel2.Children.Add(btn_open);
+
+                Button btn_autoinicio = new Button();
+                btn_autoinicio.Content = "Inicio Automatico";
+                btn_autoinicio.AddHandler(Button.ClickEvent, new RoutedEventHandler((_, e) =>
+                {
+                    var item = new ProgramaItem(programa, modificarPerfil, this);
+                    if (!AplicacionEnListas(programa)) item.AddProgramToAutostartList();
+                }));
+                stackPanel2.Children.Add(btn_autoinicio);
+
+                Button btn_bloquear = new Button();
+                btn_bloquear.Content = "Bloquear Uso";
+                btn_bloquear.AddHandler(Button.ClickEvent, new RoutedEventHandler((_, e) =>
+                {
+                    var item = new ProgramaItem(programa, modificarPerfil, this);
+                    if (!AplicacionEnListas(programa)) item.AddProgramToBloquedList();
+                }));
+                stackPanel2.Children.Add(btn_bloquear);
+
+                stackPanelPrincipal.Children.Add(stackPanel2);
+                */
             }
             modificarPerfil.panelAplicaciones.Children.Add(stackPanelPrincipal);
         }

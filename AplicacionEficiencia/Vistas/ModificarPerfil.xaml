@@ -97,7 +97,7 @@
                 </Grid>
             </Border>
             <!--#endregion-->
-            
+
             <!--#region Lista Programas Bloqueados -->
             <Border Grid.Column="1" Grid.Row="7" Margin="8, 0, 0, 0" Background="Transparent" CornerRadius="8" BorderThickness="1" BorderBrush="#1c1c1e">
                 <Grid Margin="10">
@@ -130,7 +130,6 @@
                     BorderBrush="#1c1c1e"
                     />
         </Grid>
-        
         <!--#region ListaAplicaciones -->
         <Grid Grid.Row="1" Grid.Column="3">
             <Grid.RowDefinitions>
@@ -144,7 +143,7 @@
                     <StackPanel x:Name="panelAplicaciones" MinWidth="200"/>
                 </ScrollViewer>
             </Border>
-            
+
             <Button x:Name="btn_agregarapp" Content="Agregar App" 
                     Height="36" Margin="10, 0"
                     Grid.Row="2" Grid.Column="0"
