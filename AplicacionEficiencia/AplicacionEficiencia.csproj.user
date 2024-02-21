@@ -18,12 +18,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Page Update="Temas\ScrollBarStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
->>>>>>> pr/10
     <Page Update="Temas\TextBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>

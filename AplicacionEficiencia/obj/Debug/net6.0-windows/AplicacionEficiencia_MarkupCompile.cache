@@ -10,19 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\App.xaml
-<<<<<<< HEAD
-697650373
-=======
-31893606758
->>>>>>> pr/10
+71816816007
 
-14-1948833902
+16-703307589
 196-142171530
-<<<<<<< HEAD
-Temas\TemaBotonMenu.xaml;Temas\TextBoxStyle.xaml;Vistas\MainWindow.xaml;Vistas\ModificarPerfil.xaml;Vistas\Perfiles.xaml;Vistas\SesionActual.xaml;
-=======
-Vistas\MainWindow.xaml;Vistas\ModificarPerfil.xaml;Vistas\Perfiles.xaml;
->>>>>>> pr/10
+Temas\ScrollBarStyle.xaml;Temas\TemaBotonMenu.xaml;Temas\TextBoxStyle.xaml;Vistas\MainWindow.xaml;Vistas\ModificarPerfil.xaml;Vistas\Perfiles.xaml;Vistas\SesionActual.xaml;
 
 False
 

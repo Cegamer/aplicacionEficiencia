@@ -11,7 +11,7 @@
     <Grid Background="#FF383838">
         <Label x:FieldModifier="public" x:Name="label" Content="Tiempo transcurrido" HorizontalAlignment="Left" Margin="21,27,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelTiempoSesion" Content="Label" HorizontalAlignment="Left" Margin="168,27,0,0" VerticalAlignment="Top"/>
-        <Label x:FieldModifier="public" x:Name="testSesion" Content="Label" HorizontalAlignment="Left" Margin="34,179,0,0" VerticalAlignment="Top" Height="46" Width="692"/>
+        <Label x:FieldModifier="public" x:Name="testSesion" Content="Label" HorizontalAlignment="Left" Margin="34,179,0,0" VerticalAlignment="Top"  Width="692"/>
 
     </Grid>
 </Page>

@@ -1,12 +1,12 @@
-﻿using AplicacionEficiencia.Vistas;
+﻿using AplicacionEficiencia.Core;
 using AplicacionEficiencia.Modelos;
-using AplicacionEficiencia.Core;
-using System.Windows.Media.Imaging;
+using AplicacionEficiencia.Vistas;
 using System;
+using System.Windows.Media.Imaging;
 
 namespace AplicacionEficiencia.Controladores
 {
-    internal class ProgramaItem
+    public class ProgramaItem
     {
         private readonly ModificarPerfil view;
         private readonly Programa programa;
@@ -17,7 +17,7 @@ namespace AplicacionEficiencia.Controladores
         public BitmapSource SourceIcon { get; private set; }
         public RelayCommand RemoveFromList { get; private set; }
 
-        public ProgramaItem (Programa p, ModificarPerfil view, ListaAplicacionesModificarPerfil controler)
+        public ProgramaItem(Programa p, ModificarPerfil view, ListaAplicacionesModificarPerfil controler)
         {
             this.ID = p.id;
             this.Name = p.nombre;
@@ -48,7 +48,7 @@ namespace AplicacionEficiencia.Controladores
             //Codigo emulando una eliminacion de una BBDD
             view.list_app_ejecutar.Items.Remove(this);
             view.list_applicaciones_bloqueadas.Items.Remove(this);
-            controler.ProgramasAutostart. Remove(programa);
+            controler.ProgramasAutostart.Remove(programa);
             controler.ProgramasBloqueados.Remove(programa);
         }
     }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Interop;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media.Imaging;
-using System.Diagnostics;
 
 namespace AplicacionEficiencia.Modelos
 {
@@ -20,19 +15,21 @@ namespace AplicacionEficiencia.Modelos
         public string nombreProceso { get; set; }
 
 
-        public Programa(int id,string nombre, string ruta)
+        public Programa(int id, string nombre, string ruta)
         {
             this.id = id;
             this.nombre = nombre;
             this.ruta = ruta;
         }
-        public Process iniciarPrograma() {
-            var proceso =  Process.Start(ruta);
+        public Process iniciarPrograma()
+        {
+            var proceso = Process.Start(ruta);
             nombreProceso = proceso.ProcessName;
             Debug.WriteLine(nombreProceso);
             return proceso;
         }
-        public BitmapSource getIcon() {
+        public BitmapSource getIcon()
+        {
             try
             {
                 Icon icon = Icon.ExtractAssociatedIcon(ruta);

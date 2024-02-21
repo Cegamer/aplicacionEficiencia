@@ -1,25 +1,20 @@
 ﻿using AplicacionEficiencia.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.Windows;
 using AplicacionEficiencia.Vistas;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace AplicacionEficiencia.Controladores
 {
     internal class PerfilesController
     {
         public Perfiles perfiles;
-        public Perfil prueba = new Perfil(0,"aaaa","aaaaaaa");
+        public Perfil prueba = new Perfil(0, "aaaa", "aaaaaaa");
         List<Perfil> perfilesLista = new List<Perfil>();
 
-        public PerfilesController(Perfiles perfiles) { 
-            
+        public PerfilesController(Perfiles perfiles)
+        {
+
             this.perfiles = perfiles;
             perfilesLista.Add(prueba);
             prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
@@ -29,14 +24,16 @@ namespace AplicacionEficiencia.Controladores
             mostrarPerfiles();
         }
 
-        public void mostrarPerfiles() {
+        public void mostrarPerfiles()
+        {
             StackPanel stackPanelPrincipal = new StackPanel();
             stackPanelPrincipal.Margin = new Thickness(10, 10, 10, 10);
             stackPanelPrincipal.Width = 240;
-            foreach(Perfil perfil in perfilesLista) { 
+            foreach (Perfil perfil in perfilesLista)
+            {
 
                 Label label = new Label();
-                label.Name = "label"+perfil.nombre;
+                label.Name = "label" + perfil.nombre;
                 label.Content = perfil.nombre;
                 stackPanelPrincipal.Children.Add(label);
 
@@ -61,8 +58,9 @@ namespace AplicacionEficiencia.Controladores
                     Grid.SetColumn(image, columna);
                     Grid.SetRow(image, fila);
                     columna++;
-                    if (columna == 3) { 
-                        columna = 0; fila++; 
+                    if (columna == 3)
+                    {
+                        columna = 0; fila++;
                     }
                 }
                 for (int i = 0; i <= fila; i++)

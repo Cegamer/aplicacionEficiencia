@@ -2,33 +2,34 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AplicacionEficiencia.Modelos
 {
     public class Sesion
     {
-        public int id {  get; set; }
+        public int id { get; set; }
         public Perfil Perfil { get; set; }
         public DateTime horaInicio { get; set; }
-        public DateTime horaFin{ get; set; }
+        public DateTime horaFin { get; set; }
         public bool activa { get; set; }
         public List<SesionPrograma> programasMonitoreo { get; set; }
 
-        public Sesion(Perfil perfil) { 
+        public Sesion(Perfil perfil)
+        {
             Perfil = perfil;
             horaInicio = DateTime.Now;
             programasMonitoreo = obtenerListaDeProgramasMonitoreados();
             activa = true;
         }
 
-        private List<SesionPrograma> obtenerListaDeProgramasMonitoreados() { 
+        private List<SesionPrograma> obtenerListaDeProgramasMonitoreados()
+        {
             List<SesionPrograma> lista = new List<SesionPrograma>();
 
-            foreach (var programa in Perfil.programasAEjecutar) {
-                var sesionPrograma = new SesionPrograma(this,programa,DateTime.Now);
+            foreach (var programa in Perfil.programasAEjecutar)
+            {
+                var sesionPrograma = new SesionPrograma(this, programa, DateTime.Now);
                 lista.Add(sesionPrograma);
             }
             return lista;
@@ -41,7 +42,7 @@ namespace AplicacionEficiencia.Modelos
 
         private void Monitorear()
         {
-            System.Threading.Thread.Sleep(10000); // Esperar 1 segundo
+            System.Threading.Thread.Sleep(10000); // Esperar 10 segundos
 
             while (activa)
             {
@@ -52,9 +53,10 @@ namespace AplicacionEficiencia.Modelos
                     SesionActual.sesionActual.testSesion.Content = "";
                     SesionActual.sesionActual.label.Content = calcularTiempoTranscurrido();
                     foreach (var item in programasMonitoreo)
-                    { 
-                        if (Process.GetProcessesByName(item.programa.nombre).Length <= 0)
-                            if(item.activa) item.finalizar();
+                    {
+                        Debug.WriteLine( item.programa.nombreProceso + "  "+ Process.GetProcessesByName(item.programa.nombre).Length);
+                        if (Process.GetProcessesByName(item.programa.nombreProceso).Length <= 0)
+                            if (item.activa) item.finalizar();
                         SesionActual.sesionActual.testSesion.Content += $"{item.programa.nombre} | {item.calcularTiempoTranscurrido(DateTime.Now)}\n";
                     }
                 });
@@ -63,7 +65,7 @@ namespace AplicacionEficiencia.Modelos
 
         public TimeSpan calcularTiempoTranscurrido()
         {
-            return  DateTime.Now - horaInicio;
+            return DateTime.Now - horaInicio;
         }
 
 

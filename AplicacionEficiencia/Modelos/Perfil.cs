@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows;
-using System.Diagnostics;
 
 namespace AplicacionEficiencia.Modelos
 {
@@ -28,8 +23,10 @@ namespace AplicacionEficiencia.Modelos
 
         public void agregarProgramaEjecutar(Programa programa) { programasAEjecutar.Add(programa); }
         public void bloquearPrograma(Programa programa) { programasBloqueados.Add(programa); }
-        public void iniciar() {
-            foreach(Programa programa in programasAEjecutar) { 
+        public void iniciar()
+        {
+            foreach (Programa programa in programasAEjecutar)
+            {
                 try { programa.iniciarPrograma(); }
                 catch (Exception ex)
                 {

@@ -1,17 +1,9 @@
 ﻿using AplicacionEficiencia.Modelos;
-using Microsoft.Win32;
+using Shell32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Windows.Media;
-using AplicacionEficiencia.Vistas;
-using System.Windows.Controls;
-using System.IO;
-using Shell32;
 
 
 namespace AplicacionEficiencia.Controladores
@@ -66,7 +58,7 @@ namespace AplicacionEficiencia.Controladores
                     string nombre = folder.GetDetailsOf(folderItem, 0); // Nombre del programa
                     string ruta = folder.GetDetailsOf(folderItem, 194); // Ruta del ejecutable
 
- 
+
                     FolderItem folderIt = folder.ParseName(System.IO.Path.GetFileName(ruta));
                     if (folderIt != null)
                     {
@@ -75,8 +67,8 @@ namespace AplicacionEficiencia.Controladores
                         ruta = target.Path;
 
                         Debug.WriteLine("Ruta: " + ruta);
-                        if(!ruta.Contains("Uninstall") && !ruta.Contains("Desinstalar"))
-                        programas.Add(new Programa(id++, nombre, ruta));
+                        if (!ruta.Contains("Uninstall") && !ruta.Contains("Desinstalar"))
+                            programas.Add(new Programa(id++, nombre, ruta));
                     }
                     else Debug.WriteLine("Error al obtener ruta");
 
@@ -90,7 +82,7 @@ namespace AplicacionEficiencia.Controladores
             // Recursivamente obtener programas de las subcarpetas
             foreach (string subCarpeta in Directory.GetDirectories(carpeta))
                 programas.AddRange(ObtenerProgramas(subCarpeta));
-            
+
 
             return programas;
         }
