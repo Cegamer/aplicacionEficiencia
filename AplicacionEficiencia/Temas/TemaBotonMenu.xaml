@@ -4,30 +4,20 @@
         BasedOn="{StaticResource {x:Type ToggleButton}}"
         TargetType="{x:Type RadioButton}"
         x:Key="TemaBotonMenu">
-        
+
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
-                    
-<<<<<<< HEAD
-                    <ControlTemplate>
-                        <Grid VerticalAlignment="Stretch"
-                              HorizontalAlignment="Stretch">
-                            <TextBlock Text="Hola" VerticalAlignment="Center"/>
-=======
+
                     <ControlTemplate TargetType="RadioButton">
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <TextBlock Text="{TemplateBinding Property=Content}" VerticalAlignment="Center" Margin="20, 0, 0, 0"/>
->>>>>>> pr/10
                         </Grid>
                     </ControlTemplate>
-                    
+
                 </Setter.Value>
             </Setter>
-<<<<<<< HEAD
-=======
-            
->>>>>>> pr/10
+
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style.Setters>
@@ -40,6 +30,6 @@
                 <Setter Property="Border.Background" Value="Green" />
             </Trigger>
         </Style.Triggers>
-        
+
     </Style>
 </ResourceDictionary>

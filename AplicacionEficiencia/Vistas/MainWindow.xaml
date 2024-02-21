@@ -5,43 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicacionEficiencia"
         mc:Ignorable="d"
-<<<<<<< HEAD
-        Title="MainWindow" Height="450" Width="800">
-=======
         Title="MainWindow" Height="625" Width="1180">
->>>>>>> pr/10
 
     <Window.Resources>
 
     </Window.Resources>
 
-<<<<<<< HEAD
-    <Grid Background="#000000">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
-=======
     <Grid Background="#1c1c1e">
         <!--#region GridDefinitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*" MinWidth="300px"/>
->>>>>>> pr/10
             <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-<<<<<<< HEAD
-
-        <TextBlock Text="Productividad"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Foreground="White"
-                    FontSize="22"
-                   FontWeight="Bold"
-        />
-
-=======
         <!--#endregion-->
 
         <!--#region Navigation -->
@@ -52,29 +31,15 @@
                    FontSize="34"
                    FontWeight="Bold"
                    Margin="16, 0, 0, 0"/>
-        
->>>>>>> pr/10
+
         <StackPanel Grid.Row="1" Grid.Column="0">
             <RadioButton Content="Perfiles" 
                          Height="50"
                          Foreground="White"
-<<<<<<< HEAD
-                         FontSize="14"
-                         Click="button_Click"
-                         Style="{StaticResource TemaBotonMenu}"
-            />
-        </StackPanel>
-
-        <Frame 
-            x:Name="frame" 
-            Grid.Column="1"
-            Content="" Grid.RowSpan="2"
-        />
-=======
                          FontSize="17"
                          Click="button_Click"
                          Style="{StaticResource TemaBotonMenu}"/>
-            
+
             <RadioButton Content="Estadisticas" 
                          Height="50"
                          Foreground="White"
@@ -92,7 +57,7 @@
                          Style="{StaticResource TemaBotonMenu}"/>
         </StackPanel>
         <!--#endregion-->
-        
+
         <Border 
             Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
             Background="Black"
@@ -101,6 +66,5 @@
                 x:Name="frame" 
                 Content=""/>
         </Border>
->>>>>>> pr/10
     </Grid>
 </Window>
