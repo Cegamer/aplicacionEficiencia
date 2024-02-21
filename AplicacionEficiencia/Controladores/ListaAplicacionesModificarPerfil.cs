@@ -89,8 +89,8 @@ namespace AplicacionEficiencia.Controladores
                 Grid.SetRow(label, 0);
                 Grid.SetColumnSpan(label, 3);
 
-                btn_open.Content = "A";
-                btn_open.Width = 25;
+                btn_open.Content = "Play";
+                //btn_open.Width = 25;
                 btn_open.Height = 25;
                 btn_open.FontSize = 13;
                 btn_open.Background = Brushes.Transparent;
@@ -107,7 +107,7 @@ namespace AplicacionEficiencia.Controladores
                 }));
                 panel.Children.Add(btn_open);
 
-                btn_autostart.Content = "Inicio Automatico";
+                btn_autostart.Content = "+";
                 btn_autostart.Width = 25;
                 btn_autostart.Height = 25;
                 btn_autostart.Background = Brushes.Transparent;
@@ -120,7 +120,7 @@ namespace AplicacionEficiencia.Controladores
                 }));
                 panel.Children.Add(btn_autostart);
 
-                btn_block.Content = "Bloquear Uso";
+                btn_block.Content = "⨂";
                 btn_block.Width = 25;
                 btn_block.Height = 25;
                 btn_block.FontSize = 13;
