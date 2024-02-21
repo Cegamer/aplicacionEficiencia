@@ -10,11 +10,19 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\App.xaml
+<<<<<<< HEAD
 697650373
+=======
+31893606758
+>>>>>>> pr/10
 
 16327787503
 196-142171530
+<<<<<<< HEAD
 Temas\TemaBotonMenu.xaml;Temas\TextBoxStyle.xaml;Vistas\MainWindow.xaml;Vistas\ModificarPerfil.xaml;Vistas\Perfiles.xaml;Vistas\SesionActual.xaml;
+=======
+Vistas\MainWindow.xaml;Vistas\ModificarPerfil.xaml;Vistas\Perfiles.xaml;
+>>>>>>> pr/10
 
 False
 

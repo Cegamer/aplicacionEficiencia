@@ -20,15 +20,15 @@ namespace AplicacionEficiencia.Vistas
     /// <summary>
     /// Lógica de interacción para ModificarPerfil.xaml
     /// </summary>
+
+ 
     public partial class ModificarPerfil : Page
     {
         public ModificarPerfil(Perfil perfil)
         {
             InitializeComponent();
-
-            textBoxNombrePerfil.Text = perfil.nombre;
+            nombre_perfil.Text = perfil.nombre;
             ListaAplicacionesModificarPerfil LAMP = new ListaAplicacionesModificarPerfil(this);
-
         }
     }
 }

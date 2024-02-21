@@ -18,7 +18,6 @@ namespace AplicacionEficiencia.Modelos
         public string ruta { get; set; }
         public string rutaIcono { get; set; }
         public string nombreProceso { get; set; }
-        public BitmapSource SourceIcon { get => getIcon(); }
 
 
         public Programa(int id,string nombre, string ruta)

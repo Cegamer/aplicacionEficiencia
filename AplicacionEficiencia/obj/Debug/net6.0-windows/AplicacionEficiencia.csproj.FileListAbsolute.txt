@@ -52,6 +52,7 @@ E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\ne
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\Perfiles.baml
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Interop.Shell32.dll
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\AplicacionEficiencia.csproj.ResolveComReference.cache
+<<<<<<< HEAD
 C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\AplicacionEficiencia.exe
 C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\AplicacionEficiencia.deps.json
 C:\Users\Cegamer\Desktop\aplicacionEficiencia-main\AplicacionEficiencia\bin\Debug\net6.0-windows\AplicacionEficiencia.runtimeconfig.json
@@ -93,3 +94,5 @@ E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\ne
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\App.baml
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\SesionActual.g.cs
 E:\Proyectos Programacion\aplicacionEficiencia\AplicacionEficiencia\obj\Debug\net6.0-windows\Vistas\SesionActual.baml
+=======
+>>>>>>> pr/10
