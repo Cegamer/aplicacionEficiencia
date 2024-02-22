@@ -1,5 +1,6 @@
 ﻿using AplicacionEficiencia.Modelos;
 using AplicacionEficiencia.Vistas;
+using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,23 +18,27 @@ namespace AplicacionEficiencia.Controladores
 
             this.perfiles = perfiles;
             perfilesLista.Add(prueba);
+            prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[8]);
             prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
-            prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
-            prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
-            prueba.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[3]);
             prueba.bloquearPrograma(LectorProgramas.GetProgramas()[4]);
+
+            Perfil prueba2 = new Perfil(1, "prueba2", "aaaaaaaa");
+            prueba2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[8]);
+            prueba2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
+            perfilesLista.Add(prueba2);
             mostrarPerfiles();
         }
 
         //Corrgir
         public void mostrarPerfiles()
         {
+            // Crear un solo StackPanel para todos los perfiles
             StackPanel stackPanelPrincipal = new StackPanel();
             stackPanelPrincipal.Margin = new Thickness(10, 10, 10, 10);
             stackPanelPrincipal.Width = 240;
+
             foreach (Perfil perfil in perfilesLista)
             {
-
                 Label label = new Label();
                 label.Name = "label" + perfil.nombre;
                 label.Content = perfil.nombre;
@@ -91,15 +96,23 @@ namespace AplicacionEficiencia.Controladores
 
                 button.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
                 {
-                    perfil.iniciar();
-                    MainWindow.mainWindow.frame.Content = new SesionActual(new Sesion(perfil));
+                    if (SesionActual.sesionActual == null)
+                    {
+                        perfil.iniciar();
+                        MainWindow.mainWindow.frame.Content = new SesionActual(new Sesion(perfil));
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Ya hay un perfil activo, debe finalizar la sesión del perfil {SesionActual.sesionActual.Perfil.nombre} antes de iniciar otro perfil", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }));
 
                 stackPanelPrincipal.Children.Add(button);
-
-                // Agregar el stackPanelPrincipal a la ventana o al contenedor deseado
-                perfiles.gridPerfiles.Children.Add(stackPanelPrincipal);
             }
+
+            // Agregar el stackPanelPrincipal con todos los perfiles al contenedor deseado
+            perfiles.gridPerfiles.Children.Add(stackPanelPrincipal);
         }
+
     }
 }
