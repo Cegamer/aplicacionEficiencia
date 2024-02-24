@@ -30,6 +30,7 @@ namespace AplicacionEficiencia.Modelos
             horaFin = DateTime.Now;
             Debug.WriteLine("Finalizado proceso" + programa.nombre);
             activa = false;
+            ///Aquí hay que enviar los datos de la sesión a la database
         }
     }
 }

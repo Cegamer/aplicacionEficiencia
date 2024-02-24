@@ -1,6 +1,7 @@
 ﻿using AplicacionEficiencia.Modelos;
 using AplicacionEficiencia.utils;
 using AplicacionEficiencia.Vistas;
+using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,29 @@ namespace AplicacionEficiencia.Controladores
             {
                 manager.Insert(CreateProfileCard(perfil));
             }
+        }
+
+        private void PerfilDePrueva()
+        {
+            perfilesLista.Add(prueba1);
+            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
+            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
+            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
+            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[3]);
+            prueba1.bloquearPrograma(LectorProgramas.GetProgramas()[4]);
+
+            perfilesLista.Add(prueba2);
+            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[0]);
+            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[1]);
+            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[2]);
+            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[3]);
+            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[4]);
+
+            perfilesLista.Add(prueba3);
+            prueba3.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[8]);
+
+            prueba3.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
+            perfilesLista.Add(prueba4);
         }
 
         public UIElement CreateProfileCard(Perfil perfil)
@@ -67,8 +91,15 @@ namespace AplicacionEficiencia.Controladores
             Button btn_start = new Button { Content = "Iniciar", Height = 36 };
             btn_start.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
             {
-                perfil.iniciar();
-                MainWindow.mainWindow.frame.Content = new SesionActual(new Sesion(perfil));
+                if (SesionActual.sesionActual == null)
+                {
+                    perfil.iniciar();
+                    MainWindow.mainWindow.frame.Content = new SesionActual(new Sesion(perfil));
+                }
+                else
+                {
+                    MessageBox.Show($"Ya hay un perfil activo, debe finalizar la sesión del perfil {SesionActual.sesionActual.Perfil.nombre} antes de iniciar otro perfil", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }));
             grid.Children.Add(btn_start);
             Grid.SetRow(btn_start, 3);
@@ -78,7 +109,7 @@ namespace AplicacionEficiencia.Controladores
 
         private UIElement CreateProfileImage(Perfil perfil)
         {
-            Grid grid = new Grid() {Height = 240, Width = 240};
+            Grid grid = new Grid() { Height = 240, Width = 240 };
             int columna = 0;
             int fila = 0;
 
@@ -107,104 +138,5 @@ namespace AplicacionEficiencia.Controladores
             }
             return grid;
         }
-
-        private void PerfilDePrueva()
-        {
-            perfilesLista.Add(prueba1);
-            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
-            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
-            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
-            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[3]);
-            prueba1.bloquearPrograma(LectorProgramas.GetProgramas()[4]);
-
-            perfilesLista.Add(prueba2);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[0]);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[1]);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[2]);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[3]);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[4]);
-
-            perfilesLista.Add(prueba3);
-            perfilesLista.Add(prueba4);
-        }
-
-        /*
-        public void mostrarPerfiles()
-        {
-            StackPanel stackPanelPrincipal = new StackPanel();
-            stackPanelPrincipal.Margin = new Thickness(10, 10, 10, 10);
-            stackPanelPrincipal.Width = 240;
-            foreach (Perfil perfil in perfilesLista)
-            {
-
-                Label label = new Label();
-                label.Name = "label" + perfil.nombre;
-                label.Content = perfil.nombre;
-                stackPanelPrincipal.Children.Add(label);
-
-                Grid grid = new Grid();
-                grid.Height = 240;
-                grid.Width = 240;
-                stackPanelPrincipal.Children.Add(grid);
-
-                int columna = 0;
-                int fila = 0;
-
-                for (int i = 0; i < perfil.programasAEjecutar.Count; i++)
-                {
-                    Image image = new Image();
-                    image.Name = "image" + perfil.programasAEjecutar[i].id;
-                    image.Height = 50;
-                    image.Width = 50;
-                    image.Source = perfil.programasAEjecutar[i].getIcon();
-                    grid.Children.Add(image);
-
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
-
-                    Grid.SetColumn(image, columna);
-                    Grid.SetRow(image, fila);
-                    columna++;
-                    if (columna == 3)
-                    {
-                        columna = 0; fila++;
-                    }
-                }
-                for (int i = 0; i <= fila; i++)
-                {
-                    grid.RowDefinitions.Add(new RowDefinition());
-                }
-
-                // Botón Editar
-                Button buttonEditar = new Button();
-                buttonEditar.Name = "botonEditar" + perfil.id;
-                buttonEditar.Content = "Editar";
-                buttonEditar.Width = 240;
-
-                buttonEditar.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
-                {
-                    LectorProgramas.MainWindow.frame.Content = new ModificarPerfil(perfil);
-                }));
-
-                stackPanelPrincipal.Children.Add(buttonEditar);
-
-                // Botón Iniciar
-                Button button = new Button();
-                button.Name = "button" + perfil.id;
-                button.Content = "Iniciar";
-                button.Width = 240;
-
-                button.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
-                {
-                    perfil.iniciar();
-                    MainWindow.mainWindow.frame.Content = new SesionActual(new Sesion(perfil));
-                }));
-
-                stackPanelPrincipal.Children.Add(button);
-
-                // Agregar el stackPanelPrincipal a la ventana o al contenedor deseado
-                perfiles.gridPerfiles.Children.Add(stackPanelPrincipal);
-            }
-        }
-        */
     }
 }

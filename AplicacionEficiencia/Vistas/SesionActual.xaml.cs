@@ -8,13 +8,15 @@ namespace AplicacionEficiencia.Vistas
     /// </summary>
     public partial class SesionActual : Page
     {
-        public static SesionActual sesionActual;
+        public static SesionActual sesionActualVista;
+        public static Sesion sesionActual;
         public SesionActual(Sesion sesion)
 
         {
             InitializeComponent();
-            sesionActual = this;
+            sesionActualVista = this;
             sesion.IniciarMonitoreo();
+            sesionActual = sesion;
         }
     }
 }

@@ -48,16 +48,16 @@ namespace AplicacionEficiencia.Modelos
             {
                 System.Threading.Thread.Sleep(1000); // Esperar 1 segundo
 
-                SesionActual.sesionActual.Dispatcher.Invoke(() =>
+                SesionActual.sesionActualVista.Dispatcher.Invoke(() =>
                 {
-                    SesionActual.sesionActual.testSesion.Content = "";
-                    SesionActual.sesionActual.label.Content = calcularTiempoTranscurrido();
+                    SesionActual.sesionActualVista.testSesion.Content = "";
+                    SesionActual.sesionActualVista.label.Content = calcularTiempoTranscurrido();
                     foreach (var item in programasMonitoreo)
                     {
                         Debug.WriteLine( item.programa.nombreProceso + "  "+ Process.GetProcessesByName(item.programa.nombre).Length);
                         if (Process.GetProcessesByName(item.programa.nombreProceso).Length <= 0)
                             if (item.activa) item.finalizar();
-                        SesionActual.sesionActual.testSesion.Content += $"{item.programa.nombre} | {item.calcularTiempoTranscurrido(DateTime.Now)}\n";
+                        SesionActual.sesionActualVista.testSesion.Content += $"{item.programa.nombre} | {item.calcularTiempoTranscurrido(DateTime.Now)}\n";
                     }
                 });
             }
@@ -65,7 +65,23 @@ namespace AplicacionEficiencia.Modelos
 
         public TimeSpan calcularTiempoTranscurrido()
         {
+            if (!activa)
+                return horaFin - horaInicio;
             return DateTime.Now - horaInicio;
+        }
+
+        public void Finalizar()
+        {
+
+            foreach (var item in programasMonitoreo) {
+                item.finalizar();
+                horaFin = DateTime.Now;
+                activa = false;
+
+            }
+            SesionActual.sesionActual = null;
+            ///Aquí hay que enviar los datos de la sesión a la database
+
         }
 
 
