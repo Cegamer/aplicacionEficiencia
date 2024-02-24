@@ -28,5 +28,6 @@ namespace AplicacionEficiencia
         {
             frame.Content = perfilesVista;
         }
+
     }
 }

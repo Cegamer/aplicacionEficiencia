@@ -6,7 +6,7 @@ using System.Windows.Media.Imaging;
 
 namespace AplicacionEficiencia.Controladores
 {
-    public class ProgramaItem
+    internal class ProgramaItem
     {
         private readonly ModificarPerfil view;
         private readonly Programa programa;

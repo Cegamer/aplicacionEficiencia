@@ -18,6 +18,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Temas\HighEnfasisButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Temas\ScrollBarStyle.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -122,12 +122,13 @@
             <!--#endregion-->
 
             <Button x:Name="btn_guardar" Content="Guardar" 
-                    Height="36" Margin="8, 0, 0, 0"
-                    Grid.Column="1" Grid.Row="9"
-                    Background="Black"
+                    Height="36"
+                    Grid.Column="0" Grid.Row="9"
+                    Grid.ColumnSpan="2"
                     Foreground="White"
-                    FontSize="16" 
+                    FontSize="15" 
                     BorderBrush="#1c1c1e"
+                    Style="{StaticResource MediumEnfasisButton}"
                     />
         </Grid>
         <!--#region ListaAplicaciones -->
@@ -140,17 +141,17 @@
 
             <Border Background="Transparent" CornerRadius="8" BorderThickness="1" BorderBrush="#1c1c1e" Padding="5">
                 <ScrollViewer>
-                    <StackPanel x:Name="panelAplicaciones" MinWidth="200"/>
+                    <StackPanel x:Name="panelAplicaciones" MinWidth="300"/>
                 </ScrollViewer>
             </Border>
 
             <Button x:Name="btn_agregarapp" Content="Agregar App" 
-                    Height="36" Margin="10, 0"
+                    Height="36"
                     Grid.Row="2" Grid.Column="0"
-                    Background="Black"
                     Foreground="White"
-                    FontSize="16" 
+                    FontSize="15" 
                     BorderBrush="#1c1c1e"
+                    Style="{StaticResource HighEnfasisButton}"
                     />
         </Grid>
         <!--#endregion-->

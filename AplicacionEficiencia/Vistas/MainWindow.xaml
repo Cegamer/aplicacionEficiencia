@@ -7,16 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="625" Width="1180">
 
-    <Window.Resources>
-
-    </Window.Resources>
-
     <Grid Background="#1c1c1e">
+        <!--#region Grid Definitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*" MinWidth="300px"/>
             <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -24,32 +22,34 @@
 
         <!--#region Navigation -->
         <TextBlock Text="App Eficiencia"
+                   
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    Foreground="White"
-                   FontSize="34"
+                   FontSize="30"
                    FontWeight="Bold"
+                   Grid.Row="1" Grid.Column="0"
                    Margin="16, 0, 0, 0"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0">
+        <StackPanel Grid.Row="2" Grid.Column="0">
             <RadioButton Content="Perfiles" 
-                         Height="50"
                          Foreground="White"
                          FontSize="17"
+                         IsChecked="True"
                          Click="button_Click"
                          Style="{StaticResource TemaBotonMenu}"/>
+            
             <RadioButton Content="Estadisticas" 
-                         Height="50"
                          Foreground="White"
                          FontSize="17"
                          Style="{StaticResource TemaBotonMenu}"/>
-            <RadioButton Content="Ajustes" 
-                         Height="50"
+
+            <RadioButton Content="Ajustes"
                          Foreground="White"
                          FontSize="17"
                          Style="{StaticResource TemaBotonMenu}"/>
-            <RadioButton Content="Informacion" 
-                         Height="50"
+
+            <RadioButton Content="Informacion"
                          Foreground="White"
                          FontSize="17"
                          Style="{StaticResource TemaBotonMenu}"/>
@@ -57,7 +57,7 @@
         <!--#endregion-->
 
         <Border 
-            Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+            Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"
             Background="Black"
             BorderBrush="#47474a" BorderThickness="1,0,0,0">
             <Frame 

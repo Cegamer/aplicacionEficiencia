@@ -5,14 +5,13 @@
              xmlns:controlers="clr-namespace:AplicacionEficiencia.Controladores"
              StartupUri="Vistas/MainWindow.xaml">
     <Application.Resources>
-
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Temas/TextBoxStyle.xaml"/>
                 <ResourceDictionary Source="Temas/TemaBotonMenu.xaml"/>
                 <ResourceDictionary Source="Temas/ScrollBarStyle.xaml"/>
+                <ResourceDictionary Source="Temas/HighEnfasisButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
             <DataTemplate x:Key="ProgramItemTemplate" DataType="{x:Type controlers:ProgramaItem}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -36,7 +35,6 @@
                         CommandParameter="{Binding ID}"/>
                 </Grid>
             </DataTemplate>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>
