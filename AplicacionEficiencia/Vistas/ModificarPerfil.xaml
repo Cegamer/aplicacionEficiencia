@@ -53,7 +53,7 @@
             <Label x:Name="label_profile_name" Content="Nombre del Perfil" 
                    FontSize="17" Foreground="White" FontWeight="SemiBold"
                    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="textBoxNombrePerfil" 
+            <TextBox x:Name="txtNombrePerfil" 
                      Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
                      TextAlignment="Left"
                      Width="auto" Height="30"
@@ -66,7 +66,7 @@
             <Label x:Name="label_profile_description" Content="Descripción Perfil" 
                    FontSize="17" Foreground="White" FontWeight="SemiBold"
                    Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="textBoxDescripcion" 
+            <TextBox x:Name="txtDescripcion" 
                      Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"
                      TextAlignment="Left"
                      Width="auto" Height="30"
@@ -126,7 +126,7 @@
                     Grid.Column="0" Grid.Row="9"
                     Grid.ColumnSpan="2"
                     Foreground="White"
-                    FontSize="15" 
+                    FontSize="17" 
                     BorderBrush="#1c1c1e"
                     Style="{StaticResource MediumEnfasisButton}"
                     />
@@ -149,7 +149,7 @@
                     Height="36"
                     Grid.Row="2" Grid.Column="0"
                     Foreground="White"
-                    FontSize="15" 
+                    FontSize="17" 
                     BorderBrush="#1c1c1e"
                     Style="{StaticResource HighEnfasisButton}"
                     />

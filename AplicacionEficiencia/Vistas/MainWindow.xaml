@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicacionEficiencia"
         mc:Ignorable="d"
+        ContentRendered="Window_ContentRendered"    
         Title="MainWindow" Height="625" Width="1180">
 
     <Grid Background="#1c1c1e">

@@ -10,13 +10,12 @@
                             Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
                         <Grid>
-                            <TextBox Text="{TemplateBinding Text}"
+                            <TextBox Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}"
                                      BorderThickness="0"
                                      Background="Transparent"
                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                      Padding="5"
-                                     Foreground="{TemplateBinding Foreground}"
-                                     x:Name="Perfiles"/>
+                                     Foreground="{TemplateBinding Foreground}"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

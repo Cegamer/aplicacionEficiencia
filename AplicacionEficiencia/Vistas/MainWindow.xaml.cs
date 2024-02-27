@@ -1,6 +1,7 @@
 ﻿using AplicacionEficiencia.Controladores;
 using AplicacionEficiencia.Vistas;
 using System.Windows;
+using System.Windows.Media;
 
 namespace AplicacionEficiencia
 {
@@ -29,5 +30,13 @@ namespace AplicacionEficiencia
             frame.Content = perfilesVista;
         }
 
+        private void Window_ContentRendered(object sender, System.EventArgs e)
+        {
+            var color = SystemParameters.WindowGlassColor;
+            var lighter = Color.FromArgb(color.A, (byte)(color.R + 30), (byte)(color.G + 30), (byte)(color.B + 30));
+            
+            var bursh = new SolidColorBrush(lighter);
+            Application.Current.Resources["HButtonLigther"] = bursh;
+        }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace AplicacionEficiencia.utils
@@ -38,17 +33,30 @@ namespace AplicacionEficiencia.utils
             Next();
         }
 
+        public void Reset()
+        {
+            this.xPos = 0;
+            this.yPos = 0;
+            this.layout.Children.Clear();
+            this.layout.ColumnDefinitions.Clear();
+            this.layout.RowDefinitions.Clear();
+            ExpandColumns();
+            ExpandRows();
+        }
+
+        public bool IsFull() => (xPos == maxColumns - 1) && (yPos == maxRows - 1);
+
         private void InsertHorizontalSpace()
         {
             var spaceDef = new ColumnDefinition();
-            spaceDef.Width = new GridLength(5, GridUnitType.Pixel);
+            spaceDef.Width = new GridLength(space, GridUnitType.Pixel);
             layout.ColumnDefinitions.Add(spaceDef);
         }
 
         private void InsertVerticalSpace()
         {
             var spaceDef = new RowDefinition();
-            spaceDef.Height = new GridLength(5);
+            spaceDef.Height = new GridLength(space);
             layout.RowDefinitions.Add(spaceDef);
         }
 
@@ -85,7 +93,5 @@ namespace AplicacionEficiencia.utils
                 xPos+=2;
             }
         }
-
-        public bool IsFull() => (xPos == maxColumns - 1) && (yPos == maxRows - 1);
     }
 }

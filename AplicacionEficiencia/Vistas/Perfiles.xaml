@@ -29,7 +29,14 @@
                        Foreground="White"
                        FontSize="30"
                        FontWeight="Bold"/>
-            <Button Content="New" HorizontalAlignment="Right" Width="40" Height="40"/>
+            <Button 
+                Content="+" 
+                HorizontalAlignment="Right" 
+                Width="40" 
+                Height="40" 
+                Name="btn_new_profile"
+                FontSize="17"
+                Style="{StaticResource HighEnfasisButton}"/>
         </DockPanel>
         <!--#endregion-->
 

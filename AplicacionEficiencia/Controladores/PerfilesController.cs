@@ -2,6 +2,7 @@
 using AplicacionEficiencia.utils;
 using AplicacionEficiencia.Vistas;
 using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,84 +12,122 @@ namespace AplicacionEficiencia.Controladores
 {
     internal class PerfilesController
     {
-        public Perfiles perfiles;
-        public List<Perfil> perfilesLista = new List<Perfil>();
-        public Perfil prueba1 = new Perfil(0, "Juego", "aaaaaaa");
-        public Perfil prueba2 = new Perfil(1, "Trabajo", "aaaaaaa");
-        public Perfil prueba3 = new Perfil(2, "Es", "aaaaaaa");
-        public Perfil prueba4 = new Perfil(3, "Via", "aaaaaaa");
+        public readonly static Dictionary<int, Perfil> perfiles = new Dictionary<int, Perfil>();
+        public readonly Perfiles view;
+        public readonly GridManager manager;
 
-
-        public PerfilesController(Perfiles perfiles)
+        public PerfilesController(Perfiles view)
         {
-            this.perfiles = perfiles;
-            GridManager manager = new GridManager(ref perfiles.profiles_grid, 3, 400);
-
+            this.view = view;
+            this.view.btn_new_profile.Click += Btn_new_profile_Click;   
+            this.manager = new GridManager(ref view.profiles_grid, 3, 400);
             PerfilDePrueva();
-            foreach (var perfil in perfilesLista)
-            {
-                manager.Insert(CreateProfileCard(perfil));
-            }
+            MostrarPerfiles();
         }
 
         private void PerfilDePrueva()
         {
-            perfilesLista.Add(prueba1);
-            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
-            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
-            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
-            prueba1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[3]);
-            prueba1.bloquearPrograma(LectorProgramas.GetProgramas()[4]);
+            if (perfiles.Count > 0) return;
+            var perfil1 = new Perfil(1, "Trabajo 1", "Para trabajar");
+            var perfil2 = new Perfil(2, "Juego", "Para jugar GTA");
 
-            perfilesLista.Add(prueba2);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[0]);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[1]);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[2]);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[3]);
-            prueba2.bloquearPrograma(LectorProgramas.GetProgramas()[4]);
+            perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
+            perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
+            perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
 
-            perfilesLista.Add(prueba3);
-            prueba3.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[8]);
+            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
+            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
+            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
+            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[3]);
+            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[4]);
+            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[5]);
+            perfil2.bloquearPrograma(LectorProgramas.GetProgramas()[6]);
 
-            prueba3.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
-            perfilesLista.Add(prueba4);
+            PerfilesController.perfiles.Add(perfil1.id, perfil1);
+            PerfilesController.perfiles.Add(perfil2.id, perfil2);
+        }
+
+        private void Btn_new_profile_Click(object sender, RoutedEventArgs e)
+        {
+            int id = PerfilesController.perfiles.Count + 1;
+            PerfilesController.perfiles.Add(id, new Perfil(id, $"Nuevo Perfil {id}", ""));
+            MostrarPerfiles();
+        }
+
+        private void MostrarPerfiles() 
+        {
+            manager.Reset();
+            foreach (var perfil in PerfilesController.perfiles.Values)
+            {
+                var UICard = CreateProfileCard(perfil);
+                manager.Insert(UICard);
+            }
         }
 
         public UIElement CreateProfileCard(Perfil perfil)
         {
-            Border b = new Border() { Background = Brushes.Gray };
-            Grid grid = new Grid();
-            RowDefinition r1 = new RowDefinition();
-            RowDefinition r2 = new RowDefinition();
-            RowDefinition r3 = new RowDefinition();
-            RowDefinition r4 = new RowDefinition();
-            r1.Height = new GridLength(1, GridUnitType.Star); //Imagen
-            r2.Height = new GridLength(1, GridUnitType.Auto); //Nombre
-            r3.Height = new GridLength(1, GridUnitType.Auto); //Boton Editar
-            r4.Height = new GridLength(1, GridUnitType.Auto); //Boton Iniciar
+            var b = new Border() { 
+                Background = new SolidColorBrush(Color.FromRgb(28, 28, 30)), 
+                CornerRadius = new CornerRadius(12),
+                Padding = new Thickness(5)
+            };
+            var grid = new Grid();
+            var r1 = new RowDefinition() {Height = new GridLength(1, GridUnitType.Star)}; //Imagen
+            var r2 = new RowDefinition() {Height = new GridLength(1, GridUnitType.Auto)}; //Nombre
+            var r3 = new RowDefinition() {Height = new GridLength(1, GridUnitType.Auto) };//Descripcion
+            var r4 = new RowDefinition() {Height = new GridLength(1, GridUnitType.Auto)}; //Boton Editar
+            var r5 = new RowDefinition() {Height = new GridLength(1, GridUnitType.Auto)}; //Boton Iniciar
             grid.RowDefinitions.Add(r1);
             grid.RowDefinitions.Add(r2);
             grid.RowDefinitions.Add(r3);
             grid.RowDefinitions.Add(r4);
+            grid.RowDefinitions.Add(r5);
 
             UIElement image = CreateProfileImage(perfil);
             grid.Children.Add(image);
             Grid.SetColumn(image, 0);
             Grid.SetRow(image, 0);
 
-            Label nombre = new Label() { Content = perfil.nombre };
+            Label nombre = new Label() { 
+                Content = perfil.nombre,
+                FontSize = 17,
+                Foreground = new SolidColorBrush(Colors.White),
+                Padding = new Thickness(5, 5, 5, 0),
+                FontWeight = FontWeights.SemiBold
+            };
             grid.Children.Add(nombre);
             Grid.SetRow(nombre, 1);
 
-            Button btn_edit = new Button { Content = "Editar", Height = 36 };
+            Label info = new Label()
+            {
+                Content = perfil.descripcion,
+                FontSize = 15,
+                Foreground = new SolidColorBrush(Color.FromRgb(152, 152, 153)),
+                Padding = new Thickness(5, 0, 5, 5),
+            };
+            grid.Children.Add(info);
+            Grid.SetRow(info, 2);
+
+            Button btn_edit = new Button { 
+                Content = "Editar", 
+                Height = 36,
+                FontSize = 17,
+                Style = Application.Current.Resources["MediumEnfasisCardButton"] as Style,
+                Margin = new Thickness(0, 0, 0, 5)
+            };
             btn_edit.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
             {
                 LectorProgramas.MainWindow.frame.Content = new ModificarPerfil(perfil);
             }));
             grid.Children.Add(btn_edit);
-            Grid.SetRow(btn_edit, 2);
+            Grid.SetRow(btn_edit, 3);
 
-            Button btn_start = new Button { Content = "Iniciar", Height = 36 };
+            Button btn_start = new Button { 
+                Content = "Iniciar", 
+                Height = 36,
+                FontSize = 17,
+                Style = Application.Current.Resources["HighEnfasisButton"] as Style,
+            };
             btn_start.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
             {
                 if (SesionActual.sesionActual == null)
@@ -102,11 +141,13 @@ namespace AplicacionEficiencia.Controladores
                 }
             }));
             grid.Children.Add(btn_start);
-            Grid.SetRow(btn_start, 3);
+            Grid.SetRow(btn_start, 4);
             b.Child = grid;
+
             return b;
         }
 
+        //mejorar
         private UIElement CreateProfileImage(Perfil perfil)
         {
             Grid grid = new Grid() { Height = 240, Width = 240 };

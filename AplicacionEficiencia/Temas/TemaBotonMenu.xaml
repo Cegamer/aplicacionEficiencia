@@ -28,6 +28,9 @@
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="{Binding Source={x:Static SystemParameters.WindowGlassBrush}}"/>
             </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#323235"/>
+            </Trigger>
         </Style.Triggers>
         
     </Style>

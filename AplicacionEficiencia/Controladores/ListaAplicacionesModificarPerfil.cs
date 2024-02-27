@@ -12,16 +12,21 @@ namespace AplicacionEficiencia.Controladores
 {
     public class ListaAplicacionesModificarPerfil
     {
-        public ModificarPerfil modificarPerfil;
+        public ModificarPerfil view;
+        public Perfil perfil {  get; private set; }
         public List<Programa> ProgramasBloqueados { get; private set; }
         public List<Programa> ProgramasAutostart { get; private set; }
 
-        public ListaAplicacionesModificarPerfil(ModificarPerfil modificarPerfil, Perfil perfil)
+        public ListaAplicacionesModificarPerfil(ModificarPerfil view, Perfil perfil)
         {
-            this.modificarPerfil = modificarPerfil;
-            this.modificarPerfil.btn_agregarapp.Click += Btn_agregarapp_Click;
-            this.ProgramasBloqueados = perfil.programasBloqueados;
-            this.ProgramasAutostart = perfil.programasAEjecutar;
+            this.perfil = perfil;
+            this.view = view;
+            this.view.btn_agregarapp.Click += Btn_agregarapp_Click;
+            this.view.btn_guardar.Click += Btn_guardar_Click;
+            this.ProgramasAutostart = new List<Programa>();
+            this.ProgramasBloqueados = new List<Programa>();
+            this.ProgramasAutostart.AddRange(perfil.programasAEjecutar);
+            this.ProgramasBloqueados.AddRange(perfil.programasBloqueados);
             ActualizarListas();
             mostrarListaAplicaciones();
         }
@@ -80,7 +85,7 @@ namespace AplicacionEficiencia.Controladores
 
                 Label label = new Label();
                 label.Content = programa.nombre;
-                label.FontSize = 15;
+                label.FontSize = 17;
                 label.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 label.Width = 150;
                 label.HorizontalAlignment = HorizontalAlignment.Left;
@@ -115,7 +120,7 @@ namespace AplicacionEficiencia.Controladores
                 btn_autostart.Foreground = new SolidColorBrush(Color.FromRgb(141, 141, 147));
                 btn_autostart.AddHandler(Button.ClickEvent, new RoutedEventHandler((_, e) =>
                 {
-                    var item = new ProgramaItem(programa, modificarPerfil, this);
+                    var item = new ProgramaItem(programa, view, this);
                     if (!AplicacionEnListas(programa)) item.AddProgramToAutostartList();
                 }));
                 panel.Children.Add(btn_autostart);
@@ -128,7 +133,7 @@ namespace AplicacionEficiencia.Controladores
                 btn_block.Foreground = new SolidColorBrush(Color.FromRgb(141, 141, 147));
                 btn_block.AddHandler(Button.ClickEvent, new RoutedEventHandler((_, e) =>
                 {
-                    var item = new ProgramaItem(programa, modificarPerfil, this);
+                    var item = new ProgramaItem(programa, view, this);
                     if (!AplicacionEnListas(programa)) item.AddProgramToBloquedList();
                 }));
                 panel.Children.Add(btn_block);
@@ -140,78 +145,23 @@ namespace AplicacionEficiencia.Controladores
 
                 stackPanelPrincipal.Children.Add(border);
                 counter++;
-
-                /*
-                StackPanel stackPanel1 = new StackPanel();
-                stackPanel1.Background = new SolidColorBrush(Color.FromRgb(20,20,20));
-                stackPanel1.Height = 100;
-
-                Image image = new Image();
-                image.Name = "image" + programa.id;
-                image.Height = 75;
-                image.Width = 75;
-                image.Source = programa.getIcon();
-                stackPanel1.Children.Add(image);
-
-                Label label = new Label();
-                label.Name = "label" + programa.id;
-                label.Content = programa.nombre;
-                stackPanel1.Children.Add(label);
-                stackPanelPrincipal.Children.Add(stackPanel1);
-
-                StackPanel stackPanel2 = new StackPanel();
-                stackPanel2.Height = 63;
-
-                Button btn_open = new Button();
-                btn_open.Content = "Abrir";
-                btn_open.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
-                {
-                    string executablePath = programa.ruta;
-
-                    try { Process.Start(executablePath); }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al ejecutar el programa: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }));
-                stackPanel2.Children.Add(btn_open);
-
-                Button btn_autoinicio = new Button();
-                btn_autoinicio.Content = "Inicio Automatico";
-                btn_autoinicio.AddHandler(Button.ClickEvent, new RoutedEventHandler((_, e) =>
-                {
-                    var item = new ProgramaItem(programa, modificarPerfil, this);
-                    if (!AplicacionEnListas(programa)) item.AddProgramToAutostartList();
-                }));
-                stackPanel2.Children.Add(btn_autoinicio);
-
-                Button btn_bloquear = new Button();
-                btn_bloquear.Content = "Bloquear Uso";
-                btn_bloquear.AddHandler(Button.ClickEvent, new RoutedEventHandler((_, e) =>
-                {
-                    var item = new ProgramaItem(programa, modificarPerfil, this);
-                    if (!AplicacionEnListas(programa)) item.AddProgramToBloquedList();
-                }));
-                stackPanel2.Children.Add(btn_bloquear);
-
-                stackPanelPrincipal.Children.Add(stackPanel2);
-                */
             }
-            modificarPerfil.panelAplicaciones.Children.Add(stackPanelPrincipal);
+
+            view.panelAplicaciones.Children.Add(stackPanelPrincipal);
         }
 
         private void ActualizarListas()
         {
             foreach (var p in ProgramasAutostart)
             {
-                var pItem = new ProgramaItem(p, modificarPerfil, this);
-                modificarPerfil.list_app_ejecutar.Items.Add(pItem);
+                var pItem = new ProgramaItem(p, view, this);
+                view.list_app_ejecutar.Items.Add(pItem);
             }
 
             foreach (var p in ProgramasBloqueados)
             {
-                var pItem = new ProgramaItem(p, modificarPerfil, this);
-                modificarPerfil.list_applicaciones_bloqueadas.Items.Add(pItem);
+                var pItem = new ProgramaItem(p, view, this);
+                view.list_applicaciones_bloqueadas.Items.Add(pItem);
             }
         }
 
@@ -229,9 +179,35 @@ namespace AplicacionEficiencia.Controladores
                 var app = new Programa(999, name, path); //Ingresar ID autogenerado por la base de datos
 
                 LectorProgramas.programas.Add(app);
-                modificarPerfil.panelAplicaciones.Children.Clear();
+                view.panelAplicaciones.Children.Clear();
                 mostrarListaAplicaciones();
             }
+        }
+
+        private void Btn_guardar_Click(object sender, RoutedEventArgs e)
+        {
+            var perfiles = PerfilesController.perfiles;
+            var nuevoNombre = this.view.txtNombrePerfil.Text;
+            var pfEditado = new Perfil (-1, "", "")
+            {
+                id = perfil.id,
+                nombre = (!string.IsNullOrEmpty(nuevoNombre)) ? nuevoNombre : perfil.nombre,
+                descripcion = this.view.txtDescripcion.Text,
+                programasAEjecutar = ProgramasAutostart,
+                programasBloqueados = ProgramasBloqueados
+            };
+
+
+            if (perfiles.ContainsKey(perfil.id)) { perfiles.Remove(perfil.id); }
+            perfiles.Add(perfil.id, pfEditado);
+            Regrasar();
+        }
+
+        private void Regrasar()
+        {
+            var view = new Perfiles();
+            new PerfilesController(view);
+            MainWindow.mainWindow.frame.Content = view;
         }
 
         private bool AplicacionEnListas(Programa p) => (ProgramasAutostart.Contains(p) || ProgramasBloqueados.Contains(p));
