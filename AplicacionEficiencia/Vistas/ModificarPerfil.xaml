@@ -128,7 +128,7 @@
                     Foreground="White"
                     FontSize="17" 
                     BorderBrush="#1c1c1e"
-                    Style="{StaticResource MediumEnfasisButton}"
+                    Style="{StaticResource MediumEnfasisButton}" Click="btn_guardar_Click"
                     />
         </Grid>
         <!--#region ListaAplicaciones -->

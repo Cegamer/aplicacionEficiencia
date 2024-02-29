@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace AplicacionEficiencia.utils
 {
-    internal class GridManager
+    public class GridManager
     {
         private Grid layout;
         public int maxColumns { get; }

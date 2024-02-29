@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace AplicacionEficiencia.Controladores
 {
-    internal class PerfilesController
+    public class PerfilesController
     {
         public readonly static Dictionary<int, Perfil> perfiles = new Dictionary<int, Perfil>();
         public readonly Perfiles view;
@@ -32,8 +32,7 @@ namespace AplicacionEficiencia.Controladores
             var perfil2 = new Perfil(2, "Juego", "Para jugar GTA");
 
             perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
-            perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
-            perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
+            perfil1.bloquearPrograma(LectorProgramas.GetProgramas()[8]);
 
             perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
             perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
@@ -54,7 +53,7 @@ namespace AplicacionEficiencia.Controladores
             MostrarPerfiles();
         }
 
-        private void MostrarPerfiles() 
+        public void MostrarPerfiles() 
         {
             manager.Reset();
             foreach (var perfil in PerfilesController.perfiles.Values)

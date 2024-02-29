@@ -188,18 +188,25 @@ namespace AplicacionEficiencia.Controladores
         {
             var perfiles = PerfilesController.perfiles;
             var nuevoNombre = this.view.txtNombrePerfil.Text;
-            var pfEditado = new Perfil (-1, "", "")
-            {
-                id = perfil.id,
-                nombre = (!string.IsNullOrEmpty(nuevoNombre)) ? nuevoNombre : perfil.nombre,
-                descripcion = this.view.txtDescripcion.Text,
-                programasAEjecutar = ProgramasAutostart,
-                programasBloqueados = ProgramasBloqueados
-            };
+            /* perfil = new Perfil (-1, "", "")
 
 
-            if (perfiles.ContainsKey(perfil.id)) { perfiles.Remove(perfil.id); }
-            perfiles.Add(perfil.id, pfEditado);
+             {
+                 id = perfil.id,
+                 nombre = (!string.IsNullOrEmpty(nuevoNombre)) ? nuevoNombre : perfil.nombre,
+                 descripcion = this.view.txtDescripcion.Text,
+                 programasAEjecutar = ProgramasAutostart,
+                 programasBloqueados = ProgramasBloqueados
+             };
+
+
+             if (perfiles.ContainsKey(perfil.id)) { perfiles.Remove(perfil.id); }
+             perfiles.Add(perfil.id, perfil);*/
+
+            perfil.nombre = (!string.IsNullOrEmpty(nuevoNombre)) ? nuevoNombre : perfil.nombre;
+            perfil.descripcion = this.view.txtDescripcion.Text;
+            perfil.programasAEjecutar = ProgramasAutostart;
+            perfil.programasBloqueados = ProgramasBloqueados;
             Regrasar();
         }
 
@@ -207,7 +214,8 @@ namespace AplicacionEficiencia.Controladores
         {
             var view = new Perfiles();
             new PerfilesController(view);
-            MainWindow.mainWindow.frame.Content = view;
+            MainWindow.perfilesController.MostrarPerfiles();
+            MainWindow.mainWindow.frame.Content = MainWindow.perfilesVista;
         }
 
         private bool AplicacionEnListas(Programa p) => (ProgramasAutostart.Contains(p) || ProgramasBloqueados.Contains(p));

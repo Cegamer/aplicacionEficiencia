@@ -9,6 +9,8 @@ namespace AplicacionEficiencia.Modelos
         public Programa programa { get; set; }
         public DateTime horaInicio { get; set; }
         public DateTime horaFin { get; set; }
+        public TimeSpan tiempoTranscurrido { get; set; }
+
         public bool activa;
 
         public SesionPrograma(Sesion sesion, Programa programa, DateTime horaInicio)
@@ -20,10 +22,13 @@ namespace AplicacionEficiencia.Modelos
         }
 
         public TimeSpan calcularTiempoTranscurrido(DateTime fin)
-        {
+        { 
             if (!activa)
-                return horaFin - horaInicio;
-            return fin - horaInicio;
+                tiempoTranscurrido =  horaFin - horaInicio;
+            else
+                tiempoTranscurrido = fin - horaInicio;
+
+            return tiempoTranscurrido;
         }
         public void finalizar()
         {
@@ -32,5 +37,6 @@ namespace AplicacionEficiencia.Modelos
             activa = false;
             ///Aquí hay que enviar los datos de la sesión a la database
         }
+
     }
 }

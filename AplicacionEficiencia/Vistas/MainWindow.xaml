@@ -40,6 +40,11 @@
                          Click="button_Click"
                          Style="{StaticResource TemaBotonMenu}"/>
             
+            <RadioButton Content="Sesion Actual" 
+                         Foreground="White"
+                         FontSize="17"
+                         Style="{StaticResource TemaBotonMenu}" Click="RadioButton_Checked"/>
+            
             <RadioButton Content="Estadisticas" 
                          Foreground="White"
                          FontSize="17"

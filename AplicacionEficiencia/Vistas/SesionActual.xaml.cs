@@ -18,5 +18,11 @@ namespace AplicacionEficiencia.Vistas
             sesion.IniciarMonitoreo();
             sesionActual = sesion;
         }
+
+        private void button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            sesionActual.Finalizar();
+            MainWindow.mainWindow.frame.Content = MainWindow.perfilesVista;
+        }
     }
 }

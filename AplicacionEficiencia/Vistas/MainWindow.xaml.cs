@@ -10,7 +10,8 @@ namespace AplicacionEficiencia
     /// </summary>
     public partial class MainWindow : Window
     {
-        Perfiles perfilesVista = new Perfiles();
+        public static Perfiles perfilesVista = new Perfiles();
+        public static PerfilesController perfilesController;
         public static MainWindow mainWindow;
         public MainWindow()
         {
@@ -20,7 +21,7 @@ namespace AplicacionEficiencia
             /*Esto hay que arreglarlo, pero aun no, por ahora funciona */
             LectorProgramas.MainWindow = this;
             LectorProgramas.obtenerProgramasInstalados();
-            PerfilesController perfiles = new PerfilesController(perfilesVista);
+            perfilesController = new PerfilesController(perfilesVista);
             frame.Content = perfilesVista;
             /* --------------------------------------------------------- */
         }
@@ -37,6 +38,11 @@ namespace AplicacionEficiencia
             
             var bursh = new SolidColorBrush(lighter);
             Application.Current.Resources["HButtonLigther"] = bursh;
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            MainWindow.mainWindow.frame.Content = SesionActual.sesionActualVista;
         }
     }
 }
