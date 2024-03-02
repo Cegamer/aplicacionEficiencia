@@ -17,5 +17,10 @@ namespace AplicacionEficiencia.Vistas
             nombre_perfil.Text = perfil.nombre;
             ListaAplicacionesModificarPerfil LAMP = new ListaAplicacionesModificarPerfil(this, perfil);
         }
+
+        private void btn_guardar_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

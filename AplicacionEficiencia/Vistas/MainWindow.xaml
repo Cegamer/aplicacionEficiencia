@@ -34,15 +34,25 @@
 
         <StackPanel Grid.Row="2" Grid.Column="0">
             <RadioButton Content="Perfiles" 
+                         Name="rbtn_perfiles"
                          Foreground="White"
                          FontSize="17"
                          IsChecked="True"
-                         Click="button_Click"
+                         Click="rbtn_perfiles_click"
+                         Style="{StaticResource TemaBotonMenu}"/>
+            
+            <RadioButton Content="Sesion Actual"
+                         Name="rbtn_sesion_actual"
+                         Foreground="White"
+                         FontSize="17"
+                         Click="rbtn_sesion_actual_click"
                          Style="{StaticResource TemaBotonMenu}"/>
             
             <RadioButton Content="Estadisticas" 
                          Foreground="White"
+                         Name="rbtn_estadisticas"
                          FontSize="17"
+                         Click="rbtn_estadisticas_click"
                          Style="{StaticResource TemaBotonMenu}"/>
 
             <RadioButton Content="Ajustes"

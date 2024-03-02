@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Interop;
@@ -20,6 +21,7 @@ namespace AplicacionEficiencia.Modelos
             this.id = id;
             this.nombre = nombre;
             this.ruta = ruta;
+            this.nombreProceso = obtenerNombreProceso();
         }
         public Process iniciarPrograma()
         {
@@ -27,6 +29,26 @@ namespace AplicacionEficiencia.Modelos
             nombreProceso = proceso.ProcessName;
             Debug.WriteLine(nombreProceso);
             return proceso;
+        }
+        private string obtenerNombreProceso() {
+            ProcessStartInfo startInfo = new ProcessStartInfo(ruta);
+
+            try
+            {
+                string nombreArchivo = System.IO.Path.GetFileNameWithoutExtension(ruta);
+                startInfo.FileName = nombreArchivo;
+
+                using (Process proceso = new Process())
+                {
+                    proceso.StartInfo = startInfo;
+                    return proceso.StartInfo.FileName;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al obtener el nombre del proceso: {ex.Message}");
+                return null;
+            }
         }
         public BitmapSource getIcon()
         {

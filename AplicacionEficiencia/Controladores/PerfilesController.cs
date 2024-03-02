@@ -1,8 +1,6 @@
 ﻿using AplicacionEficiencia.Modelos;
-using AplicacionEficiencia.utils;
 using AplicacionEficiencia.Vistas;
-using Microsoft.Win32;
-using System;
+using AplicacionEficiencia.Core;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,17 +8,17 @@ using System.Windows.Media;
 
 namespace AplicacionEficiencia.Controladores
 {
-    internal class PerfilesController
+    public class PerfilesController
     {
         public readonly static Dictionary<int, Perfil> perfiles = new Dictionary<int, Perfil>();
         public readonly Perfiles view;
-        public readonly GridManager manager;
+        public readonly ExpandableGrid manager;
 
         public PerfilesController(Perfiles view)
         {
             this.view = view;
             this.view.btn_new_profile.Click += Btn_new_profile_Click;   
-            this.manager = new GridManager(ref view.profiles_grid, 3, 400);
+            this.manager = new ExpandableGrid(ref view.profiles_grid, 3, 400);
             PerfilDePrueva();
             MostrarPerfiles();
         }
@@ -32,8 +30,7 @@ namespace AplicacionEficiencia.Controladores
             var perfil2 = new Perfil(2, "Juego", "Para jugar GTA");
 
             perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
-            perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
-            perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
+            perfil1.bloquearPrograma(LectorProgramas.GetProgramas()[8]);
 
             perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
             perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
@@ -54,7 +51,7 @@ namespace AplicacionEficiencia.Controladores
             MostrarPerfiles();
         }
 
-        private void MostrarPerfiles() 
+        public void MostrarPerfiles() 
         {
             manager.Reset();
             foreach (var perfil in PerfilesController.perfiles.Values)

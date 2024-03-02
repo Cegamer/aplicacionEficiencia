@@ -10,7 +10,9 @@ namespace AplicacionEficiencia
     /// </summary>
     public partial class MainWindow : Window
     {
-        Perfiles perfilesVista = new Perfiles();
+        public static Perfiles perfilesVista = new Perfiles();
+        public static Estadistica estadisticaVista = new Estadistica();
+        public static PerfilesController perfilesController;
         public static MainWindow mainWindow;
         public MainWindow()
         {
@@ -20,14 +22,24 @@ namespace AplicacionEficiencia
             /*Esto hay que arreglarlo, pero aun no, por ahora funciona */
             LectorProgramas.MainWindow = this;
             LectorProgramas.obtenerProgramasInstalados();
-            PerfilesController perfiles = new PerfilesController(perfilesVista);
+            perfilesController = new PerfilesController(perfilesVista);
             frame.Content = perfilesVista;
             /* --------------------------------------------------------- */
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void rbtn_perfiles_click(object sender, RoutedEventArgs e)
         {
             frame.Content = perfilesVista;
+        }
+
+        private void rbtn_sesion_actual_click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = SesionActual.sesionActualVista;
+        }
+
+        private void rbtn_estadisticas_click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = estadisticaVista;
         }
 
         private void Window_ContentRendered(object sender, System.EventArgs e)

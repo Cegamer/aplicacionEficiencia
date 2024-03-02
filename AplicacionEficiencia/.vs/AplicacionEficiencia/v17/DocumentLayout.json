@@ -1,0 +1,210 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\vistas\\estadistica.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:vistas\\estadistica.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\vistas\\perfiles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:vistas\\perfiles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\modelos\\maingraficas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:modelos\\maingraficas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\modelos\\graficobarras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:modelos\\graficobarras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\modelos\\graficolineas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:modelos\\graficolineas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\modelos\\graficorosquilla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:modelos\\graficorosquilla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\vistas\\modificarperfil.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:vistas\\modificarperfil.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\vistas\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:vistas\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\vistas\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:vistas\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\temas\\enfasisbuttons.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:temas\\enfasisbuttons.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|c:\\users\\luism\\downloads\\aplicacioneficiencia_1\\aplicacioneficiencia\\controladores\\perfilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B4618-D8D1-42E4-98BA-8618D784B5D3}|AplicacionEficiencia.csproj|solutionrelative:controladores\\perfilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Estadistica.xaml",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\Estadistica.xaml",
+              "RelativeDocumentMoniker": "Vistas\\Estadistica.xaml",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\Estadistica.xaml",
+              "RelativeToolTip": "Vistas\\Estadistica.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-29T23:23:29.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GraficoBarras.cs",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Modelos\\GraficoBarras.cs",
+              "RelativeDocumentMoniker": "Modelos\\GraficoBarras.cs",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Modelos\\GraficoBarras.cs",
+              "RelativeToolTip": "Modelos\\GraficoBarras.cs",
+              "ViewState": "AQIAAAYAAACAZ2ZmZmYEwCYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-02T01:13:16.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GraficoLineas.cs",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Modelos\\GraficoLineas.cs",
+              "RelativeDocumentMoniker": "Modelos\\GraficoLineas.cs",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Modelos\\GraficoLineas.cs",
+              "RelativeToolTip": "Modelos\\GraficoLineas.cs",
+              "ViewState": "AQIAAAYAAABgZmZmZiYwwBUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T23:32:55.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ModificarPerfil.xaml",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\ModificarPerfil.xaml",
+              "RelativeDocumentMoniker": "Vistas\\ModificarPerfil.xaml",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\ModificarPerfil.xaml",
+              "RelativeToolTip": "Vistas\\ModificarPerfil.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-01T00:26:45.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Perfiles.xaml",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\Perfiles.xaml",
+              "RelativeDocumentMoniker": "Vistas\\Perfiles.xaml",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\Perfiles.xaml",
+              "RelativeToolTip": "Vistas\\Perfiles.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-29T22:44:02.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainGraficas.cs",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Modelos\\MainGraficas.cs",
+              "RelativeDocumentMoniker": "Modelos\\MainGraficas.cs",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Modelos\\MainGraficas.cs",
+              "RelativeToolTip": "Modelos\\MainGraficas.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T02:14:57.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GraficoRosquilla.cs",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Modelos\\GraficoRosquilla.cs",
+              "RelativeDocumentMoniker": "Modelos\\GraficoRosquilla.cs",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Modelos\\GraficoRosquilla.cs",
+              "RelativeToolTip": "Modelos\\GraficoRosquilla.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T02:05:04.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Vistas\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Vistas\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAAkAAAAAZmZmZuYfwC0AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T23:22:38.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Vistas\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Vistas\\MainWindow.xaml",
+              "RelativeToolTip": "Vistas\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-29T23:22:05.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PerfilesController.cs",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Controladores\\PerfilesController.cs",
+              "RelativeDocumentMoniker": "Controladores\\PerfilesController.cs",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Controladores\\PerfilesController.cs",
+              "RelativeToolTip": "Controladores\\PerfilesController.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAABBwF8AAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T22:44:02.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EnfasisButtons.xaml",
+              "DocumentMoniker": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Temas\\EnfasisButtons.xaml",
+              "RelativeDocumentMoniker": "Temas\\EnfasisButtons.xaml",
+              "ToolTip": "C:\\Users\\luism\\Downloads\\aplicacionEficiencia_1\\AplicacionEficiencia\\Temas\\EnfasisButtons.xaml",
+              "RelativeToolTip": "Temas\\EnfasisButtons.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-29T22:44:02.089Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

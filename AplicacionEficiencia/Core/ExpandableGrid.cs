@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace AplicacionEficiencia.utils
+namespace AplicacionEficiencia.Core
 {
-    internal class GridManager
+    public class ExpandableGrid
     {
         private Grid layout;
         public int maxColumns { get; }
@@ -12,17 +12,29 @@ namespace AplicacionEficiencia.utils
         public int height { get; }
         public int xPos { get; private set; }
         public int yPos { get; private set; }
+        public bool lastSpace { get; private set; }
 
-        public GridManager(ref Grid grid, int colums, int height, int space = 5)
+        public ExpandableGrid(ref Grid grid, int colums, int height, int space = 5, bool lastSpace = false)
         {
-            layout = grid;
-            xPos = 0;
-            yPos = 0;
-            maxColumns = colums;
+            this.layout = grid;
+            this.xPos = 0;
+            this.yPos = 0;
+            this.maxColumns = colums;
             this.space = space;
             this.height = height;
+            this.lastSpace = lastSpace;
             ExpandColumns();
             ExpandRows();
+        }
+
+        public void Pop()
+        {
+            
+        }
+
+        private void Last()
+        {
+
         }
 
         public void Insert(UIElement element)
@@ -31,6 +43,21 @@ namespace AplicacionEficiencia.utils
             Grid.SetColumn(element, xPos);
             Grid.SetRow(element, yPos);
             Next();
+        }
+
+        private void Next()
+        {
+            if (xPos == 2 * maxColumns - 2)
+            {
+                xPos = 0;
+                yPos += 2;
+                InsertVerticalSpace();
+                ExpandRows();
+            }
+            else
+            {
+                xPos += 2;
+            }
         }
 
         public void Reset()
@@ -67,7 +94,7 @@ namespace AplicacionEficiencia.utils
                 var columnDef = new ColumnDefinition();
                 columnDef.Width = new GridLength(1, GridUnitType.Star);
                 layout.ColumnDefinitions.Add(columnDef);
-                if (i != maxColumns - 1)
+                if (i != maxColumns - 1 || lastSpace)
                     InsertHorizontalSpace();
             }
         }
@@ -77,21 +104,6 @@ namespace AplicacionEficiencia.utils
             var rowDef = new RowDefinition();
             rowDef.Height = new GridLength(height, GridUnitType.Pixel);
             layout.RowDefinitions.Add(rowDef);
-        }
-
-        private void Next()
-        {
-            if (xPos == 2*maxColumns - 2)
-            {
-                xPos = 0;
-                yPos+=2;
-                InsertVerticalSpace();
-                ExpandRows();
-            }
-            else
-            {
-                xPos+=2;
-            }
         }
     }
 }
