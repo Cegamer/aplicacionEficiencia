@@ -1,15 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AplicacionEficiencia.Modelos
 {
+    [Table ("Perfiles")]
     public class Perfil
     {
+        [Key]
+        [Column("PerfilID")]
         public int id { get; set; }
+
+        [Column("NombrePerfil")]
+        [MaxLength(500)]
         public string nombre { get; set; }
+
+        [Column("DescripcionPerfil")]
+        [MaxLength(2500)]
         public string descripcion { get; set; }
+
+        // Toca arreglar esto :)
+        [NotMapped]
         public List<Programa> programasAEjecutar { get; set; }
+        [NotMapped]
         public List<Programa> programasBloqueados { get; set; }
 
         public Perfil(int id, string nombre, string descripcion)
@@ -21,8 +36,9 @@ namespace AplicacionEficiencia.Modelos
             programasBloqueados = new List<Programa>();
         }
 
-        public void agregarProgramaEjecutar(Programa programa) { programasAEjecutar.Add(programa); }
-        public void bloquearPrograma(Programa programa) { programasBloqueados.Add(programa); }
+        public void agregarProgramaEjecutar(Programa programa) => programasAEjecutar.Add(programa); 
+        public void bloquearPrograma(Programa programa) => programasBloqueados.Add(programa); 
+
         public void iniciar()
         {
             foreach (Programa programa in programasAEjecutar)

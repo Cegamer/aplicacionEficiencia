@@ -35,6 +35,5 @@ namespace AplicacionEficiencia.Modelos
                 MinStep = 1
             }
         };
-
     }
 }

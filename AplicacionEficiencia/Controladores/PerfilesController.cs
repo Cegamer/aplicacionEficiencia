@@ -25,21 +25,8 @@ namespace AplicacionEficiencia.Controladores
 
         private void PerfilDePrueva()
         {
-            if (perfiles.Count > 0) return;
-            var perfil1 = new Perfil(1, "Trabajo 1", "Para trabajar");
+            var perfil1 = new Perfil(1, "Trabajo", "Para trabajar");
             var perfil2 = new Perfil(2, "Juego", "Para jugar GTA");
-
-            perfil1.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
-            perfil1.bloquearPrograma(LectorProgramas.GetProgramas()[8]);
-
-            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[0]);
-            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[1]);
-            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[2]);
-            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[3]);
-            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[4]);
-            perfil2.agregarProgramaEjecutar(LectorProgramas.GetProgramas()[5]);
-            perfil2.bloquearPrograma(LectorProgramas.GetProgramas()[6]);
-
             PerfilesController.perfiles.Add(perfil1.id, perfil1);
             PerfilesController.perfiles.Add(perfil2.id, perfil2);
         }
@@ -114,7 +101,7 @@ namespace AplicacionEficiencia.Controladores
             };
             btn_edit.AddHandler(Button.ClickEvent, new RoutedEventHandler((sender, e) =>
             {
-                LectorProgramas.MainWindow.frame.Content = new ModificarPerfil(perfil);
+                LectorProgramas.View!.frame.Content = new ModificarPerfil(perfil);
             }));
             grid.Children.Add(btn_edit);
             Grid.SetRow(btn_edit, 3);

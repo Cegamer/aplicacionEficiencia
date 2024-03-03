@@ -1,7 +1,10 @@
 ﻿using AplicacionEficiencia.Controladores;
+using AplicacionEficiencia.Dal;
 using AplicacionEficiencia.Vistas;
 using System.Windows;
 using System.Windows.Media;
+using System.Threading.Tasks;
+
 
 namespace AplicacionEficiencia
 {
@@ -20,8 +23,8 @@ namespace AplicacionEficiencia
             InitializeComponent();
             mainWindow = this;
             /*Esto hay que arreglarlo, pero aun no, por ahora funciona */
-            LectorProgramas.MainWindow = this;
-            LectorProgramas.obtenerProgramasInstalados();
+            LectorProgramas.View = this;
+            LectorProgramas.LeerProgrmasInstalados();
             perfilesController = new PerfilesController(perfilesVista);
             frame.Content = perfilesVista;
             /* --------------------------------------------------------- */

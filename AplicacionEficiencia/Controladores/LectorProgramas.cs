@@ -1,49 +1,65 @@
-﻿using AplicacionEficiencia.Modelos;
+﻿using AplicacionEficiencia.Dal;
+using AplicacionEficiencia.Modelos;
+using Microsoft.EntityFrameworkCore;
 using Shell32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Windows;
 
 
 namespace AplicacionEficiencia.Controladores
 {
     public static class LectorProgramas
     {
-        public static MainWindow MainWindow { get; set; }
+        public static MainWindow? View { get; set; }
+        public static List<Programa>? Programas { get; set; }
 
-        public static List<Programa> programas;
         public static List<Process> procesosActivosPC()
         {
             List<Process> procesos = new List<Process>();
-
             return procesos;
         }
 
-        public static List<Programa> GetProgramas()
+        public static void LeerProgrmasInstalados()
         {
-            return programas;
-        }
-
-        public static void obtenerProgramasInstalados()
-        {
-            List<Programa> installedApps = new List<Programa>();
-
             string startMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu);
             string programsPath = Path.Combine(startMenuPath, "Programs");
+            var list = ObtenerProgramasGuardados();
 
-            installedApps = ObtenerProgramas(programsPath);
-
-            programas = installedApps;
+            if (list is null || list.Count == 0)
+            {
+                MessageBox.Show("Cargando Programas...");
+                Programas = ObtenerProgramasInstalados(programsPath);
+            }
+            else Programas = list;
         }
 
-        static List<Programa> ObtenerProgramas(string carpeta)
+        public static void GuardarPrograma(Programa programa)
+        {
+            using (var conn = new ConexionContext())
+            {
+                conn.Programas!.Add(programa);
+                conn.SaveChanges();
+            }
+        }
+
+        private static List<Programa> ObtenerProgramasGuardados()
+        {
+            var list = new List<Programa>();
+            using (var conn = new ConexionContext())
+            {
+                list = conn.Programas!.ToList<Programa>();
+            }
+            return list;
+        }
+
+        private static List<Programa> ObtenerProgramasInstalados(string carpeta)
         {
             List<Programa> programas = new List<Programa>();
-            int id = 1;
-
-            // Obtener archivos .lnk en la carpeta especificada
-            string[] archivosLnk = Directory.GetFiles(carpeta, "*.lnk");
+            string[] archivosLnk = Directory.GetFiles(carpeta, "*.lnk"); // Obtener archivos .lnk en la carpeta especificada
 
             foreach (string archivo in archivosLnk)
             {
@@ -54,12 +70,10 @@ namespace AplicacionEficiencia.Controladores
                     var shell = new Shell32.Shell();
                     var folder = shell.NameSpace(Path.GetDirectoryName(shortcut.FullName));
                     var folderItem = folder.ParseName(Path.GetFileName(shortcut.FullName));
-
                     string nombre = folder.GetDetailsOf(folderItem, 0); // Nombre del programa
                     string ruta = folder.GetDetailsOf(folderItem, 194); // Ruta del ejecutable
-
-
                     FolderItem folderIt = folder.ParseName(System.IO.Path.GetFileName(ruta));
+
                     if (folderIt != null)
                     {
                         Shell32.ShellLinkObject lnk = folderIt.GetLink;
@@ -68,10 +82,13 @@ namespace AplicacionEficiencia.Controladores
 
                         Debug.WriteLine("Ruta: " + ruta);
                         if (!ruta.Contains("Uninstall") && !ruta.Contains("Desinstalar"))
-                            programas.Add(new Programa(id++, nombre, ruta));
+                        {
+                            var p = new Programa(0, nombre, ruta);
+                            programas.Add(p);
+                            GuardarPrograma(p);
+                        }         
                     }
                     else Debug.WriteLine("Error al obtener ruta");
-
                 }
                 catch (Exception ex)
                 {
@@ -81,8 +98,7 @@ namespace AplicacionEficiencia.Controladores
 
             // Recursivamente obtener programas de las subcarpetas
             foreach (string subCarpeta in Directory.GetDirectories(carpeta))
-                programas.AddRange(ObtenerProgramas(subCarpeta));
-
+                programas.AddRange(ObtenerProgramasInstalados(subCarpeta));
 
             return programas;
         }
