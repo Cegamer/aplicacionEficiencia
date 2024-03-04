@@ -1,7 +1,10 @@
 ﻿using AplicacionEficiencia.Controladores;
+using AplicacionEficiencia.Dal;
 using AplicacionEficiencia.Vistas;
 using System.Windows;
 using System.Windows.Media;
+using System.Threading.Tasks;
+
 
 namespace AplicacionEficiencia
 {
@@ -11,6 +14,7 @@ namespace AplicacionEficiencia
     public partial class MainWindow : Window
     {
         public static Perfiles perfilesVista = new Perfiles();
+        public static Estadistica estadisticaVista = new Estadistica();
         public static PerfilesController perfilesController;
         public static MainWindow mainWindow;
         public MainWindow()
@@ -19,16 +23,26 @@ namespace AplicacionEficiencia
             InitializeComponent();
             mainWindow = this;
             /*Esto hay que arreglarlo, pero aun no, por ahora funciona */
-            LectorProgramas.MainWindow = this;
-            LectorProgramas.obtenerProgramasInstalados();
+            LectorProgramas.View = this;
+            LectorProgramas.LeerProgrmasInstalados();
             perfilesController = new PerfilesController(perfilesVista);
             frame.Content = perfilesVista;
             /* --------------------------------------------------------- */
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void rbtn_perfiles_click(object sender, RoutedEventArgs e)
         {
             frame.Content = perfilesVista;
+        }
+
+        private void rbtn_sesion_actual_click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = SesionActual.sesionActualVista;
+        }
+
+        private void rbtn_estadisticas_click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = estadisticaVista;
         }
 
         private void Window_ContentRendered(object sender, System.EventArgs e)
@@ -38,11 +52,6 @@ namespace AplicacionEficiencia
             
             var bursh = new SolidColorBrush(lighter);
             Application.Current.Resources["HButtonLigther"] = bursh;
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            MainWindow.mainWindow.frame.Content = SesionActual.sesionActualVista;
         }
     }
 }

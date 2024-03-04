@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -13,7 +14,7 @@ namespace AplicacionEficiencia.Controladores
     public class ListaAplicacionesModificarPerfil
     {
         public ModificarPerfil view;
-        public Perfil perfil {  get; private set; }
+        public Perfil perfil { get; private set; }
         public List<Programa> ProgramasBloqueados { get; private set; }
         public List<Programa> ProgramasAutostart { get; private set; }
 
@@ -31,13 +32,78 @@ namespace AplicacionEficiencia.Controladores
             mostrarListaAplicaciones();
         }
 
+        private void ActualizarListas()
+        {
+            foreach (var p in ProgramasAutostart)
+            {
+                var pItem = new ProgramaItem(p, view, this);
+                view.list_app_ejecutar.Items.Add(pItem);
+            }
+
+            foreach (var p in ProgramasBloqueados)
+            {
+                var pItem = new ProgramaItem(p, view, this);
+                view.list_applicaciones_bloqueadas.Items.Add(pItem);
+            }
+        }
+
+        private void Btn_agregarapp_Click(object sender, RoutedEventArgs e)
+        {
+            var startMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu);
+            var programsPath = Path.Combine(startMenuPath, "Programs");
+            var fileChoser = new OpenFileDialog();
+            fileChoser.DefaultExt = ".exe";
+            fileChoser.Filter = "Executable Files (*.exe)|*.exe";
+            fileChoser.InitialDirectory = programsPath;
+
+            if (fileChoser.ShowDialog() ?? false)
+            {
+                string path = fileChoser.FileName;
+                string name = System.IO.Path.GetFileName(path);
+                var programa = new Programa(0, name, path);
+
+                //LectorProgramas.Programas.Add(programa);
+                LectorProgramas.GuardarPrograma(programa);
+                ActualizarListaProgramas();
+            }
+        }
+
+        private void ActualizarListaProgramas()
+        {
+            LectorProgramas.LeerProgrmasInstalados();
+            view.panelAplicaciones.Children.Clear();
+            mostrarListaAplicaciones();
+        }
+
+        private void Btn_guardar_Click(object sender, RoutedEventArgs e)
+        {
+            var perfiles = PerfilesController.perfiles;
+            var nuevoNombre = this.view.txtNombrePerfil.Text;
+
+            perfil.nombre = (!string.IsNullOrEmpty(nuevoNombre)) ? nuevoNombre : perfil.nombre;
+            perfil.descripcion = this.view.txtDescripcion.Text;
+            perfil.programasAEjecutar = ProgramasAutostart;
+            perfil.programasBloqueados = ProgramasBloqueados;
+            Regrasar();
+        }
+
+        private void Regrasar()
+        {
+            var view = new Perfiles();
+            new PerfilesController(view);
+            MainWindow.perfilesController.MostrarPerfiles();
+            MainWindow.mainWindow.frame.Content = MainWindow.perfilesVista;
+        }
+
+        private bool AplicacionEnListas(Programa p) => (ProgramasAutostart.Contains(p) || ProgramasBloqueados.Contains(p));
+
         public void mostrarListaAplicaciones()
         {
             //Contenedor de la lista
             StackPanel stackPanelPrincipal = new StackPanel();
             int counter = 0;
 
-            foreach (Programa programa in LectorProgramas.programas)
+            foreach (Programa programa in LectorProgramas.Programas)
             {
                 var brush = (counter % 2 == 0) ? new SolidColorBrush(Color.FromRgb(28, 28, 30)) : Brushes.Transparent;
 
@@ -149,75 +215,5 @@ namespace AplicacionEficiencia.Controladores
 
             view.panelAplicaciones.Children.Add(stackPanelPrincipal);
         }
-
-        private void ActualizarListas()
-        {
-            foreach (var p in ProgramasAutostart)
-            {
-                var pItem = new ProgramaItem(p, view, this);
-                view.list_app_ejecutar.Items.Add(pItem);
-            }
-
-            foreach (var p in ProgramasBloqueados)
-            {
-                var pItem = new ProgramaItem(p, view, this);
-                view.list_applicaciones_bloqueadas.Items.Add(pItem);
-            }
-        }
-
-        private void Btn_agregarapp_Click(object sender, RoutedEventArgs e)
-        {
-            var fileChoser = new OpenFileDialog();
-            fileChoser.DefaultExt = ".exe";
-            fileChoser.Filter = "Executable Files (*.exe)|*.exe";
-            fileChoser.InitialDirectory = "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs";
-
-            if (fileChoser.ShowDialog() ?? false)
-            {
-                string path = fileChoser.FileName;
-                string name = System.IO.Path.GetFileName(path);
-                var app = new Programa(999, name, path); //Ingresar ID autogenerado por la base de datos
-
-                LectorProgramas.programas.Add(app);
-                view.panelAplicaciones.Children.Clear();
-                mostrarListaAplicaciones();
-            }
-        }
-
-        private void Btn_guardar_Click(object sender, RoutedEventArgs e)
-        {
-            var perfiles = PerfilesController.perfiles;
-            var nuevoNombre = this.view.txtNombrePerfil.Text;
-            /* perfil = new Perfil (-1, "", "")
-
-
-             {
-                 id = perfil.id,
-                 nombre = (!string.IsNullOrEmpty(nuevoNombre)) ? nuevoNombre : perfil.nombre,
-                 descripcion = this.view.txtDescripcion.Text,
-                 programasAEjecutar = ProgramasAutostart,
-                 programasBloqueados = ProgramasBloqueados
-             };
-
-
-             if (perfiles.ContainsKey(perfil.id)) { perfiles.Remove(perfil.id); }
-             perfiles.Add(perfil.id, perfil);*/
-
-            perfil.nombre = (!string.IsNullOrEmpty(nuevoNombre)) ? nuevoNombre : perfil.nombre;
-            perfil.descripcion = this.view.txtDescripcion.Text;
-            perfil.programasAEjecutar = ProgramasAutostart;
-            perfil.programasBloqueados = ProgramasBloqueados;
-            Regrasar();
-        }
-
-        private void Regrasar()
-        {
-            var view = new Perfiles();
-            new PerfilesController(view);
-            MainWindow.perfilesController.MostrarPerfiles();
-            MainWindow.mainWindow.frame.Content = MainWindow.perfilesVista;
-        }
-
-        private bool AplicacionEnListas(Programa p) => (ProgramasAutostart.Contains(p) || ProgramasBloqueados.Contains(p));
     }
 }

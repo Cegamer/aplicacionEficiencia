@@ -4,17 +4,29 @@ using System.Drawing;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AplicacionEficiencia.Modelos
 {
+    [Table("Programa")]
     public class Programa
     {
-        public int id { get; }
-        public string nombre { get; set; }
-        public string ruta { get; set; }
-        public string rutaIcono { get; set; }
-        public string nombreProceso { get; set; }
+        [Key]
+        [Column("ProgramaID")]
+        public int id { get; set; }
 
+        [Column("NombreProgrma")]
+        [MaxLength(200)]
+        public string nombre { get; set; }
+
+        [Column("RutaProgrma")]
+        [DataType(DataType.Text)]
+        public string ruta { get; set; }
+
+        [Column("NombreProceso")]
+        [DataType(DataType.Text)]
+        public string nombreProceso { get; set; }
 
         public Programa(int id, string nombre, string ruta)
         {
@@ -23,6 +35,7 @@ namespace AplicacionEficiencia.Modelos
             this.ruta = ruta;
             this.nombreProceso = obtenerNombreProceso();
         }
+
         public Process iniciarPrograma()
         {
             var proceso = Process.Start(ruta);
@@ -30,7 +43,8 @@ namespace AplicacionEficiencia.Modelos
             Debug.WriteLine(nombreProceso);
             return proceso;
         }
-        private string obtenerNombreProceso() {
+        private string obtenerNombreProceso()
+        {
             ProcessStartInfo startInfo = new ProcessStartInfo(ruta);
 
             try
