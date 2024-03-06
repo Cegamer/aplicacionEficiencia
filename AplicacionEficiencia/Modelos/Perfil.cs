@@ -21,6 +21,8 @@ namespace AplicacionEficiencia.Modelos
         [MaxLength(2500)]
         public string descripcion { get; set; }
 
+        public List<Programa> programas { get; set; }
+
         // Toca arreglar esto :)
         [NotMapped]
         public List<Programa> programasAEjecutar { get; set; }

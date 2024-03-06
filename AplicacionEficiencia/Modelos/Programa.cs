@@ -6,6 +6,8 @@ using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows.Documents;
+using System.Collections.Generic;
 
 namespace AplicacionEficiencia.Modelos
 {
@@ -27,6 +29,8 @@ namespace AplicacionEficiencia.Modelos
         [Column("NombreProceso")]
         [DataType(DataType.Text)]
         public string nombreProceso { get; set; }
+
+        public List<Perfil> perfils { get; set; }
 
         public Programa(int id, string nombre, string ruta)
         {
