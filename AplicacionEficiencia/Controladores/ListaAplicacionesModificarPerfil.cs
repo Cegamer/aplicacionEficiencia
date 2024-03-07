@@ -1,10 +1,12 @@
-﻿using AplicacionEficiencia.Modelos;
+﻿using AplicacionEficiencia.Dal;
+using AplicacionEficiencia.Modelos;
 using AplicacionEficiencia.Vistas;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -84,6 +86,7 @@ namespace AplicacionEficiencia.Controladores
             perfil.descripcion = this.view.txtDescripcion.Text;
             perfil.programasAEjecutar = ProgramasAutostart;
             perfil.programasBloqueados = ProgramasBloqueados;
+            GuardarPerfilModificado(perfil);
             Regrasar();
         }
 
@@ -214,6 +217,39 @@ namespace AplicacionEficiencia.Controladores
             }
 
             view.panelAplicaciones.Children.Add(stackPanelPrincipal);
+        }
+
+       /*
+       -
+       - Transacciones con la database
+       -
+       */
+
+        //Guardar el perfil en la base de datos.
+        public static void GuardarPerfilModificado(Perfil perfil)
+        {
+            using (var conn = new ConexionContext())
+            {
+                var perfilAModificar = conn.Perfiles!.FirstOrDefault(p => p.id == perfil.id);
+
+                perfilAModificar.nombre = perfil.nombre;
+                perfilAModificar.descripcion = perfil.descripcion;
+
+                var programasPerfilesToDelete = conn.ProgramasPerfiles!.Where(pp => pp.Id_Perfil == perfil.id);
+                conn.ProgramasPerfiles!.RemoveRange(programasPerfilesToDelete);
+
+                foreach (var programa in perfil.programasBloqueados)
+                {
+                    ProgramasPerfiles programasPerfiles = new ProgramasPerfiles(programa.id, perfil.id, false);
+                    conn.ProgramasPerfiles!.Add(programasPerfiles);
+                }
+                foreach (var programa in perfil.programasAEjecutar) {
+                    ProgramasPerfiles programasPerfiles = new ProgramasPerfiles(programa.id, perfil.id, true);
+                    conn.ProgramasPerfiles!.Add(programasPerfiles);
+                }
+
+                conn.SaveChanges();
+            }
         }
     }
 }

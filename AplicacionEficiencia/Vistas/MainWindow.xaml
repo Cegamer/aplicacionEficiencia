@@ -51,7 +51,7 @@
             <RadioButton Content="Sesion Actual" 
                          Foreground="White"
                          FontSize="17"
-                         Style="{StaticResource TemaBotonMenu}" Click="RadioButton_Checked"/>
+                         Style="{StaticResource TemaBotonMenu}"/>
             
             <RadioButton Content="Estadisticas" 
                          Foreground="White"

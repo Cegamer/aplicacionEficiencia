@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using AplicacionEficiencia.Dal;
+using System.Linq;
 
 namespace AplicacionEficiencia.Controladores
 {
@@ -19,27 +21,45 @@ namespace AplicacionEficiencia.Controladores
             this.view = view;
             this.view.btn_new_profile.Click += Btn_new_profile_Click;   
             this.manager = new ExpandableGrid(ref view.profiles_grid, 3, 400);
-            PerfilDePrueva();
+            llenarDiccionarioPerfiles();
             MostrarPerfiles();
         }
 
-        private void PerfilDePrueva()
+        private void llenarDiccionarioPerfiles()
         {
+            perfiles.Clear();
+            var perfilesLista = ObtenerPerfilesGuardados();
+            foreach (var perfil in perfilesLista) { 
+                perfiles.Add(perfil.id, perfil);
+            }
+            /*
             var perfil1 = new Perfil(1, "Trabajo", "Para trabajar");
             var perfil2 = new Perfil(2, "Juego", "Para jugar GTA");
             PerfilesController.perfiles.Add(perfil1.id, perfil1);
-            PerfilesController.perfiles.Add(perfil2.id, perfil2);
+            PerfilesController.perfiles.Add(perfil2.id, perfil2);*/
         }
 
         private void Btn_new_profile_Click(object sender, RoutedEventArgs e)
         {
-            int id = PerfilesController.perfiles.Count + 1;
-            PerfilesController.perfiles.Add(id, new Perfil(id, $"Nuevo Perfil {id}", ""));
+            int id = perfiles.Count + 1;
+            Perfil nuevoPerfil = new Perfil(id, $"Nuevo Perfil {id}", "");
+            perfiles.Add(id, nuevoPerfil);
+            GuardarNuevoPerfil(nuevoPerfil);
             MostrarPerfiles();
+        }
+
+        public static void GuardarNuevoPerfil(Perfil perfil)
+        {
+            using (var conn = new ConexionContext())
+            {
+                conn.Perfiles!.Add(perfil);
+                conn.SaveChanges();
+            }
         }
 
         public void MostrarPerfiles() 
         {
+            llenarDiccionarioPerfiles();
             manager.Reset();
             foreach (var perfil in PerfilesController.perfiles.Values)
             {
@@ -117,7 +137,9 @@ namespace AplicacionEficiencia.Controladores
                 if (SesionActual.sesionActual == null)
                 {
                     perfil.iniciar();
-                    MainWindow.mainWindow.frame.Content = new SesionActual(new Sesion(perfil));
+                    Sesion sesion = new Sesion(perfil);
+
+                    MainWindow.mainWindow.frame.Content = new SesionActual(sesion);
                 }
                 else
                 {
@@ -162,6 +184,29 @@ namespace AplicacionEficiencia.Controladores
                 grid.RowDefinitions.Add(new RowDefinition());
             }
             return grid;
+        }
+
+        //Cargar perfiles guardados en la base de datos
+        private static List<Perfil> ObtenerPerfilesGuardados()
+        {
+            var perfiles = new List<Perfil>();
+            using (var conn = new ConexionContext())
+            {
+                perfiles = conn.Perfiles!.ToList<Perfil>();
+                foreach (var perfil in perfiles)
+                {
+                    perfil.programasAEjecutar = conn.ProgramasPerfiles
+                        .Where(pp => pp.Id_Perfil == perfil.id && pp.Ejecutar)
+                        .Select(pp => pp.Programa)
+                        .ToList();
+
+                    perfil.programasBloqueados = conn.ProgramasPerfiles
+                        .Where(pp => pp.Id_Perfil == perfil.id && !pp.Ejecutar)
+                        .Select(pp => pp.Programa)
+                        .ToList();
+                }
+            }
+            return perfiles;
         }
     }
 }

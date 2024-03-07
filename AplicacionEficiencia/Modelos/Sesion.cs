@@ -1,6 +1,10 @@
-﻿using AplicacionEficiencia.Vistas;
+﻿using AplicacionEficiencia.Dal;
+using AplicacionEficiencia.Vistas;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,8 +25,10 @@ namespace AplicacionEficiencia.Modelos
         {
             Perfil = perfil;
             horaInicio = DateTime.Now;
-            programasMonitoreo = obtenerListaDeProgramasMonitoreados();
+            horaFin = DateTime.Now;
             activa = true;
+            GuardarDatosSesion(this);
+            programasMonitoreo = obtenerListaDeProgramasMonitoreados();
         }
 
         private List<SesionPrograma> obtenerListaDeProgramasMonitoreados()
@@ -76,11 +82,8 @@ namespace AplicacionEficiencia.Modelos
                     foreach (var proceso in Process.GetProcessesByName(programaABloquear.nombreProceso)) { 
                         proceso.Kill();
                     }
-                    Debug.WriteLine($"Se abrio {programaABloquear.nombre}");
                     MessageBox.Show($"No puede iniciar {programaABloquear.nombre} porque está en la lista de programas bloquados");
                 }
-                else
-                    Debug.WriteLine($"{programaABloquear.nombreProceso} - {Process.GetProcessesByName(programaABloquear.nombreProceso).Length}");
             }
         }
 
@@ -140,10 +143,42 @@ namespace AplicacionEficiencia.Modelos
                 activa = false;
 
             }
+            ActualizarDatosSesion(this);
             SesionActual.sesionActual = null;
-            ///Aquí hay que enviar los datos de la sesión a la database
+            
+        }
+        public static void GuardarDatosSesion(Sesion sesion)
+        {
+            using (var conn = new ConexionContext())
+            {
+                SesionDTO dto = new SesionDTO();
+                dto.horaFin = sesion.horaFin;
+                dto.horaInicio = sesion.horaInicio;
+                dto.PerfilId = sesion.Perfil.id;
+
+
+                conn.Sesiones!.Add(dto);
+                conn.SaveChanges();
+
+                sesion.id = dto.id;
+            }
         }
 
+        public static void ActualizarDatosSesion(Sesion sesion)
+        {
+            using (var conn = new ConexionContext())
+            {
+                var existingSesion = conn.Sesiones.FirstOrDefault(s => s.id == sesion.id);
+
+                if (existingSesion != null)
+                {
+                    // Actualiza los datos de la sesión existente
+                    existingSesion.horaInicio = sesion.horaInicio;
+                    existingSesion.horaFin = sesion.horaFin;
+                }
+                conn.SaveChanges();
+            }
+        }
 
     }
 }

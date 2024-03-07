@@ -1,5 +1,8 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using AplicacionEficiencia.Dal;
 
 namespace AplicacionEficiencia.Modelos
 {
@@ -10,7 +13,7 @@ namespace AplicacionEficiencia.Modelos
         public DateTime horaInicio { get; set; }
         public DateTime horaFin { get; set; }
         public TimeSpan tiempoTranscurrido { get; set; }
-
+        [NotMapped]
         public bool activa;
 
         public SesionPrograma(Sesion sesion, Programa programa, DateTime horaInicio)
@@ -19,12 +22,13 @@ namespace AplicacionEficiencia.Modelos
             this.programa = programa;
             this.horaInicio = horaInicio;
             this.activa = true;
+
         }
 
         public TimeSpan calcularTiempoTranscurrido(DateTime fin)
-        { 
+        {
             if (!activa)
-                tiempoTranscurrido =  horaFin - horaInicio;
+                tiempoTranscurrido = horaFin - horaInicio;
             else
                 tiempoTranscurrido = fin - horaInicio;
 
@@ -35,7 +39,24 @@ namespace AplicacionEficiencia.Modelos
             horaFin = DateTime.Now;
             Debug.WriteLine("Finalizado proceso" + programa.nombre);
             activa = false;
-            ///Aquí hay que enviar los datos de la sesión a la database
+            GuardarDatosSesionPrograma(this);
+        }
+
+        public static void GuardarDatosSesionPrograma(SesionPrograma sesionPrograma)
+        {
+            using (var conn = new ConexionContext())
+            {
+                SesionProgramaDTO dto = new SesionProgramaDTO();
+                dto.horaFin = sesionPrograma.horaFin;
+                dto.horaInicio = sesionPrograma.horaInicio;
+                dto.SesionId = sesionPrograma.sesion.id;
+                dto.ProgramaId = sesionPrograma.programa.id;
+                dto.tiempoTranscurrido = sesionPrograma.tiempoTranscurrido;
+
+
+                conn.SesionesProgramas!.Add(dto);
+                conn.SaveChanges();
+            }
         }
 
     }

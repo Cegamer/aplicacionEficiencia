@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using AplicacionEficiencia.Dal;
 
 namespace AplicacionEficiencia.Modelos
 {
@@ -11,6 +12,7 @@ namespace AplicacionEficiencia.Modelos
     {
         [Key]
         [Column("PerfilID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
         [Column("NombrePerfil")]
@@ -21,13 +23,13 @@ namespace AplicacionEficiencia.Modelos
         [MaxLength(2500)]
         public string descripcion { get; set; }
 
-        public List<Programa> programas { get; set; }
-
-        // Toca arreglar esto :)
         [NotMapped]
         public List<Programa> programasAEjecutar { get; set; }
         [NotMapped]
         public List<Programa> programasBloqueados { get; set; }
+        [NotMapped]
+        public ICollection<SesionDTO> Sesiones { get; set; }
+
 
         public Perfil(int id, string nombre, string descripcion)
         {

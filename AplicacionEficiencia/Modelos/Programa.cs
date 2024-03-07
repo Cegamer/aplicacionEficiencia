@@ -30,8 +30,6 @@ namespace AplicacionEficiencia.Modelos
         [DataType(DataType.Text)]
         public string nombreProceso { get; set; }
 
-        public List<Perfil> perfils { get; set; }
-
         public Programa(int id, string nombre, string ruta)
         {
             this.id = id;

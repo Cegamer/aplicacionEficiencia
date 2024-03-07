@@ -37,25 +37,6 @@ namespace AplicacionEficiencia.Controladores
             else Programas = list;
         }
 
-        public static void GuardarPrograma(Programa programa)
-        {
-            using (var conn = new ConexionContext())
-            {
-                conn.Programas!.Add(programa);
-                conn.SaveChanges();
-            }
-        }
-
-        private static List<Programa> ObtenerProgramasGuardados()
-        {
-            var list = new List<Programa>();
-            using (var conn = new ConexionContext())
-            {
-                list = conn.Programas!.ToList<Programa>();
-            }
-            return list;
-        }
-
         private static List<Programa> ObtenerProgramasInstalados(string carpeta)
         {
             List<Programa> programas = new List<Programa>();
@@ -86,7 +67,7 @@ namespace AplicacionEficiencia.Controladores
                             var p = new Programa(0, nombre, ruta);
                             programas.Add(p);
                             GuardarPrograma(p);
-                        }         
+                        }
                     }
                     else Debug.WriteLine("Error al obtener ruta");
                 }
@@ -101,6 +82,32 @@ namespace AplicacionEficiencia.Controladores
                 programas.AddRange(ObtenerProgramasInstalados(subCarpeta));
 
             return programas;
+        }
+
+        /*
+        -
+        - Transacciones con la database
+        -
+        */
+
+        //Guardar el programa en la base de datos.
+        public static void GuardarPrograma(Programa programa)
+        {
+            using (var conn = new ConexionContext())
+            {
+                conn.Programas!.Add(programa);
+                conn.SaveChanges();
+            }
+        }
+        //Cargar programas guardados en la base de datos
+        private static List<Programa> ObtenerProgramasGuardados()
+        {
+            var list = new List<Programa>();
+            using (var conn = new ConexionContext())
+            {
+                list = conn.Programas!.ToList<Programa>();
+            }
+            return list;
         }
     }
 }
