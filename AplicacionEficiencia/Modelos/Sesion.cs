@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -143,6 +144,7 @@ namespace AplicacionEficiencia.Modelos
                 activa = false;
 
             }
+            horaFin = DateTime.Now;
             ActualizarDatosSesion(this);
             SesionActual.sesionActual = null;
             
