@@ -21,6 +21,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Temas\DataGrid.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Temas\DataGridCell.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Temas\DataGridHeader.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Temas\DataGridRow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Temas\EnfasisButtons.xaml">
       <SubType>Designer</SubType>
     </Page>

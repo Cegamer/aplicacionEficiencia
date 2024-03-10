@@ -138,7 +138,6 @@ namespace AplicacionEficiencia.Controladores
                 {
                     perfil.iniciar();
                     Sesion sesion = new Sesion(perfil);
-
                     MainWindow.mainWindow.frame.Content = new SesionActual(sesion);
                 }
                 else

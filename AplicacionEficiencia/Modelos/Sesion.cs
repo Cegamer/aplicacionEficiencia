@@ -57,9 +57,8 @@ namespace AplicacionEficiencia.Modelos
 
                 SesionActual.sesionActualVista.Dispatcher.Invoke(() =>
                 {
-                    SesionActual.sesionActualVista.testSesion.Content = "";
+                    //SesionActual.sesionActualVista.testSesion.Content = "";
                     SesionActual.sesionActualVista.label.Content = calcularTiempoTranscurrido();
-
                     foreach (var item in programasMonitoreo)
                     {
                         if (item.activa)
@@ -120,12 +119,18 @@ namespace AplicacionEficiencia.Modelos
                 {
                     NombreProceso = grupo.Key, 
                     TiempoTotal = TimeSpan.FromTicks(grupo.Sum(obj => obj.tiempoTranscurrido.Ticks)),
-                    Programa = grupo.First().programa
+                    Programa = grupo.First().programa,
+                    NombrePrograma = grupo.First().programa.nombre
                 });
+
+            SesionActual.sesionActualVista.datagrid_seccion.ItemsSource = tiempoTotalProgramas;
+            /*
             foreach (var item in tiempoTotalProgramas)
             {
+                SesionActual.sesionActualVista.datagrid_seccion.Items.Add(item);
                 SesionActual.sesionActualVista.testSesion.Content += $"{item.NombreProceso} | {item.TiempoTotal}\n";
             }
+            */
         }
 
         public TimeSpan calcularTiempoTranscurrido()

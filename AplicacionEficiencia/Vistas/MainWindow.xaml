@@ -40,19 +40,14 @@
                          IsChecked="True"
                          Click="rbtn_perfiles_click"
                          Style="{StaticResource TemaBotonMenu}"/>
-            
+
             <RadioButton Content="Sesion Actual"
                          Name="rbtn_sesion_actual"
                          Foreground="White"
                          FontSize="17"
                          Click="rbtn_sesion_actual_click"
                          Style="{StaticResource TemaBotonMenu}"/>
-            
-            <RadioButton Content="Sesion Actual" 
-                         Foreground="White"
-                         FontSize="17"
-                         Style="{StaticResource TemaBotonMenu}"/>
-            
+
             <RadioButton Content="Estadisticas" 
                          Foreground="White"
                          Name="rbtn_estadisticas"

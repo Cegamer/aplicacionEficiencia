@@ -11,6 +11,10 @@
                 <ResourceDictionary Source="Temas/TemaBotonMenu.xaml"/>
                 <ResourceDictionary Source="Temas/ScrollBarStyle.xaml"/>
                 <ResourceDictionary Source="Temas/EnfasisButtons.xaml"/>
+                <ResourceDictionary Source="Temas/DataGrid.xaml"/>
+                <ResourceDictionary Source="Temas/DataGridRow.xaml"/>
+                <ResourceDictionary Source="Temas/DataGridHeader.xaml"/>
+                <ResourceDictionary Source="Temas/DataGridCell.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="ProgramItemTemplate" DataType="{x:Type controlers:ProgramaItem}">
                 <Grid>

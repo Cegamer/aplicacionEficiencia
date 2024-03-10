@@ -14,6 +14,8 @@ namespace AplicacionEficiencia.Vistas
 
         {
             InitializeComponent();
+            this.label_profile_name.Content = sesion.Perfil.nombre;
+            this.label_profile_info.Content = sesion.Perfil.descripcion;
             sesionActualVista = this;
             sesion.IniciarMonitoreo();
             sesionActual = sesion;
