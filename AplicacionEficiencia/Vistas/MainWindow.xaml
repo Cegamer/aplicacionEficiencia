@@ -63,7 +63,8 @@
             <RadioButton Content="Informacion"
                          Foreground="White"
                          FontSize="17"
-                         Style="{StaticResource TemaBotonMenu}"/>
+                         Style="{StaticResource TemaBotonMenu}"
+                         Click="rbtn_informacion_click"/>
         </StackPanel>
         <!--#endregion-->
 

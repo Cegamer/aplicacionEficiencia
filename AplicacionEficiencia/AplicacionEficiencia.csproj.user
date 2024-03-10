@@ -7,7 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Vistas\Ajustes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Vistas\Estadistica.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Informacion.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Vistas\ModificarPerfil.xaml.cs">
@@ -42,7 +48,13 @@
     <Page Update="Temas\TextBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Vistas\Ajustes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Vistas\Estadistica.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Informacion.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Vistas\MainWindow.xaml">

@@ -15,6 +15,7 @@ namespace AplicacionEficiencia
     {
         public static Perfiles perfilesVista = new Perfiles();
         public static Estadistica estadisticaVista = new Estadistica();
+        public static Informacion informacionVista = new Informacion();
         public static PerfilesController perfilesController;
         public static MainWindow mainWindow;
         public MainWindow()
@@ -44,6 +45,11 @@ namespace AplicacionEficiencia
         {
             frame.Content = estadisticaVista;
         }
+        
+        private void rbtn_informacion_click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = informacionVista;
+        }
 
         private void Window_ContentRendered(object sender, System.EventArgs e)
         {
@@ -53,5 +59,7 @@ namespace AplicacionEficiencia
             var bursh = new SolidColorBrush(lighter);
             Application.Current.Resources["HButtonLigther"] = bursh;
         }
+
+        
     }
 }
