@@ -12,6 +12,9 @@ namespace AplicacionEficiencia.Modelos
         private GraficoLineas graficoLineas;
         private GraficoRosquilla graficoRosquilla;
         private GraficoBarras graficoBarras;
+        //private GraficoLista graficoLista;
+
+        
 
         public GraficoBarras GraficoBarras
         {

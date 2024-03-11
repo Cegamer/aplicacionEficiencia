@@ -8,16 +8,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows;
+using AplicacionEficiencia.Controladores;
 
 namespace AplicacionEficiencia.Modelos
 {
     public partial class GraficoBarras : ObservableObject
     {
+        public Color systemColor {  get; set; }
         public ISeries[] Series { get; set; } =
         {
             new ColumnSeries<int>
             {
-                Values = new int[] {1,4, 3, 5}
+                Values = new int[] {1,4, 3, 5},
+                Fill = new SolidColorPaint(ColorControler.GetWindowGlassSKColor())
             }
         };
 
