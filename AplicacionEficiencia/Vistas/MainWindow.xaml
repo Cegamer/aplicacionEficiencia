@@ -58,6 +58,7 @@
             <RadioButton Content="Ajustes"
                          Foreground="White"
                          FontSize="17"
+                         Click="rbtn_config_click"
                          Style="{StaticResource TemaBotonMenu}"/>
 
             <RadioButton Content="Informacion"
