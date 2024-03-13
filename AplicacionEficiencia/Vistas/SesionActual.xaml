@@ -60,7 +60,7 @@
             AutoGenerateColumns="False"
             Grid.Column="1" Grid.Row="4"
             Margin="0 0 0 15"
-            Name="datagrid_seccion">
+            Name="datagrid_seccion" IsReadOnly="True">
 
             <DataGrid.Columns>
                 <DataGridTextColumn 
