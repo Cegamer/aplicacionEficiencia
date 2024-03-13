@@ -16,8 +16,10 @@ namespace AplicacionEficiencia
         public static Perfiles perfilesVista = new Perfiles();
         public static Estadistica estadisticaVista = new Estadistica();
         public static Informacion informacionVista = new Informacion();
+        public static Ajustes configView = new Ajustes();
         public static PerfilesController perfilesController;
         public static MainWindow mainWindow;
+
         public MainWindow()
         {
 
@@ -49,6 +51,11 @@ namespace AplicacionEficiencia
         private void rbtn_informacion_click(object sender, RoutedEventArgs e)
         {
             frame.Content = informacionVista;
+        }
+
+        private void rbtn_config_click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = configView;
         }
 
         private void Window_ContentRendered(object sender, System.EventArgs e)

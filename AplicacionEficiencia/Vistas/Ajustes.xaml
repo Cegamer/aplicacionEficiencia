@@ -9,13 +9,51 @@
       Title="Ajustes">
 
     <Grid>
-
+        <!--#region Grid Definitions -->
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        
+        <!--#endregion-->
+
+        <TextBlock Text="Ajustes"
+                       Grid.Column="1" Grid.Row="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Name="nombre_perfil"
+                   Margin="0 0 0 16"/>
+
+
+        <StackPanel Orientation="Vertical"  Grid.Column="1" Grid.Row="2">
+            <TextBlock Text="Text Size" Foreground="#ffffff" FontSize="15" Margin="10 0 0 5"/>
+            <Border Height="40" Background="#1c1c1e" CornerRadius="8" Padding="10 5">
+                <Slider Style="{DynamicResource MaterialSlider}" Minimum="1" Maximum="5" VerticalAlignment="Center" />
+            </Border>
+            <TextBlock Text="Select the font size scale" Foreground="#8d8d93" FontSize="13" Margin="10 5 0 0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"  Grid.Column="1" Grid.Row="4">
+            <TextBlock Text="Text Size" Foreground="#ffffff" FontSize="15" Margin="10 0 0 5"/>
+            <Border Height="120" Background="#1c1c1e" CornerRadius="8" Padding="10 5">
+                <StackPanel VerticalAlignment="Center">
+                    <Slider Style="{DynamicResource MaterialSlider}" Minimum="1" Maximum="255" Margin="0 8"/>
+                    <Slider Style="{DynamicResource MaterialSlider}" Minimum="1" Maximum="255" Margin="0 8"/>
+                    <Slider Style="{DynamicResource MaterialSlider}" Minimum="1" Maximum="255" Margin="0 8"/>
+                </StackPanel>
+            </Border>
+            <TextBlock Text="Select the font size scale" Foreground="#8d8d93" FontSize="13" Margin="10 5 0 0"/>
+        </StackPanel>
     </Grid>
 </Page>

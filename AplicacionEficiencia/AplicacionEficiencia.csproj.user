@@ -45,6 +45,9 @@
     <Page Update="Temas\ScrollBarStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Temas\Slider.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Temas\TextBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
