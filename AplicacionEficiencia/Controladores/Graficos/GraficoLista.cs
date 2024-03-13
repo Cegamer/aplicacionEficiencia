@@ -16,10 +16,21 @@ using SkiaSharp;
 
 namespace AplicacionEficiencia.Controladores.Graficos
 {
+    public class PilotoInfo : ObservableValue
+    {
+        public string Nombre { get; set; }
+        public SolidColorPaint Paint { get; set; }
+        public PilotoInfo(String nombre, int value, SolidColorPaint paint) 
+        {
+            Nombre = nombre;
+            Paint = paint;
+            Value = value;
+        }
 
+    }
     public partial class GraficoLista : ObservableObject
     {
-        /*
+        
         private readonly Random _r = new();
         private readonly PilotoInfo[] _data;
         
@@ -89,6 +100,6 @@ namespace AplicacionEficiencia.Controladores.Graficos
                 await Task.Delay(100);
             }
         }
-        */
+        
     }
 }

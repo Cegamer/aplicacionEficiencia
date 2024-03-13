@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AplicacionEficiencia.Controladores.Graficos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace AplicacionEficiencia.Modelos
         private GraficoLineas graficoLineas;
         private GraficoRosquilla graficoRosquilla;
         private GraficoBarras graficoBarras;
-        //private GraficoLista graficoLista;
+        private GraficoLista graficoLista;
 
         
 
@@ -46,11 +47,22 @@ namespace AplicacionEficiencia.Modelos
             }
         }
 
+        public GraficoLista GraficoLista
+        {
+            get { return graficoLista; }
+            set
+            {
+                graficoLista = value;
+                OnPropertyChanged(nameof(GraficoLista));
+            }
+        }
+
         public MainGraficas()
         {
             GraficoBarras = new GraficoBarras();
             GraficoLineas = new GraficoLineas();
             GraficoRosquilla = new GraficoRosquilla();
+            GraficoLista = new GraficoLista();
 
         }
 

@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AplicacionEficiencia.Vistas"
       xmlns:Modelos="clr-namespace:AplicacionEficiencia.Modelos"
+      xmlns:Controladores="clr-namespace:AplicacionEficiencia.Controladores.Graficos"
       xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="555" d:DesignWidth="900"
@@ -51,6 +52,10 @@
             Margin="16 0 0 16"/>
         
         <Border Grid.Column="1" Grid.Row="4" Background="#1c1c1e" CornerRadius="8">
+            <lvc:CartesianChart Series="{Binding GraficoLista.Series}"
+                                XAxes="{Binding GraficoLista.XAxes}"
+                                YAxes="{Binding GraficoLista.YAxes}"
+                                TooltipPosition="Hidden"/>
 
         </Border>
     </Grid>
