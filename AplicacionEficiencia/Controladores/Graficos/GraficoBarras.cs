@@ -3,42 +3,49 @@ using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore;
 using SkiaSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Windows;
-using AplicacionEficiencia.Controladores;
 
-namespace AplicacionEficiencia.Modelos
+namespace AplicacionEficiencia.Controladores
 {
     public partial class GraficoBarras : ObservableObject
     {
-        public Color systemColor {  get; set; }
-        public ISeries[] Series { get; set; } =
-        {
-            new ColumnSeries<int>
-            {
-                Values = new int[] {1,4, 3, 5},
-                Fill = new SolidColorPaint(ColorControler.GetWindowGlassSKColor())
-            }
-        };
+        public Axis[] XAxes { get; private set; }
+        public ISeries[] Series { get; private set; }
+        public int[] values {get; private set;}
+        public string[] labels {get; private set;}
 
-        public Axis[] XAxes { get; set; } =
-        {
-            new Axis
+        public GraficoBarras(string[] labels, int[] values) {
+            this.values = values;
+            this.labels = labels;
+            this.XAxes = new Axis[] {
+                CreateXAxes(labels)
+            };
+            this.Series = new ISeries[] {
+                CreateSeries(values)
+            };
+        }
+
+        private Axis CreateXAxes (string[] labels) {
+            return new Axis
             {
-                Labels = new string[] {"App1", "App2", "App3", "App4"},
+                Labels = labels,
                 LabelsRotation = 0,
-                SeparatorsPaint = new SolidColorPaint(new SKColor(200,200,200)),
+                SeparatorsPaint = new SolidColorPaint(SKColor.Parse("#989899")), //hex #989899
                 SeparatorsAtCenter = false,
-                TicksPaint = new SolidColorPaint(new SKColor(35,35,35)),
+                TicksPaint = new SolidColorPaint(SKColor.Parse("#989899")), //hex #323235
+                LabelsPaint = new SolidColorPaint(SKColor.Parse("#989899")),
+                TextSize = 13,
                 TicksAtCenter = true,
                 ForceStepToMin = true,
                 MinStep = 1
-            }
-        };
+            };
+        }
+
+        private ColumnSeries<int> CreateSeries(int[] values) {
+            return new ColumnSeries<int>
+            {
+                Values = values,
+                Fill = new SolidColorPaint(ColorControler.GetWindowGlassSKColor())
+            };
+        }
     }
 }

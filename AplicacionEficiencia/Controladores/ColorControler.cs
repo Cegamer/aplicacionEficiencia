@@ -8,8 +8,12 @@ using System.Windows;
 
 namespace AplicacionEficiencia.Controladores
 {
-    class ColorControler
+    public class ColorControler
     {
+        public ColorControler() {
+
+        }
+
         public static SKColor GetWindowGlassSKColor()
         {
             var color = SystemParameters.WindowGlassColor;

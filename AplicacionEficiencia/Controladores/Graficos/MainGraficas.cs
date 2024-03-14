@@ -1,4 +1,5 @@
-﻿using AplicacionEficiencia.Controladores.Graficos;
+﻿using AplicacionEficiencia.Controladores;
+using AplicacionEficiencia.Controladores.Graficos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,7 +60,7 @@ namespace AplicacionEficiencia.Modelos
 
         public MainGraficas()
         {
-            GraficoBarras = new GraficoBarras();
+            //GraficoBarras = new GraficoBarras();
             GraficoLineas = new GraficoLineas();
             GraficoRosquilla = new GraficoRosquilla();
             GraficoLista = new GraficoLista();

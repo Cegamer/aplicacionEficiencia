@@ -21,7 +21,7 @@ namespace AplicacionEficiencia.Controladores
         {
             this.view = view;
             this.view.btn_new_profile.Click += Btn_new_profile_Click;   
-            this.manager = new ExpandableGrid(ref view.profiles_grid, 3, 400);
+            this.manager = new ExpandableGrid(ref view.profiles_grid, 3, 400, space: 8);
             llenarDiccionarioPerfiles();
             MostrarPerfiles();
         }

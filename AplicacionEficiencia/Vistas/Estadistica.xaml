@@ -5,16 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AplicacionEficiencia.Vistas"
       xmlns:Modelos="clr-namespace:AplicacionEficiencia.Modelos"
-      xmlns:Controladores="clr-namespace:AplicacionEficiencia.Controladores.Graficos"
-      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+      xmlns:Controladores="clr-namespace:AplicacionEficiencia.Controladores"
+      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF" 
       mc:Ignorable="d" 
       d:DesignHeight="555" d:DesignWidth="900"
       Title="Estadisticas"
-      Background="Transparent"
-      >
-    <Page.DataContext>
-        <Modelos:MainGraficas/>
-    </Page.DataContext>
+      Background="Transparent">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -25,9 +21,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
@@ -39,24 +33,48 @@
                    Name="nombre_perfil"
                    Margin="0 0 0 16"/>
 
-        <Border Grid.Column="1" Grid.Row="2" Background="#1c1c1e" CornerRadius="8">
-            <lvc:CartesianChart Series="{Binding GraficoBarras.Series}"
-                                XAxes="{Binding GraficoBarras.XAxes}"/>
-        </Border>
-        
-        <TextBlock 
-            Text="Estadisticas"
-            Grid.Column="1" Grid.Row="3" 
-            Foreground="#8d8d93"
-            FontSize="15"
-            Margin="16 0 0 16"/>
-        
+        <StackPanel Grid.Column="1" Grid.Row="2" Name="profile_stats_section">
+            <TextBlock 
+                Grid.Column="1" Grid.Row="1" 
+                Text="TODOS LOS PERFILES"
+                Foreground="#8d8d93"
+                FontSize="15"
+                Margin="16 0 0 5"/>
+            <Border Background="#1c1c1e" CornerRadius="8" Padding="5 10">
+                <StackPanel>
+                    <TextBlock 
+                        Grid.Column="1" Grid.Row="1" 
+                        Text="Uso Promedio de Hoy"
+                        Foreground="#989899"
+                        FontSize="15"
+                        Margin="16 0 0 0"/>
+                    <TextBlock 
+                        Name="txt_profile_time"
+                        Grid.Column="1" Grid.Row="1" 
+                        Text="0h"
+                        Foreground="#ffffff"
+                        FontSize="30"
+                        FontWeight="SemiBold"
+                        Margin="16 0 0 0"/>
+
+                    <lvc:CartesianChart Name="profile_stats_chart" Height="250" Series="{Binding Series}" XAxes="{Binding XAxes}">
+                    </lvc:CartesianChart>
+                </StackPanel>
+            </Border>
+            <TextBlock 
+                Text="Esta sección muestra las estadísticas de uso de perfiles en tiempo real. Aquí podrás monitorear la actividad y el rendimiento de cada perfil, lo que te permitirá tomar decisiones informadas basadas en datos actualizados"
+                Grid.Column="1" Grid.Row="3" 
+                Foreground="#8d8d93"
+                FontSize="13"
+                Margin="16 5 0 16"
+                TextWrapping="Wrap"/>
+        </StackPanel>
+
         <Border Grid.Column="1" Grid.Row="4" Background="#1c1c1e" CornerRadius="8">
             <lvc:CartesianChart Series="{Binding GraficoLista.Series}"
                                 XAxes="{Binding GraficoLista.XAxes}"
                                 YAxes="{Binding GraficoLista.YAxes}"
                                 TooltipPosition="Hidden"/>
-
         </Border>
     </Grid>
 </Page>
