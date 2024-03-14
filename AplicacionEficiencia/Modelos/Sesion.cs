@@ -1,4 +1,5 @@
-﻿using AplicacionEficiencia.Dal;
+﻿using AplicacionEficiencia.Core;
+using AplicacionEficiencia.Dal;
 using AplicacionEficiencia.Vistas;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,12 +16,15 @@ namespace AplicacionEficiencia.Modelos
 {
     public class Sesion
     {
+        
         public int id { get; set; }
         public Perfil Perfil { get; set; }
         public DateTime horaInicio { get; set; }
         public DateTime horaFin { get; set; }
         public bool activa { get; set; }
         public List<SesionPrograma> programasMonitoreo { get; set; }
+        public Run OnStartListeners { get; set; }
+        public Run OnStopListeners  { get; set; }
 
         public Sesion(Perfil perfil)
         {
@@ -47,6 +51,7 @@ namespace AplicacionEficiencia.Modelos
         public void IniciarMonitoreo()
         {
             Task.Run(() => Monitorear());
+            OnStart();
         }
 
         private void Monitorear()
@@ -99,6 +104,7 @@ namespace AplicacionEficiencia.Modelos
             }
             return false;
         }
+        
         public void monitorearReaperturaProgramas() {
             foreach (Programa programa in Perfil.programasAEjecutar) {
                 if (!VerificarProcesoActivo(programa.nombreProceso)) {
@@ -152,8 +158,10 @@ namespace AplicacionEficiencia.Modelos
             horaFin = DateTime.Now;
             ActualizarDatosSesion(this);
             SesionActual.sesionActual = null;
+            OnStop();
             
         }
+        
         public static void GuardarDatosSesion(Sesion sesion)
         {
             using (var conn = new ConexionContext())
@@ -187,5 +195,12 @@ namespace AplicacionEficiencia.Modelos
             }
         }
 
+        public void OnStart() {
+            OnStartListeners();
+        }
+
+        public void OnStop() {
+            OnStopListeners();
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using AplicacionEficiencia.Dal;
 using System.Linq;
+using System;
 
 namespace AplicacionEficiencia.Controladores
 {
@@ -138,6 +139,14 @@ namespace AplicacionEficiencia.Controladores
                 {
                     perfil.iniciar();
                     Sesion sesion = new Sesion(perfil);
+                    sesion.OnStartListeners += () => {
+                        MainWindow.mainWindow.rbtn_sesion_actual.Visibility = Visibility.Visible;
+                        MainWindow.mainWindow.separator_sesion_actual.Visibility = Visibility.Visible;
+                    };
+                    sesion.OnStopListeners  += () => {
+                        MainWindow.mainWindow.rbtn_sesion_actual.Visibility = Visibility.Collapsed;
+                        MainWindow.mainWindow.separator_sesion_actual.Visibility = Visibility.Collapsed;
+                    };
                     MainWindow.mainWindow.frame.Content = new SesionActual(sesion);
                 }
                 else

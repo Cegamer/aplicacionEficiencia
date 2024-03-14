@@ -66,7 +66,5 @@ namespace AplicacionEficiencia
             var bursh = new SolidColorBrush(lighter);
             Application.Current.Resources["HButtonLigther"] = bursh;
         }
-
-        
     }
 }
