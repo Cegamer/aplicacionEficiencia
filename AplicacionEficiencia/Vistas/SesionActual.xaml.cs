@@ -26,5 +26,22 @@ namespace AplicacionEficiencia.Vistas
             sesionActual.Finalizar();
             MainWindow.mainWindow.frame.Content = MainWindow.perfilesVista;
         }
+
+        private void button1_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (sesionActual.pausada)
+            {
+                sesionActual.Reanudar();
+                button1.Content = "Pausar Sesion";
+
+            }
+
+            else
+            {
+                sesionActual.Pausar();
+                button1.Content = "Continuar Sesion";
+
+            }
+        }
     }
 }
