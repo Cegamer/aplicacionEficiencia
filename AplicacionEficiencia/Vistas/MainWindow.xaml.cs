@@ -14,7 +14,6 @@ namespace AplicacionEficiencia
     public partial class MainWindow : Window
     {
         public static Perfiles perfilesVista = new Perfiles();
-        public static Estadistica estadisticaVista = new Estadistica();
         public static Informacion informacionVista = new Informacion();
         public static Ajustes configView = new Ajustes();
         public static PerfilesController perfilesController;
@@ -45,6 +44,7 @@ namespace AplicacionEficiencia
 
         private void rbtn_estadisticas_click(object sender, RoutedEventArgs e)
         {
+            Estadistica estadisticaVista = new Estadistica();
             frame.Content = estadisticaVista;
         }
         
@@ -66,7 +66,5 @@ namespace AplicacionEficiencia
             var bursh = new SolidColorBrush(lighter);
             Application.Current.Resources["HButtonLigther"] = bursh;
         }
-
-        
     }
 }

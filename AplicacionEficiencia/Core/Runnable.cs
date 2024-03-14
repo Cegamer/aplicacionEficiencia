@@ -4,12 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AplicacionEficiencia.Modelos
+namespace AplicacionEficiencia.Core
 {
-    class Config
-    {
-        int tamanoFuente;
-
-
-    }
+    public delegate void Run();
 }

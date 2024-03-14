@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using AplicacionEficiencia.Dal;
 using System.Linq;
+using System;
 
 namespace AplicacionEficiencia.Controladores
 {
@@ -20,7 +21,7 @@ namespace AplicacionEficiencia.Controladores
         {
             this.view = view;
             this.view.btn_new_profile.Click += Btn_new_profile_Click;   
-            this.manager = new ExpandableGrid(ref view.profiles_grid, 3, 400);
+            this.manager = new ExpandableGrid(ref view.profiles_grid, 3, 400, space: 8);
             llenarDiccionarioPerfiles();
             MostrarPerfiles();
         }
@@ -138,6 +139,14 @@ namespace AplicacionEficiencia.Controladores
                 {
                     perfil.iniciar();
                     Sesion sesion = new Sesion(perfil);
+                    sesion.OnStartListeners += () => {
+                        MainWindow.mainWindow.rbtn_sesion_actual.Visibility = Visibility.Visible;
+                        MainWindow.mainWindow.separator_sesion_actual.Visibility = Visibility.Visible;
+                    };
+                    sesion.OnStopListeners  += () => {
+                        MainWindow.mainWindow.rbtn_sesion_actual.Visibility = Visibility.Collapsed;
+                        MainWindow.mainWindow.separator_sesion_actual.Visibility = Visibility.Collapsed;
+                    };
                     MainWindow.mainWindow.frame.Content = new SesionActual(sesion);
                 }
                 else

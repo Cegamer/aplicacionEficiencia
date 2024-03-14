@@ -10,8 +10,8 @@ namespace AplicacionEficiencia.Vistas
     {
         public static SesionActual sesionActualVista;
         public static Sesion sesionActual;
-        public SesionActual(Sesion sesion)
 
+        public SesionActual(Sesion sesion)
         {
             InitializeComponent();
             this.label_profile_name.Content = sesion.Perfil.nombre;

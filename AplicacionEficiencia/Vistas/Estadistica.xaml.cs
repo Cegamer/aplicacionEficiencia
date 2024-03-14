@@ -1,3 +1,4 @@
+using AplicacionEficiencia.Controladores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace AplicacionEficiencia.Vistas
         public Estadistica()
         {
             InitializeComponent();
+            new StatsController(this);
         }
     }
 }

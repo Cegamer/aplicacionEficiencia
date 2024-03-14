@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--#endregion-->
@@ -30,22 +30,25 @@
                    FontSize="30"
                    FontWeight="Bold"
                    Grid.Row="1" Grid.Column="0"
-                   Margin="16, 0, 0, 0"/>
+                   Margin="16, 0, 0, 10"/>
 
         <StackPanel Grid.Row="2" Grid.Column="0">
+            <RadioButton Content="Sesion Actual"
+                         Name="rbtn_sesion_actual"
+                         Foreground="White"
+                         FontSize="17"
+                         Click="rbtn_sesion_actual_click"
+                         Visibility="Collapsed"
+                         Style="{StaticResource TemaBotonMenu}"/>
+
+            <Border Height="0.5" Background="#47474a" Margin="16 0 16 0" Name="separator_sesion_actual" Visibility="Collapsed"/>
+
             <RadioButton Content="Perfiles" 
                          Name="rbtn_perfiles"
                          Foreground="White"
                          FontSize="17"
                          IsChecked="True"
                          Click="rbtn_perfiles_click"
-                         Style="{StaticResource TemaBotonMenu}"/>
-
-            <RadioButton Content="Sesion Actual"
-                         Name="rbtn_sesion_actual"
-                         Foreground="White"
-                         FontSize="17"
-                         Click="rbtn_sesion_actual_click"
                          Style="{StaticResource TemaBotonMenu}"/>
 
             <RadioButton Content="Estadisticas" 
