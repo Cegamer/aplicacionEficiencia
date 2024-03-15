@@ -63,8 +63,12 @@ namespace AplicacionEficiencia.Controladores
             var data = dict.Select(kvp => (int) kvp.Value).ToArray();
             var chart = new GraficoLista(labels, data);
 
-            chart.CreateXAxes(GetTimeConverter(data.Max()));
-            _view.apps_stats_chart.DataContext = chart;
+
+            if (data.Length > 0)
+            {
+                chart.CreateXAxes(GetTimeConverter(data.Max()));
+                _view.apps_stats_chart.DataContext = chart;
+            }
         }
 
         private void UpdateProfileTime() {
