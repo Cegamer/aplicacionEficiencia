@@ -24,6 +24,9 @@ namespace AplicacionEficiencia.Dal
 
         public DateTime horaFin { get; set; }
 
+        public TimeSpan tiempoSesion { get; set; }
+
+
         public override string ToString()
         {
             return $"ID: {id}, Perfil ID: {PerfilId}, Hora de inicio: {horaInicio}, Hora de fin: {horaFin}";

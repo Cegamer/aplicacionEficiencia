@@ -21,10 +21,15 @@ namespace AplicacionEficiencia.Modelos
         public Perfil Perfil { get; set; }
         public DateTime horaInicio { get; set; }
         public DateTime horaFin { get; set; }
+        public TimeSpan tiempoSesion { get; set; }
         public bool activa { get; set; }
         public List<SesionPrograma> programasMonitoreo { get; set; }
         public Run OnStartListeners { get; set; }
         public Run OnStopListeners  { get; set; }
+
+        DateTime horaPausa;
+        TimeSpan tiempoPausado = TimeSpan.Zero;
+        public bool pausada;
 
         public Sesion(Perfil perfil)
         {
@@ -32,8 +37,38 @@ namespace AplicacionEficiencia.Modelos
             horaInicio = DateTime.Now;
             horaFin = DateTime.Now;
             activa = true;
+            pausada = false;
             GuardarDatosSesion(this);
             programasMonitoreo = obtenerListaDeProgramasMonitoreados();
+        }
+
+        public void Pausar()
+        {
+            if (!pausada)
+            {
+                pausada = true;
+                horaPausa = DateTime.Now;
+                
+                foreach(var item in programasMonitoreo)
+                {   
+                    if(item.activa)
+                        item.finalizar();
+                }
+            }
+        }
+
+        public void Reanudar()
+        {
+            if (pausada)
+            {
+                pausada = false;
+                tiempoPausado += DateTime.Now - horaPausa;
+                foreach (var programa in Perfil.programasAEjecutar)
+                {
+                    var sesionPrograma = new SesionPrograma(this, programa, DateTime.Now);
+                    programasMonitoreo.Add(sesionPrograma);
+                }
+            }
         }
 
         private List<SesionPrograma> obtenerListaDeProgramasMonitoreados()
@@ -58,25 +93,28 @@ namespace AplicacionEficiencia.Modelos
         {
             while (activa)
             {
-                System.Threading.Thread.Sleep(1000); // Esperar 1 segundo (ampliar este número podría mejorar el rendimiento del programa)
-
-                SesionActual.sesionActualVista.Dispatcher.Invoke(() =>
+                if (!pausada)
                 {
-                    //SesionActual.sesionActualVista.testSesion.Content = "";
-                    SesionActual.sesionActualVista.label.Content = calcularTiempoTranscurrido();
-                    foreach (var item in programasMonitoreo)
+
+                    SesionActual.sesionActualVista.Dispatcher.Invoke(() =>
                     {
-                        if (item.activa)
+                        SesionActual.sesionActualVista.label.Content = calcularTiempoTranscurrido();
+                        foreach (var item in programasMonitoreo)
                         {
-                            if (Process.GetProcessesByName(item.programa.nombreProceso).Length <= 0)
-                                item.finalizar();
-                            item.calcularTiempoTranscurrido(DateTime.Now);
+                            if (item.activa)
+                            {
+                                if (Process.GetProcessesByName(item.programa.nombreProceso).Length <= 0)
+                                    item.finalizar();
+                                else
+                                    item.calcularTiempoTranscurrido(DateTime.Now);
+                            }
                         }
-                    }
-                    MostrarInformacionEnPantalla();
-                });
-                monitorearReaperturaProgramas();
-                bloquearProgramas();
+                        MostrarInformacionEnPantalla();
+                    });
+                    monitorearReaperturaProgramas();
+                    bloquearProgramas();
+                }
+                System.Threading.Thread.Sleep(1000); // Esperar 1 segundo (ampliar este número podría mejorar el rendimiento del programa)
             }
         }
 
@@ -141,9 +179,11 @@ namespace AplicacionEficiencia.Modelos
 
         public TimeSpan calcularTiempoTranscurrido()
         {
-            if (!activa)
-                return horaFin - horaInicio;
-            return DateTime.Now - horaInicio;
+            if(!activa)
+                return horaFin - horaInicio - tiempoPausado;
+            if (pausada)
+                return DateTime.Now - horaInicio - tiempoPausado;
+            return DateTime.Now - horaInicio - tiempoPausado;
         }
 
         public void Finalizar()
@@ -170,6 +210,7 @@ namespace AplicacionEficiencia.Modelos
                 dto.horaFin = sesion.horaFin;
                 dto.horaInicio = sesion.horaInicio;
                 dto.PerfilId = sesion.Perfil.id;
+                dto.tiempoSesion = sesion.tiempoSesion;
 
 
                 conn.Sesiones!.Add(dto);
@@ -190,6 +231,7 @@ namespace AplicacionEficiencia.Modelos
                     // Actualiza los datos de la sesión existente
                     existingSesion.horaInicio = sesion.horaInicio;
                     existingSesion.horaFin = sesion.horaFin;
+                    existingSesion.tiempoSesion = sesion.tiempoSesion;
                 }
                 conn.SaveChanges();
             }

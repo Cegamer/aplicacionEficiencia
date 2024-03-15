@@ -37,8 +37,8 @@ namespace AplicacionEficiencia.Modelos
         public void finalizar()
         {
             horaFin = DateTime.Now;
-            Debug.WriteLine("Finalizado proceso" + programa.nombre);
             activa = false;
+            calcularTiempoTranscurrido(DateTime.Now);
             GuardarDatosSesionPrograma(this);
         }
 

@@ -1,127 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="AplicacionEficiencia.Controladores.LectorProgramas">
-    <Position X="6" Y="12.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAABggAAAAAAAAAAAEAAAAAAAAAAAAAAAAgIAAAAA=</HashCode>
-      <FileName>Controladores\LectorProgramas.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="MainWindow" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Field Name="programas" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="AplicacionEficiencia.Controladores.ListaAplicacionesModificarPerfil">
-    <Position X="0.75" Y="8.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAgIAAAAACABAAAAAEAACAgAAAAAAAAAASAAAAEAAAA=</HashCode>
-      <FileName>Controladores\ListaAplicacionesModificarPerfil.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="view" />
-      <Property Name="perfil" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="ProgramasAutostart" />
-      <Property Name="ProgramasBloqueados" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="AplicacionEficiencia.Controladores.PerfilesController">
-    <Position X="7.5" Y="6" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAgCAAAAAAAAAAAAAAQAEAAAAAACAAQgAAAAAACA=</HashCode>
-      <FileName>Controladores\PerfilesController.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="manager" />
-      <Field Name="perfiles" />
-      <Field Name="view" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="AplicacionEficiencia.Controladores.ProgramaItem">
-    <Position X="4.5" Y="5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAAgAgAAgAIAABAAAAQCAAAAAAIAAQAAQAAAAAA=</HashCode>
-      <FileName>Controladores\ProgramaItem.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="controler" />
-      <Field Name="programa" />
-      <Field Name="view" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="AplicacionEficiencia.Modelos.Config" Collapsed="true">
-    <Position X="15.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
-      <FileName>Modelos\Config.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AplicacionEficiencia.Modelos.Perfil">
-    <Position X="3" Y="12.25" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAEAAAAACAIAEAAgAEAAAAAAAAAAAAAAAAAkA=</HashCode>
-      <FileName>Modelos\Perfil.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="programasAEjecutar" />
-      <Property Name="programasBloqueados" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="AplicacionEficiencia.Modelos.Programa">
-    <Position X="4.25" Y="8.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAAACAAAAAAAAAAAABAAAAABAgAAAQAgA=</HashCode>
-      <FileName>Modelos\Programa.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AplicacionEficiencia.Modelos.Sesion">
-    <Position X="9.25" Y="12.75" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAQBAAAACEAAAQAQAAACQAEQBAAgAAAAIAAAAgA=</HashCode>
-      <FileName>Modelos\Sesion.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Perfil" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="programasMonitoreo" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="AplicacionEficiencia.Modelos.SesionPrograma">
-    <Position X="7" Y="9.25" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAQgAAAAAAAAAAAAAAAAACEABAAAAAAAIACAQAA=</HashCode>
-      <FileName>Modelos\SesionPrograma.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="programa" />
-      <Property Name="sesion" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="AplicacionEficiencia.MainWindow" BaseTypeListCollapsed="true">
-    <Position X="10.5" Y="8" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAACAAAAAAAAAAAAABAABAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Vistas\MainWindow.xaml.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="perfilesVista" />
-    </ShowAsAssociation>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
   <Class Name="AplicacionEficiencia.Vistas.ModificarPerfil" BaseTypeListCollapsed="true">
-    <Position X="1.5" Y="5.75" Width="1.75" />
+    <Position X="5.25" Y="5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Vistas\ModificarPerfil.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="AplicacionEficiencia.Vistas.Perfiles" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="7.75" Y="4.25" Width="1.5" />
+  <Class Name="AplicacionEficiencia.Vistas.Perfiles" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Vistas\Perfiles.xaml.cs</FileName>
@@ -129,7 +17,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="AplicacionEficiencia.Vistas.SesionActual" BaseTypeListCollapsed="true">
-    <Position X="13" Y="13.75" Width="1.5" />
+    <Position X="19.5" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAFAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Vistas\SesionActual.xaml.cs</FileName>
@@ -140,32 +28,126 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="AplicacionEficiencia.Core.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="17.25" Y="0.5" Width="1.5" />
+  <Class Name="AplicacionEficiencia.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="23.25" Y="2.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAAQAAEEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Core\RelayCommand.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="AplicacionEficiencia.utils.GridManager">
-    <Position X="10.5" Y="0.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AgAgAEAQCAAgBIQAAAAAAAAAAACBAIAIAAAACQAAAAA=</HashCode>
-      <FileName>utils\GridManager.cs</FileName>
+      <HashCode>AAgAAQAAACCAAAAgACAAAAAABAAAAAAAAAASAAAgAAA=</HashCode>
+      <FileName>Vistas\MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="layout" />
+      <Field Name="perfilesController" />
+      <Field Name="perfilesVista" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AplicacionEficiencia.Modelos.Perfil">
+    <Position X="16.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAACAIAEAAgAEAAAAAAAEAAAAAAAAAkA=</HashCode>
+      <FileName>Modelos\Perfil.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="programasAEjecutar" />
+      <Property Name="programasBloqueados" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AplicacionEficiencia.Modelos.Programa">
+    <Position X="15.75" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAACAAAAAAAAAAAABAAAAAAAgBAAQAgA=</HashCode>
+      <FileName>Modelos\Programa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AplicacionEficiencia.Modelos.ProgramasPerfiles">
+    <Position X="19.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAQBAAAAAAAAAAAAAAAAACAAEAAA=</HashCode>
+      <FileName>Modelos\ProgramasPerfiles.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Programa" />
+      <Property Name="Perfil" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="System.Windows.Controls.Grid" Collapsed="true">
-    <Position X="8.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-    <Lollipop Position="0.2" />
+  <Class Name="AplicacionEficiencia.Modelos.Sesion">
+    <Position X="15.75" Y="11.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQBAAAACEAAAQAQAAACQQEQBCAgAAAgIAAAAgA=</HashCode>
+      <FileName>Modelos\Sesion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Perfil" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="programasMonitoreo" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;" Collapsed="true">
-    <Position X="10.5" Y="6.25" Width="2" />
-    <TypeIdentifier />
+  <Class Name="AplicacionEficiencia.Modelos.SesionPrograma">
+    <Position X="12.25" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQgAAAAAAAAAAAAAEAAACEABAAAAAAAIACAQAA=</HashCode>
+      <FileName>Modelos\SesionPrograma.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="sesion" />
+      <Property Name="programa" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AplicacionEficiencia.Controladores.LectorProgramas">
+    <Position X="12.25" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>kCAAAABAAAAAAAAgAAAAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Controladores\LectorProgramas.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Programas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AplicacionEficiencia.Controladores.ListaAplicacionesModificarPerfil">
+    <Position X="12.25" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAiIAAAAACABAAAAAEAACAgAAAAAAAAAASAAAAEAAAI=</HashCode>
+      <FileName>Controladores\ListaAplicacionesModificarPerfil.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="perfil" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ProgramasAutostart" />
+      <Property Name="ProgramasBloqueados" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AplicacionEficiencia.Controladores.PerfilesController">
+    <Position X="19.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgCAAAAAAAEAAAAAAQAEAgAAAACEAQAAAAAAACA=</HashCode>
+      <FileName>Controladores\PerfilesController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="view" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="perfiles" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AplicacionEficiencia.Controladores.ProgramaItem">
+    <Position X="8.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAgAgAAgAIAABAAAAQCAAAAAAIAAQAAQAAAAAA=</HashCode>
+      <FileName>Controladores\ProgramaItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="controler" />
+      <Field Name="view" />
+      <Field Name="programa" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AplicacionEficiencia.Dal.ConexionContext" Collapsed="true">
+    <Position X="26.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAQAAAABAAAAAAAAAEAEAAAAEAQAIAAAAAAA=</HashCode>
+      <FileName>Dal\BaseDatos.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
