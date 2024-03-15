@@ -94,6 +94,7 @@
                         HorizontalContentAlignment="Stretch"
                         Background="Transparent" BorderBrush="{x:Null}"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden"
                         ItemTemplate="{StaticResource ProgramItemTemplate}"/>
                 </Grid>
             </Border>
@@ -117,6 +118,7 @@
                         HorizontalContentAlignment="Stretch"
                         Background="Transparent" BorderBrush="{x:Null}"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden"
                         ItemTemplate="{StaticResource ProgramItemTemplate}"/>
                 </Grid>
             </Border>
@@ -141,7 +143,7 @@
             </Grid.RowDefinitions>
 
             <Border Background="Transparent" CornerRadius="8" BorderThickness="1" BorderBrush="#1c1c1e" Padding="5">
-                <ScrollViewer>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
                     <StackPanel x:Name="panelAplicaciones" MinWidth="300"/>
                 </ScrollViewer>
             </Border>

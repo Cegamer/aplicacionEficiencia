@@ -40,7 +40,7 @@
         </DockPanel>
         <!--#endregion-->
 
-        <ScrollViewer  Grid.Column="1" Grid.Row="3">
+        <ScrollViewer  Grid.Column="1" Grid.Row="3" VerticalScrollBarVisibility="Hidden">
             <Grid x:Name="profiles_grid" Background="Transparent"/>
         </ScrollViewer>
     </Grid>

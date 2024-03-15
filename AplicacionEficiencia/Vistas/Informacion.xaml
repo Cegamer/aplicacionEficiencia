@@ -17,140 +17,142 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="Información"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="34"
-                       FontWeight="Bold"/>
-        </StackPanel>
-
-        <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <ScrollViewer.Resources>
-                <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource CustomScrollBarStyle}"/>
-            </ScrollViewer.Resources>
-            <Grid x:Name="informacion_grid" Background="Transparent">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Contenido dentro del ScrollViewer -->
-                <!--#region Acerca de-->
-                <Label x:Name="label_acerca_de" Content="Acerca de" 
-                       FontSize="20" Foreground="White" FontWeight="UltraBlack"
-                       Grid.Column="1" Grid.Row="0"/>
-
-                <TextBlock Grid.Column="1" Grid.Row="1"
-                           Text="La aplicación '' se basa en el monitoreo del uso de aplicaciones por parte del usuario, dándole a conocer a los usuarios los programas en los cuales pasan la mayoría de tiempo, para que puedan hacer un análisis de cómo aprovechar su tiempo."
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left" 
-                           Foreground="White"
-                           FontSize="15"
-                           FontWeight="Light" 
-                           Margin="15" 
-                           TextWrapping="Wrap" 
-                           TextAlignment="Justify" 
-                           />
-                <!--#endregion Acerca de -->
-
-                <!--#region Políticas de privacidad y términos de servicio-->
-                <Label x:Name="label_politica_privacidad" Content="Políticas de privacidad y términos de servicio" 
-                       FontSize="20" Foreground="White" FontWeight="UltraBlack" 
-                       Grid.Column="1" Grid.Row="2"/>
-                <Label x:Name="label_informacion_personal" Content="Recopilación y Uso de Información Personal" 
-                       FontSize="17" Foreground="White" FontWeight="SemiBold" 
-                       Grid.Column="1" Grid.Row="3"/>
-
-                <TextBlock Grid.Column="1" Grid.Row="4"
-                           Text="Tu privacidad es importante para nosotros. Es nuestra política respetar tu privacidad con respecto a cualquier información que podamos recopilar mientras operamos nuestra aplicación.
-No recopilamos información personal identificable sobre ti a menos que tú nos la proporciones voluntariamente. La información que recopilamos se utiliza únicamente para proporcionar y mejorar nuestra aplicación. No compartiremos tu información personal con terceros excepto en los casos en que sea necesario para cumplir con la ley aplicable."
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Foreground="White"
-                           FontSize="15"
-                           FontWeight="Light" 
-                           Margin="15" 
-                           TextWrapping="Wrap" 
-                           TextAlignment="Justify" 
-                           />
-
-                <Label x:Name="label_terminos_servicio" Content="Términos de Servicio" 
-                       FontSize="17" Foreground="White" FontWeight="SemiBold" 
-                       Grid.Column="1" Grid.Row="5"/>
-
-                <TextBlock Grid.Column="1" Grid.Row="6"
-                           Text="Al acceder y utilizar nuestra aplicación, aceptas cumplir con estos términos de servicio. Estos términos rigen tu acceso y uso de la aplicación y constituyen un acuerdo vinculante entre tú y nosotros."
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left" 
-                           Foreground="White"
-                           FontSize="15"
-                           FontWeight="Light" 
-                           Margin="15" 
-                           TextWrapping="Wrap" 
-                           TextAlignment="Justify" 
-                           />
-
-                <Label x:Name="label_propiedad_intelectual" Content="Propiedad Intelectual" 
-                       FontSize="17" Foreground="White" FontWeight="SemiBold" 
-                       Grid.Column="1" Grid.Row="7"/>
-
-                <TextBlock Grid.Column="1" Grid.Row="8"
-                           Text="El contenido de nuestra aplicación, incluidos los textos, gráficos, logotipos, imágenes y otros materiales, está protegido por derechos de autor y otras leyes de propiedad intelectual. No puedes copiar, modificar, distribuir, vender o alquilar ninguna parte de nuestra aplicación sin nuestro consentimiento previo por escrito."
-                           HorizontalAlignment="Left" 
-                           Foreground="White"
-                           FontSize="15"
-                           FontWeight="Light" 
-                           Margin="15" 
-                           TextWrapping="Wrap" 
-                           TextAlignment="Justify" 
-                           />
-                <!--#endregion  Políticas de privacidad y términos de servici-->
-                
-                <!--#region Propietarios-->
-                <Label x:Name="label_Propietarios" Content="Propietarios de la aplicación" 
-                       FontSize="20" Foreground="White" FontWeight="UltraBlack" 
-                       Grid.Column="1" Grid.Row="9"/>
-
-                <TextBlock Grid.Column="1" Grid.Row="10"
-                           HorizontalAlignment="Left" 
-                           Foreground="White"
-                           FontSize="15"
-                           FontWeight="Light" 
-                           Margin="15" 
-                           TextWrapping="Wrap" 
-                           TextAlignment="Justify">
-                    <Run Text="Los propietarios y desarrolladores de la aplicación son:"/>
-                    <LineBreak/>
-                    <Run Text=" - Cesar Mauricio Navarro Martinez"/>
-                    <LineBreak/>
-                    <Run Text=" - Mateo Cerquera Olarte"/>
-                    <LineBreak/>
-                    <Run Text=" - Luis Miguel Mican"/>
-                    <LineBreak/>
-                    <Run Text=" - David Santiago Aldana"/>
-                    <LineBreak/>
-                    <Run Text=" - Sebastian Mongui"/>
-                </TextBlock>
+        <TextBlock Text="Información"
+                   Margin="0 0 0 16"
+                   Grid.Row="1" Grid.Column="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="34"
+                   FontWeight="Bold"/>
 
 
+        <ScrollViewer Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <TextBlock Text="Acerca Monitor Master" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           FontWeight="SemiBold"
+                           Grid.Column="1" 
+                           Grid.Row="0"/>
+                <TextBlock Text="Tanto en la vida cotidiana como en la vida laboral, las personas tendemos a realizar actividades que desacomodan nuestros horarios, agregando que ahora es más común el uso de aparatos electrónicos, es en estos donde gran parte de nuestro tiempo es desaprovechado, y teniendo el enfoque en las aplicaciones que usamos en el día a día en nuestros computadores. Se ha planteado la idea de una aplicación de escritorio para monitorear las aplicaciones que se usan y el tiempo que consumimos en estas. " 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 16"/>
 
-            </Grid>
+                <TextBlock Text="Nuestro Objetivo" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           FontWeight="SemiBold"
+                           Grid.Column="1" 
+                           Grid.Row="0"/>
+
+                <TextBlock Text="Analizar el uso de aplicaciones de escritorio, mediante un software que permita la automatización y bloqueo de programas en función de lo que el usuario desee. " 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 16"/>
+
+                <TextBlock Text="Políticas de privacidad y términos de servicio" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           FontWeight="SemiBold"
+                           Grid.Column="1" 
+                           Margin="0 0 0 5"
+                           Grid.Row="0"/>
+                <TextBlock Text="1. Recopilación y Uso de Información Personal" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           FontWeight="SemiBold"
+                           Grid.Column="1" 
+                           Margin="16 0 0 0"
+                           Grid.Row="0"/>
+                <TextBlock Text="Tu privacidad es importante para nosotros. Es nuestra política respetar tu privacidad con respecto a cualquier información que podamos recopilar mientras operamos nuestra aplicación. No recopilamos información personal identificable sobre ti a menos que tú nos la proporciones voluntariamente. La información que recopilamos se utiliza únicamente para proporcionar y mejorar nuestra aplicación. No compartiremos tu información personal con terceros excepto en los casos en que sea necesario para cumplir con la ley aplicable." 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 16"/>
+                <TextBlock Text="Términos de Servicio" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           FontWeight="SemiBold"
+                           Grid.Column="1" 
+                           Grid.Row="0"/>
+                <TextBlock Text="Al acceder y utilizar nuestra aplicación, aceptas cumplir con estos términos de servicio. Estos términos rigen tu acceso y uso de la aplicación y constituyen un acuerdo vinculante entre tú y nosotros." 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 16"/>
+
+                <TextBlock Text="Propiedad Intelectual" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           FontWeight="SemiBold"
+                           Grid.Column="1" 
+                           Grid.Row="0"/>
+                <TextBlock Text="El contenido de nuestra aplicación, incluidos los textos, gráficos, logotipos, imágenes y otros materiales, está protegido por derechos de autor y otras leyes de propiedad intelectual. No puedes copiar, modificar, distribuir, vender o alquilar ninguna parte de nuestra aplicación sin nuestro consentimiento previo por escrito." 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 16"/>
+
+                <TextBlock Text="Propietarios de la aplicación" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           FontWeight="SemiBold"
+                           Grid.Column="1" 
+                           Grid.Row="0"/>
+                <TextBlock Text="1. Cesar Mauricio Navarro Martinez" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 5"/>
+                <TextBlock Text="2. Mateo Olarte Casallas" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 5"/>
+                <TextBlock Text="3. Luis Miguel Mican" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 5"/>
+                <TextBlock Text="4. David Santiago Aldana" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 5"/>
+                <TextBlock Text="4. Sebastian Mongui" 
+                           FontSize="17" 
+                           Foreground="White" 
+                           TextWrapping="Wrap"
+                           Grid.Column="1" 
+                           Grid.Row="0"
+                           Margin="0 0 0 5"/>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Page>

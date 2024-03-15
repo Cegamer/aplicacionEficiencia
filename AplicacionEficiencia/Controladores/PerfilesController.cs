@@ -16,12 +16,13 @@ namespace AplicacionEficiencia.Controladores
         public readonly static Dictionary<int, Perfil> perfiles = new Dictionary<int, Perfil>();
         public readonly Perfiles view;
         public readonly ExpandableGrid manager;
+        public static int GridSize = 3;
 
         public PerfilesController(Perfiles view)
         {
             this.view = view;
             this.view.btn_new_profile.Click += Btn_new_profile_Click;   
-            this.manager = new ExpandableGrid(ref view.profiles_grid, 3, 400, space: 8);
+            this.manager = new ExpandableGrid(ref view.profiles_grid, GridSize, 400, space: 8);
             llenarDiccionarioPerfiles();
             MostrarPerfiles();
         }

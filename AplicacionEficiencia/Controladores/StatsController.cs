@@ -1,14 +1,14 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Data;
+using AplicacionEficiencia.Controladores.Graficos;
+using AplicacionEficiencia.Core;
 using AplicacionEficiencia.Dal;
 using AplicacionEficiencia.Modelos;
 using AplicacionEficiencia.Vistas;
+using LiveChartsCore.Kernel;
 
 namespace AplicacionEficiencia.Controladores
 {
@@ -16,24 +16,62 @@ namespace AplicacionEficiencia.Controladores
     {
         private readonly Estadistica _view;
         private Dictionary<DateTime, DateTime> activityPeriods = new Dictionary<DateTime, DateTime>();
+        private List<SesionProgramaDTO> sesions = new List<SesionProgramaDTO>();
         private int[] dailyUsageSegments = {0, 0, 0, 0, 0, 0, 0};
 
         public StatsController(Estadistica view) {
             this._view = view;
+            this._view.btn_apply_filter.Click += Btn_apply_filter_Click; ;
             FetchData();
             FilterData();
             UpdateProfileTime();
             LoadProfileChart();
+            LoadAppsChart();
         }
 
-        private void LoadProfileChart() {
-            var chart = new GraficoBarras(new string[] {"1", "2", "3", "4", "5", "6", "7"}, dailyUsageSegments);
+        private void Btn_apply_filter_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime? date1 = _view.datep_fecha_inicio.SelectedDate;
+            DateTime? date2 = _view.datep_fecha_fin.SelectedDate;
+
+            if (date1 is not null && date2 is not null)
+            {
+                var dict = FetchAppUsage((DateTime) date1, (DateTime) date2);
+                var labels = dict.Select(kvp => GetAppFromID(kvp.Key)!.nombre).ToArray();
+                var data = dict.Select(kvp => (int)kvp.Value).ToArray();
+                var chart = new GraficoLista(labels, data);
+
+                if (data.Length > 0)
+                {
+                    chart.CreateXAxes(GetTimeConverter(data.Max()));
+                    _view.apps_stats_chart.DataContext = chart;
+                }
+            }
+        }
+
+        private void LoadProfileChart() 
+        {
+            var chart = new GraficoBarras(new string[] { "Hace 6 Días", "Hace 5 Días", "Hace 4 Días", "Hace 3 Días", "Hace 2 Días", "Hace 1 Día", "Hoy"}, dailyUsageSegments);
+            chart.CreateYAxes(GetTimeConverter(dailyUsageSegments.Max()));
             _view.profile_stats_chart.DataContext = chart;
+        }
+
+        private void LoadAppsChart ()
+        {
+            var dict = FetchAppUsage();
+            var labels = dict.Select(kvp => GetAppFromID(kvp.Key)!.nombre).ToArray();
+            var data = dict.Select(kvp => (int) kvp.Value).ToArray();
+            var chart = new GraficoLista(labels, data);
+
+            chart.CreateXAxes(GetTimeConverter(data.Max()));
+            _view.apps_stats_chart.DataContext = chart;
         }
 
         private void UpdateProfileTime() {
             var time = GetAverageTime(activityPeriods);
-            _view.txt_profile_time.Text = $"{time:f2} m";
+            string format = GetTimeConverter(time).Format();
+
+            _view.txt_profile_time.Text = format;
         }
 
         private float GetAverageTime(Dictionary<DateTime, DateTime> period) {
@@ -49,7 +87,7 @@ namespace AplicacionEficiencia.Controladores
         private float CalculateTime(DateTime start, DateTime end)
         {
             TimeSpan difference = end - start;
-            return (float) difference.TotalMinutes;
+            return (float) difference.TotalSeconds;
         }
 
         private void FetchData() 
@@ -84,11 +122,6 @@ namespace AplicacionEficiencia.Controladores
             return dateA.Year == dateB.Year && dateA.Month == dateB.Month && dateA.Day == dateB.Day;
         }
 
-        private bool IsTimeBetween(TimeSpan start, TimeSpan end, DateTime dateToCheck)
-        {
-            var dateSpan = dateToCheck.TimeOfDay;
-            return start <= dateSpan && dateSpan <= end;
-        }
 
         private float GetTime(Dictionary<DateTime, DateTime> period) {
             float time = 0;
@@ -98,6 +131,70 @@ namespace AplicacionEficiencia.Controladores
                 time += CalculateTime(kvp.Key, kvp.Value);
             }
             return time;
+        }
+
+        public static ITimeConverter GetTimeConverter(float seconds) {
+            if (seconds < 60) 
+                return new SecondsConverter(seconds);
+            if (seconds < 3600)
+                return new MinuteConverter(seconds);
+            return new HourConverter(seconds);
+        }
+
+        private Dictionary<int, double> FetchAppUsage() 
+        {
+            List<SesionProgramaDTO> sesiones = new List<SesionProgramaDTO>();
+            Dictionary<Programa, TimeSpan> dict = new Dictionary<Programa, TimeSpan>();
+
+            using (var context = new ConexionContext())
+            {
+                sesiones = context.SesionesProgramas!.ToList();
+            }
+
+            var result = sesiones
+                .GroupBy(s => s.ProgramaId)
+                .Select(s => new 
+                { 
+                    Programa = s.Key,
+                    Time = s.Sum(s => s.tiempoTranscurrido.TotalSeconds)
+                })
+                .OrderByDescending(s => s.Time)
+                .Take(5)
+                .ToDictionary(k => k.Programa, v => v.Time);
+            return result;
+        }
+
+
+        private Dictionary<int, double> FetchAppUsage(DateTime date1, DateTime date2) 
+        {
+            List<SesionProgramaDTO> sesiones = new List<SesionProgramaDTO>();
+            Dictionary<Programa, TimeSpan> dict = new Dictionary<Programa, TimeSpan>();
+
+            using (var conn = new ConexionContext())
+            {
+                sesiones = conn.SesionesProgramas!
+                    .Where(x => x.horaInicio >= date1 && x.horaInicio <= date2)
+                    .ToList();
+            }
+
+            var result = sesiones
+                .GroupBy(s => s.ProgramaId)
+                .Select(s => new
+                {
+                    Programa = s.Key,
+                    Time = s.Sum(s => s.tiempoTranscurrido.TotalSeconds)
+                })
+                .OrderByDescending(s => s.Time)
+                .Take(5)
+                .ToDictionary(k => k.Programa, v => v.Time);
+            return result;
+        }
+
+        private Programa? GetAppFromID (int ID) {
+            using (var conn = new ConexionContext())
+            {
+                return conn.Programas!.FirstOrDefault(p => p.id == ID);
+            } 
         }
     }
 }

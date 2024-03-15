@@ -37,23 +37,32 @@
 
 
         <StackPanel Orientation="Vertical"  Grid.Column="1" Grid.Row="2">
-            <TextBlock Text="Text Size" Foreground="#ffffff" FontSize="15" Margin="10 0 0 5"/>
-            <Border Height="40" Background="#1c1c1e" CornerRadius="8" Padding="10 5">
-                <Slider Style="{DynamicResource MaterialSlider}" Minimum="1" Maximum="5" VerticalAlignment="Center" />
-            </Border>
-            <TextBlock Text="Select the font size scale" Foreground="#8d8d93" FontSize="13" Margin="10 5 0 0"/>
-        </StackPanel>
+            <TextBlock Text="Grida de Perfiles" Foreground="#8d8d93" FontSize="15" Margin="16 0 0 5"/>
+            <Border Background="#1c1c1e" CornerRadius="8" Padding="10 5">
+                <StackPanel>
+                    <RadioButton Content="Grande" 
+                             Name="rbtn_fsize_l"
+                             Foreground="White"
+                             FontSize="17"
+                             IsChecked="False"
+                             Style="{StaticResource TemaBotonMenu}"/>
 
-        <StackPanel Orientation="Vertical"  Grid.Column="1" Grid.Row="4">
-            <TextBlock Text="Text Size" Foreground="#ffffff" FontSize="15" Margin="10 0 0 5"/>
-            <Border Height="120" Background="#1c1c1e" CornerRadius="8" Padding="10 5">
-                <StackPanel VerticalAlignment="Center">
-                    <Slider Style="{DynamicResource MaterialSlider}" Minimum="1" Maximum="255" Margin="0 8"/>
-                    <Slider Style="{DynamicResource MaterialSlider}" Minimum="1" Maximum="255" Margin="0 8"/>
-                    <Slider Style="{DynamicResource MaterialSlider}" Minimum="1" Maximum="255" Margin="0 8"/>
+                    <RadioButton Content="Mediana" 
+                             Name="rbtn_fsize_m"
+                             Foreground="White"
+                             FontSize="17"
+                             IsChecked="False"
+                             Style="{StaticResource TemaBotonMenu}"/>
+
+                    <RadioButton Content="Pequeña" 
+                             Name="rbtn_fsize_s"
+                             Foreground="White"
+                             FontSize="17"
+                             IsChecked="True"
+                             Style="{StaticResource TemaBotonMenu}"/>
                 </StackPanel>
             </Border>
-            <TextBlock Text="Select the font size scale" Foreground="#8d8d93" FontSize="13" Margin="10 5 0 0"/>
+            <TextBlock Text="En este ajuste podrás modificar el tamaño de la rejilla de perfiles" Foreground="#8d8d93" FontSize="13" Margin="16 5 0 0"/>
         </StackPanel>
     </Grid>
 </Page>
