@@ -117,7 +117,7 @@
                            FontWeight="SemiBold"
                            Grid.Column="1" 
                            Grid.Row="0"/>
-                <TextBlock Text="1. Cesar Mauricio Navarro Martinez" 
+                <TextBlock Text="1. Cesar Mauricio Martinez Navarro" 
                            FontSize="17" 
                            Foreground="White" 
                            TextWrapping="Wrap"
